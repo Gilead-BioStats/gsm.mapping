@@ -10,6 +10,7 @@
 #' @importFrom cli cli_alert_success
 #' @importFrom cli cli_alert_warning
 #' @importFrom cli cli_text
+#' @importFrom cli cli_warn
 #' @importFrom dbplyr remote_con
 #' @importFrom dbplyr remote_name
 #' @importFrom DBI dbConnect

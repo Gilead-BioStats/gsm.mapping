@@ -18,11 +18,10 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: 
+\strong{Maintainer}: Jeremy Wildfire \email{jwildfire@gmail.com}
 
 Authors:
 \itemize{
-  \item Jeremy Wildfire \email{jwildfire@gmail.com} (cre)
   \item Laura Maxwell \email{laura.maxwell@atorusresearch.com}
   \item Zelos Zhu \email{zelos.zhu@atorusresearch.com}
 }
