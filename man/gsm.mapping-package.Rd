@@ -13,7 +13,6 @@ Useful links:
 \itemize{
   \item \url{https://github.com/Gilead-BioStats/gsm.mapping}
   \item \url{https://gilead-biostats.github.io/gsm.mapping}
-  \item \url{https://cuddly-adventure-39g7gn9.pages.github.io/}
   \item Report bugs at \url{https://github.com/Gilead-BioStats/gsm.mapping/issues}
 }
 
