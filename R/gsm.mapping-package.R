@@ -19,6 +19,7 @@
 #' @importFrom DBI dbGetQuery
 #' @importFrom DBI dbDisconnect
 #' @importFrom DBI dbWriteTable
+#' @importFrom duckdb duckdb
 #' @importFrom glue glue
 #' @importFrom stringr str_detect
 #' @importFrom stringr str_replace

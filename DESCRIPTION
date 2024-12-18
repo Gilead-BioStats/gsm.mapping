@@ -20,6 +20,7 @@ Imports:
     DBI,
     dbplyr,
     dplyr,
+    duckdb,
     glue, 
     gsm,
     log4r,
@@ -29,7 +30,7 @@ VignetteBuilder:
     knitr
 Remotes:
     clindata=Gilead-BioStats/clindata
-    gsm=Gilead-Biostats/gsm
+    gsm=Gilead-Biostats/gsm@dev
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Config/testthat/start-first: util-RunWorkflow, util-clindata
