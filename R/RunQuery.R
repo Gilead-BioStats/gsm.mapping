@@ -11,6 +11,9 @@
 #'
 #' @param strQuery `character` SQL query to run, containing placeholders `"FROM df"`.
 #' @param df `data.frame` or `tbl_dbi` A data frame or DuckDB lazy table to use in the SQL query.
+#' @param bUseSchema `boolean` should we use a schema to enforce data types. Defaults to `FALSE`.
+#' @param lColumnMapping `list` a namesd list of column specifications for a single data.frame.
+#' Required if `bUseSchema` is `TRUE`.
 #'
 #' @return `data.frame` containing the results of the SQL query.
 #'
@@ -25,28 +28,76 @@
 #' result <- RunQuery(query, df)
 #'
 #' @export
-RunQuery <- function(strQuery, df) {
-  stopifnot(is.character(strQuery))
+RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
+  stop_if(cnd = !is.character(strQuery), message = "strQuery must be a query")
 
   # Check that strQuery contains "FROM df"
-  if (!stringr::str_detect(strQuery, "FROM df")) {
-    stop("strQuery must contain 'FROM df'")
+  stop_if(cnd = !stringr::str_detect(strQuery, "FROM df"), message = "strQuery must contain 'FROM df'")
+
+  # Check that columnMapping exists if use_schema == TRUE
+
+  stop_if(
+    cnd = (bUseSchema && is.null(lColumnMapping)),
+    message = "if use_schema = TRUE, you must provide lColumnMapping spec"
+  )
+
+  #use `source_col` for `source` if using mapping and it hasn't gone through ApplySpec()
+  if (bUseSchema && any(map_lgl(lColumnMapping, \(x) is.null(x$source)))) {
+    lColumnMapping <- lColumnMapping %>%
+        imap(
+          function(spec, name) {
+            mapping <- list(target = name)
+            mapping$source <- spec$source_col %||% name
+            mapping$type <- spec$type %||% NULL
+            return(mapping)
+          })
   }
+
 
   # Set up the connection and table names if passing in duckdb lazy table
   if (inherits(df, "tbl_dbi")) {
-    cli::cli_text("Using provided DuckDB connection.")
+    LogMessage(
+      level = "info",
+      message = "Using provided DuckDB connection.",
+      cli_detail = "text"
+    )
     con <- dbplyr::remote_con(df)
     table_name <- dbplyr::remote_name(df)
   } else {
     if (ncol(df) == 0) {
-      cli::cli_alert_warning("df has no columns. Query not run. Returning empty data frame.")
+      LogMessage(
+        level = "warn",
+        message = "df has no columns. Query not run. Returning empty data frame."
+      )
       return(df)
     }
-    cli::cli_text("Creating a new temporary DuckDB connection.")
+    LogMessage(
+      level = "info",
+      message = "Creating a new temporary DuckDB connection.",
+      cli_detail = "text"
+    )
     con <- DBI::dbConnect(duckdb::duckdb())
     temp_table_name <- paste0("temp_table_", format(Sys.time(), "%Y%m%d_%H%M%S"))
-    DBI::dbWriteTable(con, temp_table_name, df)
+    append_tab = FALSE
+    if (bUseSchema) {
+      create_tab_query <- lColumnMapping %>%
+        map_chr(function(mapping) {
+          type <- switch(mapping$type,
+                         Date = "DATE",
+                         numeric = "DOUBLE",
+                         integer = "INTEGER",
+                         character = "VARCHAR",
+                         "VARCHAR")
+            glue("{mapping$source} {type}")
+        }) %>%
+        paste(collapse = ", ")
+      create_tab_query <- glue("CREATE TABLE {temp_table_name} ({create_tab_query})")
+      dbExecute(con, create_tab_query)
+      # set up arguments for dbWriteTable
+      append_tab = TRUE
+      df <- df %>% select(map_chr(lColumnMapping, function(x) x$source) %>% unname()) #need this to be an unnamed vector to avoid using target colnames here
+    }
+    DBI::dbWriteTable(con, temp_table_name, df, append = append_tab)
     table_name <- temp_table_name
   }
 
@@ -54,15 +105,25 @@ RunQuery <- function(strQuery, df) {
 
   result <- tryCatch({
     result <- DBI::dbGetQuery(con, strQuery)
-    cli::cli_alert_success("SQL Query complete: {nrow(result)} rows returned.")
+    LogMessage(
+      level = "info",
+      message = "SQL Query complete: {nrow(result)} rows returned.",
+      cli_detail = "alert_success"
+    )
     result
   }, error = function(e) {
-    cli::cli_alert_danger("Error executing query: {e$message}")
-    stop(glue::glue("Error executing query: {e$message}"))
+    LogMessage(
+      level = "fatal",
+      message = "Error executing query: {e$message}"
+    )
   }, finally = {
     if (!inherits(df, "tbl_dbi")) {
-      DBI::dbDisconnect(con)
-      cli::cli_text("Disconnected from temporary DuckDB connection.")
+      DBI::dbDisconnect(con, shutdown = TRUE)
+      LogMessage(
+        level = "info",
+        message = "Disconnected from temporary DuckDB connection.",
+        cli_detail = "text"
+      )
     }
   })
 
