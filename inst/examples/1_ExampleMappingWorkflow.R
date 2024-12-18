@@ -1,6 +1,8 @@
 #### 3.1 - Create a KRI Report using 12 standard metrics in a step-by-step workflow
 library(gsm)
 library(gsm.mapping)
+library(dplyr)
+
 # Source Data
 lSource <- list(
     Source_SUBJ = clindata::rawplus_dm,
