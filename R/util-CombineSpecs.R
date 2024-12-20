@@ -33,7 +33,7 @@
 #'
 #' combined <- CombineSpecs(list(spec1, spec2), bIsWorkflow = FALSE)
 #'
-#' mappings <- MakeWorkflowList(strPath = "workflow/1_mappings")
+#' mappings <- gsm::MakeWorkflowList(strPath = "workflow/1_mappings")
 #' mapping_spec <- CombineSpecs(mappings)
 #'
 #' @export

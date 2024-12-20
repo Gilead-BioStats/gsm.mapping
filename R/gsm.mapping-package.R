@@ -2,6 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @import dplyr
 #' @import gsm
 #' @import purrr
 #' @import log4r
@@ -16,6 +17,7 @@
 #' @importFrom dbplyr remote_con
 #' @importFrom dbplyr remote_name
 #' @importFrom DBI dbConnect
+#' @importFrom DBI dbExecute
 #' @importFrom DBI dbGetQuery
 #' @importFrom DBI dbDisconnect
 #' @importFrom DBI dbWriteTable

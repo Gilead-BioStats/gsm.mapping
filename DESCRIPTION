@@ -31,7 +31,8 @@ Remotes:
     gsm=Gilead-BioStats/gsm@fix-1972v2
 Suggests:
     clindata,
-    testthat
+    testthat,
+    tibble
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8

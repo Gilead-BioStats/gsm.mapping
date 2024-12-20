@@ -92,7 +92,7 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
         }) %>%
         paste(collapse = ", ")
       create_tab_query <- glue("CREATE TABLE {temp_table_name} ({create_tab_query})")
-      dbExecute(con, create_tab_query)
+      DBI::dbExecute(con, create_tab_query)
       # set up arguments for dbWriteTable
       append_tab = TRUE
       df <- df %>% select(map_chr(lColumnMapping, function(x) x$source) %>% unname()) #need this to be an unnamed vector to avoid using target colnames here
