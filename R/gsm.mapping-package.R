@@ -6,6 +6,7 @@
 #' @import gsm
 #' @import purrr
 #' @import log4r
+#' @import tidyr
 #' @importFrom cli cli_abort
 #' @importFrom cli cli_alert
 #' @importFrom cli cli_alert_info

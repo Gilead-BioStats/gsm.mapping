@@ -25,7 +25,8 @@ Imports:
     gsm,
     log4r,
     purrr,
-    stringr
+    stringr,
+    tidyr
 Remotes:
     clindata=Gilead-BioStats/clindata,
     gsm=Gilead-BioStats/gsm@fix-1972v2
