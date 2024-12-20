@@ -28,7 +28,7 @@ Imports:
     stringr
 Remotes:
     clindata=Gilead-BioStats/clindata,
-    gsm=Gilead-Biostats/gsm@dev
+    gsm=Gilead-BioStats/gsm@fix-1972v2
 Suggests:
     clindata,
     testthat
