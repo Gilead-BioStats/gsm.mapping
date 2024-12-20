@@ -7,6 +7,7 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
+library(gsm)
 library(gsm.mapping)
 
 test_check("gsm.mapping")
