@@ -26,8 +26,6 @@ Imports:
     log4r,
     purrr,
     stringr
-VignetteBuilder: 
-    knitr
 Remotes:
     clindata=Gilead-BioStats/clindata,
     gsm=Gilead-Biostats/gsm@dev
