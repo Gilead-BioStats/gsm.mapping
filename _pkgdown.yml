@@ -16,7 +16,8 @@ reference:
     desc: Utility functions for use within the Data Model
   - contents:
      -  ApplySpec
-     -  CheckSpec
+     -  CalculatePercentage
      -  CombineSpecs
      -  Ingest
+     -  MakeLongMeta
      -  RunQuery
