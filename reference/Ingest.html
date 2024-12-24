@@ -36,7 +36,7 @@ corresponds to a domain in the specification."><link href="pkgdown/extra.css" re
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Ingests data from a source based on a given specification.</h1>
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.mapping/blob/fix-1/R/util-Ingest.R" class="external-link"><code>R/util-Ingest.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.mapping/blob/main/R/util-Ingest.R" class="external-link"><code>R/util-Ingest.R</code></a></small>
       <div class="d-none name"><code>Ingest.Rd</code></div>
     </div>
 
@@ -78,25 +78,26 @@ specification.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lSourceData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  Source_STUDY <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">ctms_study</span>,</span></span>
-<span class="r-in"><span>  Source_SITE <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">ctms_site</span>,</span></span>
-<span class="r-in"><span>  Source_SUBJ <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">rawplus_dm</span>,</span></span>
-<span class="r-in"><span>  Source_AE <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">rawplus_ae</span>,</span></span>
-<span class="r-in"><span>  Source_PD <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">ctms_protdev</span>,</span></span>
-<span class="r-in"><span>  Source_LB <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">rawplus_lb</span>,</span></span>
-<span class="r-in"><span>  Source_STUDCOMP <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">rawplus_studcomp</span>,</span></span>
-<span class="r-in"><span>  Source_SDRGCOMP <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">rawplus_sdrgcomp</span>,</span></span>
-<span class="r-in"><span>  Source_QUERY <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">edc_queries</span>,</span></span>
-<span class="r-in"><span>  Source_DATAENT <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">edc_data_pages</span>,</span></span>
-<span class="r-in"><span>  Source_DATACHG <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">edc_data_points</span>,</span></span>
+<span class="r-in"><span>  Source_STUDY <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/ctms_study.html" class="external-link">ctms_study</a></span>,</span></span>
+<span class="r-in"><span>  Source_SITE <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/ctms_site.html" class="external-link">ctms_site</a></span>,</span></span>
+<span class="r-in"><span>  Source_SUBJ <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/rawplus_dm.html" class="external-link">rawplus_dm</a></span>,</span></span>
+<span class="r-in"><span>  Source_AE <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/rawplus_ae.html" class="external-link">rawplus_ae</a></span>,</span></span>
+<span class="r-in"><span>  Source_PD <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/ctms_protdev.html" class="external-link">ctms_protdev</a></span>,</span></span>
+<span class="r-in"><span>  Source_LB <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/rawplus_lb.html" class="external-link">rawplus_lb</a></span>,</span></span>
+<span class="r-in"><span>  Source_STUDCOMP <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/rawplus_studcomp.html" class="external-link">rawplus_studcomp</a></span>,</span></span>
+<span class="r-in"><span>  Source_SDRGCOMP <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/rawplus_sdrgcomp.html" class="external-link">rawplus_sdrgcomp</a></span>,</span></span>
+<span class="r-in"><span>  Source_QUERY <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/edc_queries.html" class="external-link">edc_queries</a></span>,</span></span>
+<span class="r-in"><span>  Source_DATAENT <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/edc_data_pages.html" class="external-link">edc_data_pages</a></span>,</span></span>
+<span class="r-in"><span>  Source_DATACHG <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va"><a href="https://gilead-biostats.github.io/clindata/reference/edc_data_points.html" class="external-link">edc_data_points</a></span>,</span></span>
 <span class="r-in"><span>  Source_ENROLL <span class="op">=</span> <span class="fu">clindata</span><span class="fu">::</span><span class="va">rawplus_enroll</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘clindata’</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">lIngestWorkflow</span> <span class="op">&lt;-</span> <span class="fu">MakeWorkflowList</span><span class="op">(</span>strPath <span class="op">=</span> <span class="st">"workflow/1_mappings"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in MakeWorkflowList(strPath = "workflow/1_mappings"):</span> could not find function "MakeWorkflowList"</span>
+<span class="r-in"><span><span class="va">lIngestWorkflow</span> <span class="op">&lt;-</span> <span class="fu">gsm</span><span class="fu">::</span><span class="fu"><a href="https://gilead-biostats.github.io/gsm/reference/MakeWorkflowList.html" class="external-link">MakeWorkflowList</a></span><span class="op">(</span>strPath <span class="op">=</span> <span class="st">"workflow/1_mappings"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">lRawData</span> <span class="op">&lt;-</span> <span class="fu">Ingest</span><span class="op">(</span><span class="va">lSourceData</span>, <span class="va">lIngestWorkflow</span><span class="op">$</span><span class="va">spec</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'lSourceData' not found</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Ingesting data for AE.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Creating a new temporary DuckDB connection.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> SQL Query complete: 4854 rows returned.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Disconnected from temporary DuckDB connection.</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
