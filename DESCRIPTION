@@ -29,7 +29,7 @@ Imports:
     tidyr
 Remotes:
     clindata=Gilead-BioStats/clindata,
-    gsm=Gilead-BioStats/gsm@fix-1972v2
+    gsm=Gilead-BioStats/gsm
 Suggests:
     clindata,
     testthat,
