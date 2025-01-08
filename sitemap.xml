@@ -1,5 +1,8 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://gilead-biostats.github.io/gsm.mapping/404.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.mapping/articles/add_new_domain_var.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.mapping/articles/index.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.mapping/articles/mapping_spec.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.mapping/authors.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.mapping/index.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.mapping/reference/ApplySpec.html</loc></url>
