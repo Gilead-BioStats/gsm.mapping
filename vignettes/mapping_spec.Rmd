@@ -20,7 +20,8 @@ lSource <- list(
     Source_PD = clindata::ctms_protdev,
     Source_LB = clindata::rawplus_lb,
     Source_STUDCOMP = clindata::rawplus_studcomp,
-    Source_SDRGCOMP = clindata::rawplus_sdrgcomp %>% dplyr::filter(.data$phase == 'Blinded Study Drug Completion'),
+    Source_SDRGCOMP = clindata::rawplus_sdrgcomp %>%
+      dplyr::filter(.data$phase == 'Blinded Study Drug Completion'),
     Source_DATACHG = clindata::edc_data_points,
     Source_DATAENT = clindata::edc_data_pages,
     Source_QUERY = clindata::edc_queries,
@@ -36,7 +37,8 @@ lRaw <- list(
     Raw_PD = lSource$Source_PD %>%
       rename(subjid = subjectenrollmentnumber),
     Raw_LB = lSource$Source_LB,
-    Raw_STUDCOMP = lSource$Source_STUDCOMP,
+    Raw_STUDCOMP = lSource$Source_STUDCOMP %>%
+      select(subjid, compyn),
     Raw_SDRGCOMP = lSource$Source_SDRGCOMP,
     Raw_DATACHG = lSource$Source_DATACHG %>%
       rename(subject_nsv = subjectname),
@@ -52,15 +54,18 @@ lRaw <- list(
       rename(InvestigatorLastName = pi_last_name) %>%
       rename(City = city) %>%
       rename(State = state) %>%
-      rename(Country = country),
+      rename(Country = country) %>%
+      rename(Status = site_status),
     Raw_STUDY = lSource$Source_STUDY %>%
       rename(studyid = protocol_number) %>%
       rename(Status = status)
 )
+
+# Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
 mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings")
 
 # Extract the nested variables and their types correctly
-result <- lapply(names(mappings_wf), function(domain_name) {
+raw_result <- lapply(names(mappings_wf), function(domain_name) {
   domain <- mappings_wf[[domain_name]]$spec
   do.call(rbind, lapply(names(domain), function(var_name) {
     variables <- domain[[var_name]]
@@ -73,7 +78,12 @@ result <- lapply(names(mappings_wf), function(domain_name) {
   }))
 })
 # Combine all domains into one table
-final_table <- do.call(rbind, result)
-row.names(final_table) <- NULL
-final_table
+raw_final_table <- do.call(rbind, raw_result)
+row.names(raw_final_table) <- NULL
+raw_final_table
+```
+
+```{r mapped, echo = FALSE} 
+mapped <- RunWorkflows(mappings_wf, lRaw)
+names(mapped)
 ```
