@@ -1,19 +1,17 @@
 ---
-title: "add_new_domain_var"
+title: "Requesting New Domains or Variables"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{add_new_domain_var}
+  %\VignetteIndexEntry{Requesting New Domains or Variables}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-# GitHub Issues Manual for Requesting New Domains or Variables
+## Step-by-Step Instructions for Submitting a Request
 
 This guide provides detailed instructions for users on how to submit requests for adding new domains or variables to `gsm.mapping`.
 
 ------------------------------------------------------------------------
-
-## Step-by-Step Instructions for Submitting a Request
 
 ### 1. **Navigate to the GitHub Issues Page**
 
