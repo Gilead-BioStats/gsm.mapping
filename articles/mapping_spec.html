@@ -56,8 +56,13 @@
 
 
 
-
-<div class="row">
+<link href="mapping_spec_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="mapping_spec_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="mapping_spec_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="mapping_spec_files/datatables-binding-0.33/datatables.js"></script><link href="mapping_spec_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="mapping_spec_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="mapping_spec_files/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="mapping_spec_files/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+<script src="mapping_spec_files/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script><link href="mapping_spec_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="mapping_spec_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Mapping Specifications</h1>
@@ -93,79 +98,8 @@ require mapping from source/raw data:</p>
 source, except <code>COUNTRY</code> which relies on the same dataset as
 <code>SUBJ</code>. The following variables/types from their respective
 domains is <strong>REQUIRED</strong> in the source/raw data:</p>
-<pre><code><span><span class="co">##      Domain              Variable      Type</span></span>
-<span><span class="co">## 1        AE                subjid character</span></span>
-<span><span class="co">## 2        AE                 aeser character</span></span>
-<span><span class="co">## 3    ENROLL               studyid character</span></span>
-<span><span class="co">## 4    ENROLL                 invid character</span></span>
-<span><span class="co">## 5    ENROLL               country character</span></span>
-<span><span class="co">## 6    ENROLL                subjid character</span></span>
-<span><span class="co">## 7    ENROLL             subjectid character</span></span>
-<span><span class="co">## 8    ENROLL              enrollyn character</span></span>
-<span><span class="co">## 9        LB                subjid character</span></span>
-<span><span class="co">## 10       LB            toxgrg_nsv character</span></span>
-<span><span class="co">## 11       PD                subjid character</span></span>
-<span><span class="co">## 12       PD       deemedimportant character</span></span>
-<span><span class="co">## 13 SDRGCOMP                subjid character</span></span>
-<span><span class="co">## 14 SDRGCOMP                sdrgyn character</span></span>
-<span><span class="co">## 15 SDRGCOMP                 phase character</span></span>
-<span><span class="co">## 16 STUDCOMP                subjid character</span></span>
-<span><span class="co">## 17 STUDCOMP                compyn character</span></span>
-<span><span class="co">## 18     SUBJ               studyid character</span></span>
-<span><span class="co">## 19     SUBJ                 invid character</span></span>
-<span><span class="co">## 20     SUBJ               country character</span></span>
-<span><span class="co">## 21     SUBJ                subjid character</span></span>
-<span><span class="co">## 22     SUBJ           subject_nsv character</span></span>
-<span><span class="co">## 23     SUBJ              enrollyn character</span></span>
-<span><span class="co">## 24     SUBJ           timeonstudy   integer</span></span>
-<span><span class="co">## 25     SUBJ                subjid character</span></span>
-<span><span class="co">## 26     SUBJ                compyn character</span></span>
-<span><span class="co">## 27  DATACHG           subject_nsv character</span></span>
-<span><span class="co">## 28  DATACHG             n_changes   integer</span></span>
-<span><span class="co">## 29  DATACHG                subjid character</span></span>
-<span><span class="co">## 30  DATACHG           subject_nsv character</span></span>
-<span><span class="co">## 31  DATAENT           subject_nsv character</span></span>
-<span><span class="co">## 32  DATAENT        data_entry_lag   integer</span></span>
-<span><span class="co">## 33  DATAENT                subjid character</span></span>
-<span><span class="co">## 34  DATAENT           subject_nsv character</span></span>
-<span><span class="co">## 35    QUERY           subject_nsv character</span></span>
-<span><span class="co">## 36    QUERY           querystatus character</span></span>
-<span><span class="co">## 37    QUERY              queryage   integer</span></span>
-<span><span class="co">## 38    QUERY                subjid character</span></span>
-<span><span class="co">## 39    QUERY           subject_nsv character</span></span>
-<span><span class="co">## 40  COUNTRY               country character</span></span>
-<span><span class="co">## 41  COUNTRY                 invid character</span></span>
-<span><span class="co">## 42  COUNTRY                subjid character</span></span>
-<span><span class="co">## 43     SITE               studyid character</span></span>
-<span><span class="co">## 44     SITE                 invid character</span></span>
-<span><span class="co">## 45     SITE InvestigatorFirstName character</span></span>
-<span><span class="co">## 46     SITE  InvestigatorLastName character</span></span>
-<span><span class="co">## 47     SITE                Status character</span></span>
-<span><span class="co">## 48     SITE                  City character</span></span>
-<span><span class="co">## 49     SITE                 State character</span></span>
-<span><span class="co">## 50     SITE               Country character</span></span>
-<span><span class="co">## 51     SITE               studyid character</span></span>
-<span><span class="co">## 52     SITE                 invid character</span></span>
-<span><span class="co">## 53     SITE                subjid character</span></span>
-<span><span class="co">## 54     SITE                Status character</span></span>
-<span><span class="co">## 55    STUDY               studyid character</span></span>
-<span><span class="co">## 56    STUDY              nickname character</span></span>
-<span><span class="co">## 57    STUDY        protocol_title character</span></span>
-<span><span class="co">## 58    STUDY                Status character</span></span>
-<span><span class="co">## 59    STUDY         num_plan_site   integer</span></span>
-<span><span class="co">## 60    STUDY         num_plan_subj   integer</span></span>
-<span><span class="co">## 61    STUDY              act_fpfv      Date</span></span>
-<span><span class="co">## 62    STUDY              est_fpfv      Date</span></span>
-<span><span class="co">## 63    STUDY              est_lplv      Date</span></span>
-<span><span class="co">## 64    STUDY              est_lpfv      Date</span></span>
-<span><span class="co">## 65    STUDY      therapeutic_area character</span></span>
-<span><span class="co">## 66    STUDY   protocol_indication character</span></span>
-<span><span class="co">## 67    STUDY                 phase character</span></span>
-<span><span class="co">## 68    STUDY               product character</span></span>
-<span><span class="co">## 69    STUDY               studyid character</span></span>
-<span><span class="co">## 70    STUDY                 invid character</span></span>
-<span><span class="co">## 71    STUDY                subjid character</span></span>
-<span><span class="co">## 72    STUDY                Status character</span></span></code></pre>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"data":[["AE","AE","ENROLL","ENROLL","ENROLL","ENROLL","ENROLL","ENROLL","LB","LB","PD","PD","SDRGCOMP","SDRGCOMP","SDRGCOMP","STUDCOMP","STUDCOMP","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","DATACHG","DATACHG","DATACHG","DATACHG","DATAENT","DATAENT","DATAENT","DATAENT","QUERY","QUERY","QUERY","QUERY","QUERY","COUNTRY","COUNTRY","COUNTRY","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY"],["subjid","aeser","studyid","invid","country","subjid","subjectid","enrollyn","subjid","toxgrg_nsv","subjid","deemedimportant","subjid","sdrgyn","phase","subjid","compyn","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","subjid","compyn","subject_nsv","n_changes","subjid","subject_nsv","subject_nsv","data_entry_lag","subjid","subject_nsv","subject_nsv","querystatus","queryage","subjid","subject_nsv","country","invid","subjid","studyid","invid","InvestigatorFirstName","InvestigatorLastName","Status","City","State","Country","studyid","invid","subjid","Status","studyid","nickname","protocol_title","Status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid","Status"],["character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","character","character","character","integer","character","character","character","integer","character","character","character","character","integer","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","integer","Date","Date","Date","Date","character","character","character","character","character","character","character","character"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Domain<\/th>\n      <th>Variable<\/th>\n      <th>Type<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":false,"fixedColumns":true,"columnDefs":[{"name":"Domain","targets":0},{"name":"Variable","targets":1},{"name":"Type","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
   </main>
 </div>
