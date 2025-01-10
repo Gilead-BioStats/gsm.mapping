@@ -1,9 +1,9 @@
 meta:
   Type: Mapped
   ID: SUBJ
-  Description: Subject Data Mapping 
+  Description: Subject Data Mapping
   Priority: 1
-spec: 
+spec:
   Raw_SUBJ:
     studyid:
       type: character
@@ -19,6 +19,18 @@ spec:
       type: character
     timeonstudy:
       type: integer
+    firstparticipantdate:
+      type: Date
+    firstdosedate:
+      type: Date
+    timeontreatment:
+      type: numeric
+    agerep:
+      type: character
+    sex:
+      type: character
+    race:
+      type: character
 steps:
   - output: Mapped_SUBJ
     name: RunQuery
