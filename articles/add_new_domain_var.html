@@ -120,6 +120,10 @@ addressed efficiently. Use the following structure:</p>
 <ul>
 <li>Provide the name of the domain (e.g., <code>AE</code> for Adverse
 Events, <code>LB</code> for Laboratory Tests).</li>
+<li>If this domain has dependencies on other domains, please specify
+them. (e.g. the <code>COUNTRY</code> domain depends on <code>SUBJ</code>
+domain.) This will help aid the priority/order of in which the workflow
+will be ran.</li>
 </ul>
 </li>
 <li>
@@ -127,6 +131,8 @@ Events, <code>LB</code> for Laboratory Tests).</li>
 <ul>
 <li>List the variable(s) you need added (e.g., <code>AESEV</code> for
 Adverse Event Severity).</li>
+<li>If this variable has an original source, provide the name of the
+source column.</li>
 </ul>
 </li>
 <li>
