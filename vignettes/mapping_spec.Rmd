@@ -109,14 +109,3 @@ raw_final_table %>%
       rownames = FALSE
     )
 ```
-
-```{r mapped, eval = FALSE, echo = FALSE, message = FALSE}
-mapped <- RunWorkflows(mappings_wf, lRaw)
-
-raw_names <- lapply(lRaw, function(x) names(x))
-raw_names2 <- raw_names[sort(names(raw_names))]
-mapped_names <- lapply(mapped, function(x) names(x))
-mapped_names2 <- mapped_names[sort(names(mapped_names))]
-mapped_names2 <- mapped_names2[-which(names(mapped_names2) == "Mapped_COUNTRY")]
-map2(.x = raw_names2, .y = mapped_names2, .f = \(raw_names2, mapped_names2) mapped_names2[-(which(mapped_names2 %in% raw_names2))])
-```
