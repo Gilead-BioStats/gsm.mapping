@@ -20,7 +20,6 @@ Imports:
     DBI,
     dbplyr,
     dplyr,
-    DT,
     duckdb,
     glue, 
     gsm,
@@ -34,6 +33,7 @@ Remotes:
     gsm=Gilead-BioStats/gsm@fix-2010
 Suggests:
     clindata,
+    DT,
     knitr,
     rmarkdown,
     testthat,
