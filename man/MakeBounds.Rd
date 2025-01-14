@@ -37,6 +37,7 @@ A data frame.
 Calculate bounds across a set of metrics.
 }
 \examples{
+library(gsm)
 dfBounds <- MakeBounds(
   dfResults = reportingResults,
   dfMetrics = reportingMetrics

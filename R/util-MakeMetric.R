@@ -13,6 +13,7 @@
 #' @return A data frame.
 #'
 #' @examples
+#' library(gsm)
 #' lWorkflows <- MakeWorkflowList(strPath = "workflow/2_metrics", strNames = "kri")
 #' dfMetrics <- MakeMetric(lWorkflows)
 #'

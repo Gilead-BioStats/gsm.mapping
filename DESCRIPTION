@@ -27,7 +27,8 @@ Imports:
     log4r,
     purrr,
     stringr,
-    tidyr
+    tidyr,
+    yaml
 Remotes:
     clindata=Gilead-BioStats/clindata,
     gsm=Gilead-BioStats/gsm@fix-2010

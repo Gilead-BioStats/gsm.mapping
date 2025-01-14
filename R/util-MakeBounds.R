@@ -18,6 +18,7 @@
 #' @return A data frame.
 #'
 #' @examples
+#' library(gsm)
 #' dfBounds <- MakeBounds(
 #'   dfResults = reportingResults,
 #'   dfMetrics = reportingMetrics
