@@ -37,7 +37,7 @@ Complete the following fields:
 
 1.  **Domain Name** (if applicable):
     -   Provide the name of the domain (e.g., `AE` for Adverse Events, `LB` for Laboratory Tests).
-    -   If this domain has dependencies on other domains, please specify them. (e.g. the `COUNTRY` domain depends on `SUBJ` domain.) This will help aid the priority/order of in which the workflow will be ran.
+    -   If this domain has dependencies on other domains, please specify them. (e.g. the `COUNTRY` domain depends on `SUBJ` domain.) This will help aid the priority/order in which the workflow is run.
 2.  **Variable Name(s):**
     -   List the variable(s) you need added (e.g., `AESEV` for Adverse Event Severity).
     -   If this variable has an original source, provide the name of the source column.
