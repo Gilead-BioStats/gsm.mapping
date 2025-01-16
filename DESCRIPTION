@@ -30,7 +30,7 @@ Imports:
     yaml
 Remotes:
     clindata=Gilead-BioStats/clindata,
-    gsm=Gilead-BioStats/gsm@fix-2010
+    gsm=Gilead-BioStats/gsm@zz_test
 Suggests:
     clindata,
     DT,
