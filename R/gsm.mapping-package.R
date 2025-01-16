@@ -26,5 +26,6 @@
 #' @importFrom glue glue
 #' @importFrom stringr str_detect
 #' @importFrom stringr str_replace
+#' @importFrom yaml read_yaml
 ## usethis namespace: end
 NULL
