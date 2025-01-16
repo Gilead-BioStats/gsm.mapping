@@ -24,7 +24,10 @@ reference:
     desc: Utility functions for use within the Data Model
   - contents:
      -  ApplySpec
+     -  BindResults
      -  CalculatePercentage
      -  CombineSpecs
      -  Ingest
+     -  MakeBounds
      -  MakeLongMeta
+     -  MakeMetric
