@@ -14,7 +14,7 @@ The {gsm} ecosystem provides a standardized Risk Based Quality Monitoring (RBQM)
 
 </center>
 
-The {gsm.mapping} package provides the necessary functions and workflows that do the data transformation from raw/source datasets to appropriate domains.
+The `{gsm.mapping}` package provides the necessary functions and workflows to perform the data transformation from raw/source datasets to appropriate domains.
 This README provides a high-level overview of {gsm.mapping}; see the [package website](https://gilead-biostats.github.io/gsm.mapping/) for additional details.
 
 
