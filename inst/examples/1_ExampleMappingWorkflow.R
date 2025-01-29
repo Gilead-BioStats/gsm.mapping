@@ -49,5 +49,5 @@ lRaw <- list(
 )
 
 # Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
-mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings")
+mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 mapped <- RunWorkflows(mappings_wf, lRaw)
