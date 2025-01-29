@@ -91,7 +91,7 @@ test_that("MakeBounds makes poisson dfBounds", {
   expect_snapshot({
     MakeBounds(
       dfResults = dplyr::filter(gsm::reportingResults, SnapshotDate == "2012-12-31"),
-      dfMetrics = reportingMetrics
+      dfMetrics = gsm::reportingMetrics
     )
   })
 })
