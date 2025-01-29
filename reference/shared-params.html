@@ -48,7 +48,7 @@
 
 <dl><dt id="arg-dfmetrics">dfMetrics<a class="anchor" aria-label="anchor" href="#arg-dfmetrics"></a></dt>
 <dd><p><code>data.frame</code> Metric-specific metadata for use in charts and
-reporting. Created by passing an <code>lWorkflow</code> object to <code>MakeMetric()</code>.
+reporting. Created by passing an <code>lWorkflow</code> object to <code>gsm.reporting::MakeMetric()</code>.
 Expected columns: <code>File</code>, <code>MetricID</code>, <code>Group</code>, <code>Abbreviation</code>, <code>Metric</code>,
 <code>Numerator</code>, <code>Denominator</code>, <code>Model</code>, <code>Score</code>, and <code>Threshold</code>. For more
 details see the Data Model vignette: <code><a href="https://gilead-biostats.github.io/gsm/articles/DataModel.html" class="external-link">vignette("DataModel", package = "gsm")</a></code>.</p></dd>
@@ -56,8 +56,8 @@ details see the Data Model vignette: <code><a href="https://gilead-biostats.gith
 
 <dt id="arg-dfresults">dfResults<a class="anchor" aria-label="anchor" href="#arg-dfresults"></a></dt>
 <dd><p><code>data.frame</code> A stacked summary of analysis pipeline output.
-Created by passing a list of results returned by <code>Summarize()</code> to
-<code>BindResults()</code>. Expected columns: <code>GroupID</code>, <code>GroupLevel</code>, <code>Numerator</code>,
+Created by passing a list of results returned by <code><a href="https://gilead-biostats.github.io/gsm/reference/Summarize.html" class="external-link">gsm::Summarize()</a></code> to
+<code>gsm.reporting::BindResults()</code>. Expected columns: <code>GroupID</code>, <code>GroupLevel</code>, <code>Numerator</code>,
 <code>Denominator</code>, <code>Metric</code>, <code>Score</code>, <code>Flag</code>, <code>MetricID</code>, <code>StudyID</code>,
 <code>SnapshotDate</code>.</p></dd>
 
@@ -66,7 +66,7 @@ Created by passing a list of results returned by <code>Summarize()</code> to
 <dd><p><code>data.frame</code> Set of predicted percentages/rates and upper-
 and lower-bounds across the full range of sample sizes/total exposure
 values for reporting. Created by passing <code>dfResults</code> and <code>dfMetrics</code> to
-<code>MakeBounds()</code>. Expected columns: <code>Threshold</code>, <code>Denominator</code>, <code>Numerator</code>,
+<code>gsm.reporting::MakeBounds()</code>. Expected columns: <code>Threshold</code>, <code>Denominator</code>, <code>Numerator</code>,
 <code>Metric</code>, <code>MetricID</code>, <code>StudyID</code>, <code>SnapshotDate</code>.</p></dd>
 
 
@@ -78,14 +78,14 @@ passing CTMS site and study data to <code><a href="MakeLongMeta.html">MakeLongMe
 
 <dt id="arg-dfinput">dfInput<a class="anchor" aria-label="anchor" href="#arg-dfinput"></a></dt>
 <dd><p><code>data.frame</code> Input data with one record per subject. Created
-by passing Raw+ data into <code>Input_Rate()</code>. Expected columns: <code>GroupID</code>,
+by passing Raw+ data into <code><a href="https://gilead-biostats.github.io/gsm/reference/Input_Rate.html" class="external-link">gsm::Input_Rate()</a></code>. Expected columns: <code>GroupID</code>,
 <code>GroupLevel</code>, <code>Numerator</code>, <code>Denominator</code> and/or columns specified in
 <code>strCountCol</code> and <code>strGroupCol</code>.</p></dd>
 
 
 <dt id="arg-lmetric">lMetric<a class="anchor" aria-label="anchor" href="#arg-lmetric"></a></dt>
 <dd><p><code>list</code> Metric-specific metadata for use in charts and
-reporting. Created by passing an <code>lWorkflow</code> object to <code>MakeMetric()</code> and
+reporting. Created by passing an <code>lWorkflow</code> object to <code>gsm.reporting::MakeMetric()</code> and
 turing it into a list. Expected columns: <code>File</code>,<code>MetricID</code>, <code>Group</code>,
 <code>Abbreviation</code>, <code>Metric</code>, <code>Numerator</code>, <code>Denominator</code>, <code>Model</code>, <code>Score</code>, and
 <code>strThreshold</code>. For more details see the Data Model vignette:
