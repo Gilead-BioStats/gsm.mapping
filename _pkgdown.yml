@@ -2,32 +2,9 @@ url: https://gilead-biostats.github.io/gsm.mapping
 template:
   bootstrap: 5
   bootswatch: yeti
-  includes:
-    in_header: '<link href="pkgdown/extra.css" rel="stylesheet">'
 
 navbar:
   structure:
     left: [articles,reference, news]
     right: [search, github]
-  components:
 
-articles:
-  - title: "Mapping User Guides"
-    navbar: "Mapping User Guides"
-    contents:
-      - mapping_spec
-      - add_new_domain_var
-
-
-reference:
-  - title: Utility
-    desc: Utility functions for use within the Data Model
-  - contents:
-     -  ApplySpec
-     -  BindResults
-     -  CalculatePercentage
-     -  CombineSpecs
-     -  Ingest
-     -  MakeBounds
-     -  MakeLongMeta
-     -  MakeMetric

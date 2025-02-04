@@ -6,7 +6,7 @@
 \alias{gsm.mapping-package}
 \title{gsm.mapping: Good Statistical Monitoring Mapping}
 \description{
-The Good Statistical Monitoring or 'gsm' R package provides a framework for statistical data monitoring. 'gsm.mapping' handles all the mapping aspects of the gsm framework.
+The Good Statistical Monitoring or 'gsm' R package provides a framework for statistical data monitoring. 'gsm.mapping' provides workflows to apply the necessary data transformation from raw/source datasets to appropriate domains.
 }
 \seealso{
 Useful links:
