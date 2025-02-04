@@ -90,7 +90,11 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
     variables <- domain[[var_name]]
     data.frame(
       Domain = domain_name,
-      Variable = names(variables),
+      Source_Variable = sapply(seq_along(variables), function(i) ifelse(is.null(variables[[i]]$source_col), 
+                                                                        names(variables)[i], 
+                                                                        variables[[i]]$source_col)
+                        ),
+      Mapped_Variable = names(variables),
       Type = sapply(variables, function(var) var$type),
       stringsAsFactors = FALSE
     )
