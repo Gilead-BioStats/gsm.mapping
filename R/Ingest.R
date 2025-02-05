@@ -29,14 +29,14 @@
 #'   Source_ENROLL = clindata::rawplus_enroll
 #' )
 #'
-#' lIngestWorkflow <- gsm::MakeWorkflowList(strPath = "workflow/1_mappings")[[1]]
+#' lIngestWorkflow <- gsm::MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")[[1]]
 #' lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
 #'
 #' @export
 
 Ingest <- function(lSourceData, lSpec, strDomain = "Raw") {
-  stop_if(!is.list(lSourceData),"[ lSourceData ] must be a list.")
-  stop_if(!is.list(lSpec), "[ lSpec ] must be a list.")
+  gsm::stop_if(!is.list(lSourceData),"[ lSourceData ] must be a list.")
+  gsm::stop_if(!is.list(lSpec), "[ lSpec ] must be a list.")
 
   # If there is a domain (specificed with and underscore) in lSourceData/lSpec names, remove it
   names(lSourceData) <- sub(".*_", "", names(lSourceData))
@@ -53,7 +53,7 @@ Ingest <- function(lSourceData, lSpec, strDomain = "Raw") {
       # check that the domain exists in the source data
       dfSource <- lSourceData[[domain]]
 
-      stop_if(cnd = is.null(dfSource), message = glue("Domain '*_{domain}' not found in source data."))
+      gsm::stop_if(cnd = is.null(dfSource), message = glue("Domain '*_{domain}' not found in source data."))
 
       dfMapped <- ApplySpec(
         dfSource,

@@ -7,15 +7,4 @@ navbar:
   structure:
     left: [articles,reference, news]
     right: [search, github]
-  components:
 
-reference:
-  - title: Utility
-    desc: Utility functions for use within the Data Model
-  - contents:
-     -  ApplySpec
-     -  CalculatePercentage
-     -  CombineSpecs
-     -  Ingest
-     -  MakeLongMeta
-     -  RunQuery

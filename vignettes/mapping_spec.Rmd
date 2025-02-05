@@ -1,0 +1,115 @@
+---
+title: "Mapping Specifications"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Mapping Specifications}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Mapping Workflows
+
+Currently, there exist 13 domains that have respective workflows that require mapping from source/raw data:
+
+-   AE
+-   COUNTRY
+-   DATACHG
+-   DATAENT
+-   ENROLL
+-   LB
+-   PD
+-   QUERY
+-   SDRGCOMP
+-   SITE
+-   STUDCOMP
+-   STUDY
+-   SUBJ
+
+Each of the above 13 domains generally map directly 1-to-1 from a raw source, except `COUNTRY` which relies on the same dataset as `SUBJ`. The following variables/types from their respective domains is **REQUIRED** in the source/raw data:
+
+```{r raw, echo = FALSE, message = FALSE, error = FALSE}
+library(dplyr)
+library(DT)
+library(gsm)
+library(gsm.mapping)
+# Source Data
+lSource <- list(
+    Source_SUBJ = clindata::rawplus_dm,
+    Source_AE = clindata::rawplus_ae,
+    Source_PD = clindata::ctms_protdev,
+    Source_LB = clindata::rawplus_lb,
+    Source_STUDCOMP = clindata::rawplus_studcomp,
+    Source_SDRGCOMP = clindata::rawplus_sdrgcomp %>%
+      dplyr::filter(.data$phase == 'Blinded Study Drug Completion'),
+    Source_DATACHG = clindata::edc_data_points,
+    Source_DATAENT = clindata::edc_data_pages,
+    Source_QUERY = clindata::edc_queries,
+    Source_ENROLL = clindata::rawplus_enroll,
+    Source_SITE = clindata::ctms_site,
+    Source_STUDY = clindata::ctms_study
+)
+
+# Step 0 - Data Ingestion - standardize tables/columns names
+lRaw <- list(
+    Raw_SUBJ = lSource$Source_SUBJ,
+    Raw_AE = lSource$Source_AE,
+    Raw_PD = lSource$Source_PD %>%
+      rename(subjid = subjectenrollmentnumber),
+    Raw_LB = lSource$Source_LB,
+    Raw_STUDCOMP = lSource$Source_STUDCOMP %>%
+      select(subjid, compyn),
+    Raw_SDRGCOMP = lSource$Source_SDRGCOMP,
+    Raw_DATACHG = lSource$Source_DATACHG %>%
+      rename(subject_nsv = subjectname),
+    Raw_DATAENT = lSource$Source_DATAENT %>%
+      rename(subject_nsv = subjectname),
+    Raw_QUERY = lSource$Source_QUERY %>%
+      rename(subject_nsv = subjectname),
+    Raw_ENROLL = lSource$Source_ENROLL,
+    Raw_SITE = lSource$Source_SITE %>%
+      rename(studyid = protocol) %>%
+      rename(invid = pi_number) %>%
+      rename(InvestigatorFirstName = pi_first_name) %>%
+      rename(InvestigatorLastName = pi_last_name) %>%
+      rename(City = city) %>%
+      rename(State = state) %>%
+      rename(Country = country) %>%
+      rename(Status = site_status),
+    Raw_STUDY = lSource$Source_STUDY %>%
+      rename(studyid = protocol_number) %>%
+      rename(Status = status)
+)
+
+# Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
+mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+
+# Extract the nested variables and their types correctly
+raw_result <- lapply(names(mappings_wf), function(domain_name) {
+  domain <- mappings_wf[[domain_name]]$spec
+  do.call(rbind, lapply(names(domain), function(var_name) {
+    variables <- domain[[var_name]]
+    data.frame(
+      Domain = domain_name,
+      Source_Variable = sapply(seq_along(variables), function(i) ifelse(is.null(variables[[i]]$source_col), 
+                                                                        names(variables)[i], 
+                                                                        variables[[i]]$source_col)
+                        ),
+      Mapped_Variable = names(variables),
+      Type = sapply(variables, function(var) var$type),
+      stringsAsFactors = FALSE
+    )
+  }))
+})
+# Combine all domains into one table
+raw_final_table <- do.call(rbind, raw_result)
+row.names(raw_final_table) <- NULL
+raw_final_table %>%
+    DT::datatable(
+      extensions = 'FixedColumns',
+      options = list(
+        scrollX = FALSE,
+        fixedColumns = TRUE
+      ),
+      rownames = FALSE
+    )
+```
