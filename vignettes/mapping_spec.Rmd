@@ -29,10 +29,9 @@ Each of the above 13 domains generally map directly 1-to-1 from a raw source, ex
 
 ```{r raw, echo = FALSE, message = FALSE, error = FALSE}
 library(dplyr)
-library(DT)
-library(gt)
 library(gsm)
 library(gsm.mapping)
+library(reactable)
 # Source Data
 lSource <- list(
     Source_SUBJ = clindata::rawplus_dm,
