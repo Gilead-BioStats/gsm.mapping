@@ -34,8 +34,8 @@ Remotes:
     gsm=Gilead-BioStats/gsm@gsm-core-test
 Suggests:
     clindata,
-    DT,
     knitr,
+    reactable,
     rmarkdown,
     testthat,
     tibble
