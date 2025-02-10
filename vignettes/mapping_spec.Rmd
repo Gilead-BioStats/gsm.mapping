@@ -30,6 +30,7 @@ Each of the above 13 domains generally map directly 1-to-1 from a raw source, ex
 ```{r raw, echo = FALSE, message = FALSE, error = FALSE}
 library(dplyr)
 library(DT)
+library(gt)
 library(gsm)
 library(gsm.mapping)
 # Source Data
@@ -103,13 +104,41 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
 # Combine all domains into one table
 raw_final_table <- do.call(rbind, raw_result)
 row.names(raw_final_table) <- NULL
-raw_final_table %>%
-    DT::datatable(
-      extensions = 'FixedColumns',
-      options = list(
-        scrollX = FALSE,
-        fixedColumns = TRUE
-      ),
-      rownames = FALSE
+# raw_final_table %>%
+#     DT::datatable(
+#       extensions = 'FixedColumns',
+#       options = list(
+#         scrollX = FALSE,
+#         fixedColumns = TRUE
+#       ),
+#       rownames = FALSE
+#     )
+
+reactable(
+  raw_final_table,
+  groupBy = "Domain",
+  defaultPageSize = 5,
+  bordered = FALSE, # Removes unnecessary borders
+  highlight = TRUE, # Highlights row on hover
+  theme = reactableTheme(
+    borderColor = "#dee2e6",
+    backgroundColor = "white",
+    style = list(
+      fontFamily = "Arial, sans-serif",
+      fontSize = "14px"
+    ),
+    headerStyle = list(
+      fontWeight = "bold",
+      fontSize = "16px",
+      backgroundColor = "#f8f9fa",
+      borderBottom = "2px solid #dee2e6"
     )
+  ),
+  columns = list(
+    Domain = colDef(name = "Domain", style = list(fontWeight = "bold", fontSize = "15px")),
+    Source_Variable = colDef(name = "Source Variable"),
+    Mapped_Variable = colDef(name = "Mapped Variable"),
+    Type = colDef(name = "Type")
+  )
+)
 ```
