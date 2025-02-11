@@ -1,0 +1,26 @@
+meta:
+  Type: Mapped
+  ID: StudyCompletion
+  Description: Study Completion Data Mapping
+  Priority: 1
+spec:
+  Raw_StudyCompletion:
+    subjid:
+      source_col: SUBJID
+      type: character
+    compyn:
+      source_col: COMPYN
+      type: character
+    completion_reason:
+      source_col: COMPREAS
+      type: character
+    completion_date:
+      source_col: COMPDTN
+      type: Date
+steps:
+  - name: RunQuery
+    output: Mapped_StudyCompletion
+    params:
+      df: Raw_StudyCompletion
+      strQuery: "SELECT subjid, compyn, completion_reason FROM df
+                WHERE subjid IS NOT NULL"
