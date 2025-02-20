@@ -19,13 +19,13 @@ spec:
       type: character
 
 steps:
-  - name: RunQuery
+  - name: gsm::RunQuery
     output: Temp_Consents
     params:
       df: Raw_Consents
       strQuery: "SELECT subjid, consdat, constype, conscat FROM df
                 WHERE constype = 'WITHDRAWAL OF CONSENT' AND conscat = 'STUDY CONSENT'"
-  - name: complete_consents
+  - name: gsm.endpoints::complete_consents
     output: Mapped_Consents
     params:
       dfConsents: Temp_Consents

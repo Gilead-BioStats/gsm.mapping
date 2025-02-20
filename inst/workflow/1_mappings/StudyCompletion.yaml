@@ -18,7 +18,7 @@ spec:
       source_col: COMPDTN
       type: Date
 steps:
-  - name: RunQuery
+  - name: gsm::RunQuery
     output: Mapped_StudyCompletion
     params:
       df: Raw_StudyCompletion

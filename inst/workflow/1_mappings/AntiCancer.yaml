@@ -16,7 +16,7 @@ spec:
       type: Date
 
 steps:
-  - name: RunQuery
+  - name: gsm::RunQuery
     output: Mapped_AntiCancer
     params:
       df: Raw_AntiCancer

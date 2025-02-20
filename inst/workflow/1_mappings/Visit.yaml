@@ -19,7 +19,7 @@ spec:
       type: character
 
 steps:
-  - name: RunQuery
+  - name: gsm::RunQuery
     output: Mapped_Visit
     params:
       df: Raw_Visit

@@ -12,7 +12,7 @@ spec:
       source_col: SCANDAT
       type: Date
 steps:
-  - name: RunQuery
+  - name: gsm::RunQuery
     output: Mapped_Baseline
     params:
       df: Raw_Baseline
