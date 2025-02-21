@@ -34,42 +34,44 @@ spec:
       type: character
     product:
       type: character
-  Mapped_SUBJ:
+  Raw_SUBJ:
     studyid:
       type: character
     invid:
       type: character
     subjid:
       type: character
+    enrollyn:
+      type: character
 steps:
   - output: Temp_CTMSStudyWide
-    name: RunQuery
+    name: gsm::RunQuery
     params:
       df: Raw_STUDY
       strQuery: "SELECT studyid as GroupID, * FROM df"
   - output: Temp_CTMSStudy
-    name: MakeLongMeta
+    name: gsm.mapping::MakeLongMeta
     params:
       data: Temp_CTMSStudyWide
       strGroupLevel: "Study"
   - output: Temp_CTMSplanned
-    name: RunQuery
+    name: gsm::RunQuery
     params:
       df: Raw_STUDY
       strQuery: "SELECT studyid as GroupID, num_plan_site as SiteTarget, num_plan_subj as ParticipantTarget FROM df"
   - output: Temp_StudyCountsWide
-    name: RunQuery
+    name: gsm::RunQuery
     params:
-      df: Mapped_SUBJ
-      strQuery: "SELECT studyid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY studyid"
+      df: Raw_SUBJ
+      strQuery: "SELECT studyid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df WHERE enrollyn == 'Y' GROUP BY studyid"
   - output: Temp_CountTargetsWide
-    name: left_join
+    name: dplyr::left_join
     params:
       x: Temp_CTMSplanned
       "y": Temp_StudyCountsWide
       by: GroupID
   - output: Temp_CountTargetsWide_addsite
-    name: CalculatePercentage
+    name: gsm.mapping::CalculatePercentage
     params:
       data: Temp_CountTargetsWide
       strCurrentCol: SiteCount
@@ -77,7 +79,7 @@ steps:
       strPercVal: PercentSitesActivated
       strPercStrVal: SiteActivation
   - output: Temp_CountTargetsWide_addsitepts
-    name: CalculatePercentage
+    name: gsm.mapping::CalculatePercentage
     params:
       data: Temp_CountTargetsWide_addsite
       strCurrentCol: ParticipantCount
@@ -85,12 +87,12 @@ steps:
       strPercVal: PercentParticipantsEnrolled
       strPercStrVal: ParticipantEnrollment
   - output: Temp_CountTargetsPercs
-    name: MakeLongMeta
+    name: gsm.mapping::MakeLongMeta
     params:
       data: Temp_CountTargetsWide_addsitepts
       strGroupLevel: "Study"
   - output: Mapped_STUDY
-    name: bind_rows
+    name: dplyr::bind_rows
     params:
       Temp_CTMSStudy: Temp_CTMSStudy
       Temp_CountTargetsPercs: Temp_CountTargetsPercs

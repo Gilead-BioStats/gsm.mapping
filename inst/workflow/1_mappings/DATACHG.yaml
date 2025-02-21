@@ -1,9 +1,9 @@
 meta:
   Type: Mapped
   ID: DATACHG
-  Description: Data Changes Data Mapping 
+  Description: Data Changes Data Mapping
   Priority: 2
-spec: 
+spec:
   Raw_DATACHG:
     subject_nsv:
       type: character
@@ -18,13 +18,13 @@ spec:
 steps:
   # Merge [ subjid ] onto EDC domains.
   - output: Temp_SubjectLookup
-    name: select
+    name: dplyr::select
     params:
       .data: Mapped_SUBJ
       subjid: subjid
       subject_nsv: subject_nsv
   - output: Mapped_DATACHG
-    name: left_join
+    name: dplyr::left_join
     params:
       x: Raw_DATACHG
       "y": Temp_SubjectLookup
