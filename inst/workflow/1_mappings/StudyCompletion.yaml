@@ -22,5 +22,5 @@ steps:
     output: Mapped_StudyCompletion
     params:
       df: Raw_StudyCompletion
-      strQuery: "SELECT subjid, compyn, completion_reason FROM df
+      strQuery: "SELECT subjid, compyn, completion_reason, completion_date FROM df
                 WHERE subjid IS NOT NULL"
