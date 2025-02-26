@@ -23,31 +23,4 @@ steps:
       df: Raw_VISIT
       strQuery: "SELECT subjid, visit_date, visit, invid FROM df"
 
-  Type: Mapped
-  ID: Visit
-  Description: Visit Data Mapping
-  Priority: 1
-spec:
-  Raw_Visit:
-    subjid:
-      source_col: SUBJID
-      type: character
-    visit_date:
-      source_col: VISITDAT
-      type: Date
-    visit_folder:
-      source_col: FOLDERNAME
-      type: character
-    invid:
-      source_col: INVID
-      type: character
-
-steps:
-  - name: gsm::RunQuery
-    output: Mapped_Visit
-    params:
-      df: Raw_Visit
-      strQuery: "SELECT subjid, MAX(visit_date) AS visit_date, ANY_VALUE(visit_folder) AS visit_folder FROM df
-      WHERE subjid IS NOT NULL
-      GROUP BY subjid"
 
