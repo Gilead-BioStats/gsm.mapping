@@ -1,0 +1,27 @@
+meta:
+  Type: Mapped
+  ID: Death
+  Description: Death Data Mapping
+  Priority: 2
+spec:
+  Raw_Death:
+    subjid:
+      source_col: SUBJID
+      type: character
+    death_date:
+      source_col: DEATHDAT
+      type: Date
+steps:
+  - name: gsm::RunQuery
+    output: Temp_Death
+    params:
+      df: Raw_Death
+      strQuery: "SELECT subjid, death_date FROM df
+                WHERE subjid IS NOT NULL AND death_date IS NOT NULL"
+  - name: gsm.endpoints::complete_death
+    output: Mapped_Death
+    params:
+      dfDeath: Temp_Death
+      dfStudyCompletion: Mapped_StudyCompletion
+      dfOverallResponse: Mapped_OverallResponse
+

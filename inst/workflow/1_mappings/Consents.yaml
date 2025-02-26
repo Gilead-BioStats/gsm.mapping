@@ -1,0 +1,33 @@
+meta:
+  Type: Mapped
+  ID: Consents
+  Description: Consent Data Mapping
+  Priority: 2
+spec:
+  Raw_Consents:
+    subjid:
+      source_col: SUBJID
+      type: character
+    consdat:
+      source_col: CONSDAT
+      type: Date
+    constype:
+      source_col: CONSTYPE
+      type: character
+    conscat:
+      source_col: CONSCAT
+      type: character
+
+steps:
+  - name: gsm::RunQuery
+    output: Temp_Consents
+    params:
+      df: Raw_Consents
+      strQuery: "SELECT subjid, consdat, constype, conscat FROM df
+                WHERE constype = 'WITHDRAWAL OF CONSENT' AND conscat = 'STUDY CONSENT'"
+  - name: gsm.endpoints::complete_consents
+    output: Mapped_Consents
+    params:
+      dfConsents: Temp_Consents
+      dfStudyCompletion: Mapped_StudyCompletion
+
