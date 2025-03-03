@@ -2,8 +2,6 @@ name: Request New Domain or Variable
 description: Request New Domain or Variable.
 title: "Request New Domain or Variable: <Insert Issue Title Here>"
 labels: ["Request New Domain or Variable"]
-assignees:
-  - octocat
 body:
   - type: textarea
     id: domain
