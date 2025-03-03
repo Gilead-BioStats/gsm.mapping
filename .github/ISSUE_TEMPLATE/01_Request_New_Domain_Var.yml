@@ -10,12 +10,13 @@ body:
     attributes:
       label: Domain/Variable Addition
       description: Please provide the requested domain name, variable name, and associated variable metadata (type).
-      placeholder: "Example:  **Details:**
-      1. **Domain Name:** AE (Adverse Events)
-      1b. **Domain dependencies (optional):**
-      2. **Variable Name(s):** AESEV
-      2b. **Source Column Name(s) (optional):**
-      3. **Variable Metadata:**: **Data Type:** Character"
+      placeholder: |
+        Example: **Details:**
+        1. **Domain Name:** AE (Adverse Events)
+        1b. **Domain dependencies (optional):**
+        2. **Variable Name(s):** AESEV
+        2b. **Source Column Name(s) (optional):**
+        3. **Variable Metadata:** **Data Type:** Character
     validations:
       required: true
   - type: textarea
@@ -23,8 +24,9 @@ body:
     attributes:
       label: Rationale for Addition:
       description: Please provide a reason for the addition, such as the deliverable or the desired outcome.
-      placeholder: "Example:
-   - This variable is required to assess the severity of adverse events in real-time and identify critical safety issues.
-   - Severity classification is essential for regulatory reporting and decision-making."
+      placeholder: |
+        Example:
+        - This variable is required to assess the severity of adverse events in real-time and identify critical safety issues.
+        - Severity classification is essential for regulatory reporting and decision-making.
     validations:
       required: false
