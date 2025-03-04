@@ -48,7 +48,8 @@ lRaw <- list(
     rename(Status = site_status),
   Raw_STUDY = lSource$Raw_STUDY %>%
     rename(studyid = protocol_number) %>%
-    rename(Status = status)
+    rename(Status = status),
+  Raw_PK = lSource$Raw_PK
 )
 
 
