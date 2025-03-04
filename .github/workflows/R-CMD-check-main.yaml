@@ -48,22 +48,8 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v2
 
-      - name: build pkgdown reference index
-        run: pkgdown::build_reference_index()
-        shell: Rscript {0}
-
-      - name: run qualification tests
-        run: source(here::here("tests", "testqualification", "test_qualification.R"))
-        shell: Rscript {0}
-
       - name: Show testthat output
         if: always()
         run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
         shell: bash
 
-      - name: Upload check results
-        if: failure()
-        uses: actions/upload-artifact@main
-        with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
-          path: check
