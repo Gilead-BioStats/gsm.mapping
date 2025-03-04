@@ -25,22 +25,24 @@ retrieve the data. The resulting data frames are stored in a list, where each da
 corresponds to a domain in the specification.
 }
 \examples{
-lSourceData <- list(
-  Source_STUDY = clindata::ctms_study,
-  Source_SITE = clindata::ctms_site,
-  Source_SUBJ = clindata::rawplus_dm,
-  Source_AE = clindata::rawplus_ae,
-  Source_PD = clindata::ctms_protdev,
-  Source_LB = clindata::rawplus_lb,
-  Source_STUDCOMP = clindata::rawplus_studcomp,
-  Source_SDRGCOMP = clindata::rawplus_sdrgcomp,
-  Source_QUERY = clindata::edc_queries,
-  Source_DATAENT = clindata::edc_data_pages,
-  Source_DATACHG = clindata::edc_data_points,
-  Source_ENROLL = clindata::rawplus_enroll
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+                   "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
+
+basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
+  SnapshotCount = 1,
+  SnapshotWidth = "months",
+  ParticipantCount = 30,
+  SiteCount = 5,
+  StudyID = "ABC",
+  workflow_path = "workflow/1_mappings",
+  mappings = core_mappings,
+  package = "gsm.mapping",
+  desired_specs = NULL
 )
 
-lIngestWorkflow <- gsm::MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")[[1]]
+lSourceData <- basic_sim[[1]]
+
+lIngestWorkflow <- gsm::MakeWorkflowList(strName = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")[[1]]
 lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
 
 }

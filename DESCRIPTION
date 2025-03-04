@@ -30,11 +30,11 @@ Imports:
     tidyr,
     yaml
 Remotes:
-    clindata=Gilead-BioStats/clindata,
     gsm=Gilead-BioStats/gsm@gsm-core-test
+    gsm.datasim=Gilead-BioStats/gsm.datasim@fix-34,
 Suggests:
-    clindata,
     DT,
+    gsm.datasim,
     knitr,
     rmarkdown,
     testthat,
