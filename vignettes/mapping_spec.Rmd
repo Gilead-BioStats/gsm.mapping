@@ -32,7 +32,6 @@ Each of the above 14 domains generally map directly 1-to-1 from a raw source, ex
 library(DT)
 library(gsm)
 library(gsm.mapping)
-library(gsm.datasim)
 library(dplyr)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",

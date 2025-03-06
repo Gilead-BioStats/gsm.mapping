@@ -1,7 +1,6 @@
 #### 3.1 - Create a KRI Report using 12 standard metrics in a step-by-step workflow
 library(gsm)
 library(gsm.mapping)
-library(gsm.datasim)
 library(dplyr)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
