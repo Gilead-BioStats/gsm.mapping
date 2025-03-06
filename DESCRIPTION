@@ -30,11 +30,9 @@ Imports:
     tidyr,
     yaml
 Remotes:
-    gsm=Gilead-BioStats/gsm@fix-2036,
-    gsm.datasim=Gilead-BioStats/gsm.datasim@dev
+    gsm=Gilead-BioStats/gsm@fix-2036
 Suggests:
     DT,
-    gsm.datasim,
     knitr,
     rmarkdown,
     testthat,
