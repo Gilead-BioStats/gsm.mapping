@@ -36,21 +36,9 @@ library(gsm.datasim)
 library(dplyr)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
-                   "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
+                   "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
-basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
-  SnapshotCount = 1,
-  SnapshotWidth = "months",
-  ParticipantCount = 30,
-  SiteCount = 5,
-  StudyID = "ABC",
-  workflow_path = "workflow/1_mappings",
-  mappings = core_mappings,
-  package = "gsm.mapping",
-  desired_specs = NULL
-)
-
-lSource <- basic_sim[[1]]
+lSource <- gsm::lSource
 
 lRaw <- list(
   Raw_SUBJ = lSource$Raw_SUBJ,
@@ -79,8 +67,7 @@ lRaw <- list(
     rename(Status = site_status),
   Raw_STUDY = lSource$Raw_STUDY %>%
     rename(studyid = protocol_number) %>%
-    rename(Status = status),
-  Raw_PK = lSource$Raw_PK
+    rename(Status = status)
 )
 
 

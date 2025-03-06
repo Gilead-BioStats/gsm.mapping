@@ -15,21 +15,9 @@
 #'
 #' @examples
 #' core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
-#'                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
+#'                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 #'
-#' basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
-#'   SnapshotCount = 1,
-#'   SnapshotWidth = "months",
-#'   ParticipantCount = 30,
-#'   SiteCount = 5,
-#'   StudyID = "ABC",
-#'   workflow_path = "workflow/1_mappings",
-#'   mappings = core_mappings,
-#'   package = "gsm.mapping",
-#'   desired_specs = NULL
-#' )
-#'
-#' lSourceData <- basic_sim[[1]]
+#' lSourceData <- gsm::lSource
 #'
 #' lIngestWorkflow <- gsm::MakeWorkflowList(strName = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")[[1]]
 #' lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
