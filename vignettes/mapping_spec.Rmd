@@ -9,7 +9,7 @@ vignette: >
 
 # Mapping Workflows
 
-Currently, there exist 14 domains that have respective workflows that require mapping from source/raw data:
+Currently, there exist 20 domains that have respective workflows that require mapping from source/raw data. 14 are general domains used across several packages and extensions:
 
 -   AE
 -   COUNTRY
@@ -26,9 +26,19 @@ Currently, there exist 14 domains that have respective workflows that require ma
 -   STUDY
 -   SUBJ
 
-Each of the above 14 domains generally map directly 1-to-1 from a raw source, except `COUNTRY` which relies on the same dataset as `SUBJ`. The following variables/types from their respective domains is **REQUIRED** in the source/raw data:
+And 6 are domains that are currently specific to the `gsm.endpoints` extension package:
 
-```{r raw, echo = FALSE, message = FALSE, error = FALSE}
+- Baseline
+- Consents
+- Death
+- OverallResponse
+- Randomization
+- Visit
+
+Each of the above 20 domains generally map directly 1-to-1 from a raw source, except `COUNTRY` which relies on the same dataset as `SUBJ`. The following variables/types from their respective domains is **REQUIRED** in the source/raw data:
+
+### Core Mappings
+```{r core, echo = FALSE, message = FALSE, error = FALSE}
 library(DT)
 library(gsm)
 library(gsm.mapping)
@@ -37,42 +47,8 @@ library(dplyr)
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
-lSource <- gsm::lSource
-
-lRaw <- list(
-  Raw_SUBJ = lSource$Raw_SUBJ,
-  Raw_AE = lSource$Raw_AE,
-  Raw_PD = lSource$Raw_PD %>%
-    rename(subjid = subjectenrollmentnumber),
-  Raw_LB = lSource$Raw_LB,
-  Raw_STUDCOMP = lSource$Raw_STUDCOMP %>%
-    select(subjid, compyn),
-  Raw_SDRGCOMP = lSource$Raw_SDRGCOMP,
-  Raw_DATACHG = lSource$Raw_DATACHG %>%
-    rename(subject_nsv = subjectname),
-  Raw_DATAENT = lSource$Raw_DATAENT %>%
-    rename(subject_nsv = subjectname),
-  Raw_QUERY = lSource$Raw_QUERY %>%
-    rename(subject_nsv = subjectname),
-  Raw_ENROLL = lSource$Raw_ENROLL,
-  Raw_SITE = lSource$Raw_SITE %>%
-    rename(studyid = protocol) %>%
-    rename(invid = pi_number) %>%
-    rename(InvestigatorFirstName = pi_first_name) %>%
-    rename(InvestigatorLastName = pi_last_name) %>%
-    rename(City = city) %>%
-    rename(State = state) %>%
-    rename(Country = country) %>%
-    rename(Status = site_status),
-  Raw_STUDY = lSource$Raw_STUDY %>%
-    rename(studyid = protocol_number) %>%
-    rename(Status = status)
-)
-
-
 # Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
-mappings_wf <- MakeWorkflowList(strName = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
-mapped <- RunWorkflows(mappings_wf, lRaw)
+mappings_wf <- MakeWorkflowList(strNames = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 
 # Extract the nested variables and their types correctly
 raw_result <- lapply(names(mappings_wf), function(domain_name) {
@@ -81,10 +57,11 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
     variables <- domain[[var_name]]
     data.frame(
       Domain = domain_name,
-      Source_Variable = sapply(seq_along(variables), function(i) ifelse(is.null(variables[[i]]$source_col), 
-                                                                        names(variables)[i], 
-                                                                        variables[[i]]$source_col)
-                        ),
+      Source_Variable = sapply(seq_along(variables), function(i){
+        ifelse(is.null(variables[[i]]$source_col), 
+               names(variables)[i], 
+               variables[[i]]$source_col)
+        }),
       Mapped_Variable = names(variables),
       Type = sapply(variables, function(var) var$type),
       stringsAsFactors = FALSE
@@ -95,6 +72,49 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
 raw_final_table <- do.call(rbind, raw_result)
 row.names(raw_final_table) <- NULL
 raw_final_table %>%
+    DT::datatable(
+      extensions = 'FixedColumns',
+      options = list(
+        scrollX = FALSE,
+        fixedColumns = TRUE
+      ),
+      rownames = FALSE
+    )
+```
+
+
+## Endpoint Mappings
+
+```{r endpoints, echo = FALSE, message = FALSE, error = FALSE}
+endpoint_mappings <- c("Baseline", "Consents", "Death", "OverallResponse", "Randomization",
+                   "Visit", "STUDY", "STUDCOMP","SITE", "SUBJ")
+
+
+# Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
+mappings_ep <- MakeWorkflowList(strNames = endpoint_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+
+# Extract the nested variables and their types correctly
+raw_result_ep <- lapply(names(mappings_ep), function(domain_name) {
+  domain <- mappings_ep[[domain_name]]$spec
+  do.call(rbind, lapply(names(domain), function(var_name) {
+    variables <- domain[[var_name]]
+    data.frame(
+      Domain = domain_name,
+      Source_Variable = sapply(seq_along(variables), function(i){
+        ifelse(is.null(variables[[i]]$source_col), 
+               names(variables)[i], 
+               variables[[i]]$source_col)
+        }),
+      Mapped_Variable = names(variables),
+      Type = sapply(variables, function(var) var$type),
+      stringsAsFactors = FALSE
+    )
+  }))
+})
+# Combine all domains into one table
+raw_final_table_ep <- do.call(rbind, raw_result_ep)
+row.names(raw_final_table_ep) <- NULL
+raw_final_table_ep %>%
     DT::datatable(
       extensions = 'FixedColumns',
       options = list(
