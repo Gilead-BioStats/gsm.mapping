@@ -1,5 +1,6 @@
 ---
 title: "Mapping Specifications"
+description: "A Vignette that details all mapping specifications for all domains in {gsm.mapping}"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Mapping Specifications}
