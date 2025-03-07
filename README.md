@@ -27,7 +27,7 @@ There is no single standardized format for raw or mapped data within `{gsm.mappi
 
 # Process Overview
 The workflow for a particular mapped domain requires the following sections:
- - Metadata: Describes the domain and its mapping purpose.
+ - meta: Describes the domain and its mapping purpose.
  - spec: Defines the structure of the raw data inputs and their expected types.
  - steps: Outlines the process for transforming raw data into the mapped output.
 
