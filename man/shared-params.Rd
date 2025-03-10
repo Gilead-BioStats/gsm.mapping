@@ -8,10 +8,10 @@
 reporting. Created by passing an \code{lWorkflow} object to \code{\link[gsm.reporting:MakeMetric]{gsm.reporting::MakeMetric()}}.
 Expected columns: \code{File}, \code{MetricID}, \code{Group}, \code{Abbreviation}, \code{Metric},
 \code{Numerator}, \code{Denominator}, \code{Model}, \code{Score}, and \code{Threshold}. For more
-details see the Data Model vignette: \code{vignette("DataModel", package = "gsm")}.}
+details see the Data Model vignette: \code{vignette("DataModel", package = "gsm.core")}.}
 
 \item{dfResults}{\code{data.frame} A stacked summary of analysis pipeline output.
-Created by passing a list of results returned by \code{\link[gsm:Summarize]{gsm::Summarize()}} to
+Created by passing a list of results returned by \code{\link[gsm.core:Summarize]{gsm.core::Summarize()}} to
 \code{\link[gsm.reporting:BindResults]{gsm.reporting::BindResults()}}. Expected columns: \code{GroupID}, \code{GroupLevel}, \code{Numerator},
 \code{Denominator}, \code{Metric}, \code{Score}, \code{Flag}, \code{MetricID}, \code{StudyID},
 \code{SnapshotDate}.}
@@ -27,7 +27,7 @@ passing CTMS site and study data to \code{\link[=MakeLongMeta]{MakeLongMeta()}}.
 \code{GroupID}, \code{GroupLevel}, \code{Param}, \code{Value}.}
 
 \item{dfInput}{\code{data.frame} Input data with one record per subject. Created
-by passing Raw+ data into \code{\link[gsm:Input_Rate]{gsm::Input_Rate()}}. Expected columns: \code{GroupID},
+by passing Raw+ data into \code{\link[gsm.core:Input_Rate]{gsm.core::Input_Rate()}}. Expected columns: \code{GroupID},
 \code{GroupLevel}, \code{Numerator}, \code{Denominator} and/or columns specified in
 \code{strCountCol} and \code{strGroupCol}.}
 
@@ -36,7 +36,7 @@ reporting. Created by passing an \code{lWorkflow} object to \code{\link[gsm.repo
 turing it into a list. Expected columns: \code{File},\code{MetricID}, \code{Group},
 \code{Abbreviation}, \code{Metric}, \code{Numerator}, \code{Denominator}, \code{Model}, \code{Score}, and
 \code{strThreshold}. For more details see the Data Model vignette:
-\code{vignette("DataModel", package = "gsm")}.}
+\code{vignette("DataModel", package = "gsm.core")}.}
 
 \item{lParamLabels}{\code{list} Labels for parameters, with the parameters as
 names, and the label as value.}

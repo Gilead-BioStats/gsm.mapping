@@ -18,7 +18,7 @@ spec:
       source_col: RSDAT
       type: Date
 steps:
-  - name: gsm::RunQuery
+  - name: gsm.core::RunQuery
     output: Mapped_OverallResponse
     params:
       df: Raw_OverallResponse

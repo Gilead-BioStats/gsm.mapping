@@ -67,7 +67,7 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
   strQuery <- glue("SELECT {strColQuery} FROM df")
 
   # call RunQuery to get the data
-  dfTarget <- gsm::RunQuery(
+  dfTarget <- gsm.core::RunQuery(
     dfSource,
     strQuery = strQuery,
     bUseSchema = T,

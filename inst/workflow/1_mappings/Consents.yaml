@@ -19,7 +19,7 @@ spec:
       type: character
 
 steps:
-  - name: gsm::RunQuery
+  - name: gsm.core::RunQuery
     output: Temp_Consents
     params:
       df: Raw_Consents
