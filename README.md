@@ -23,7 +23,7 @@ Clinical trial data often presents challenges due to its complexity and variabil
 
 When integrating data from the Clinical Trial Management System (CTMS), it is often necessary to consolidate and transform data from various folders and sources into appropriate "domains." During the reporting process, while SDTM standards are commonly applied to ensure compliance, they may not always align with the specific requirements of RBQM. The goal of `{gsm.mapping}` is to provide a flexible framework for mapping data into domains tailored to support risk assessments during trial monitoring.
 
-There is no single standardized format for raw or mapped data within `{gsm.mapping}`. The only requirement is that mapped data must be compatible with the analytics pipeline. Data transformations can be implemented using various methods, including custom R scripts (e.g., with dplyr), SQL queries, or pre-defined gsm workflows. Pre-defined workflows can be found in this package in the `workflow` directory, or as examples in the [gsm Extensions vignette](https://gilead-biostats.github.io/gsm/articles/gsmExtensions.html#mappings).
+There is no single standardized format for raw or mapped data within `{gsm.mapping}`. The only requirement is that mapped data must be compatible with the analytics pipeline. Data transformations can be implemented using various methods, including custom R scripts (e.g., with dplyr), SQL queries, or pre-defined gsm workflows. Pre-defined workflows can be found in this package in the `workflow` directory, or as examples in the [gsm Extensions vignette](https://gilead-biostats.github.io/gsm.core/articles/gsmExtensions.html#mappings).
 
 # Process Overview
 The workflow for a particular mapped domain requires the following sections:

@@ -30,14 +30,14 @@ Each of the above 14 domains generally map directly 1-to-1 from a raw source, ex
 
 ```{r raw, echo = FALSE, message = FALSE, error = FALSE}
 library(DT)
-library(gsm)
+library(gsm.core)
 library(gsm.mapping)
 library(dplyr)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
-lSource <- gsm::lSource
+lSource <- gsm.core::lSource
 
 lRaw <- list(
   Raw_SUBJ = lSource$Raw_SUBJ,
