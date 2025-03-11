@@ -9,9 +9,9 @@
 #'   Expected columns: `File`, `MetricID`, `Group`, `Abbreviation`, `Metric`,
 #'   `Numerator`, `Denominator`, `Model`, `Score`, and `Threshold`. For more
 #'   details see the Data Model vignette: `vignette("DataModel", package =
-#'   "gsm")`.
+#'   "gsm.core")`.
 #' @param dfResults `data.frame` A stacked summary of analysis pipeline output.
-#'   Created by passing a list of results returned by [gsm::Summarize()] to
+#'   Created by passing a list of results returned by [gsm.core::Summarize()] to
 #'   [gsm.reporting::BindResults()]. Expected columns: `GroupID`, `GroupLevel`, `Numerator`,
 #'   `Denominator`, `Metric`, `Score`, `Flag`, `MetricID`, `StudyID`,
 #'   `SnapshotDate`.
@@ -24,7 +24,7 @@
 #'   passing CTMS site and study data to [MakeLongMeta()]. Expected columns:
 #'   `GroupID`, `GroupLevel`, `Param`, `Value`.
 #' @param dfInput `data.frame` Input data with one record per subject. Created
-#'   by passing Raw+ data into [gsm::Input_Rate()]. Expected columns: `GroupID`,
+#'   by passing Raw+ data into [gsm.core::Input_Rate()]. Expected columns: `GroupID`,
 #'   `GroupLevel`, `Numerator`, `Denominator` and/or columns specified in
 #'   `strCountCol` and `strGroupCol`.
 #' @param lMetric `list` Metric-specific metadata for use in charts and
@@ -32,7 +32,7 @@
 #'   turing it into a list. Expected columns: `File`,`MetricID`, `Group`,
 #'   `Abbreviation`, `Metric`, `Numerator`, `Denominator`, `Model`, `Score`, and
 #'   `strThreshold`. For more details see the Data Model vignette:
-#'   `vignette("DataModel", package = "gsm")`.
+#'   `vignette("DataModel", package = "gsm.core")`.
 #' @param lParamLabels `list` Labels for parameters, with the parameters as
 #'   names, and the label as value.
 #' @param bDebug `logical` Print debug messages? Default: `FALSE`.

@@ -41,7 +41,7 @@ Each of the above 20 domains generally map directly 1-to-1 from a raw source, ex
 ### Core Mappings
 ```{r core, echo = FALSE, message = FALSE, error = FALSE}
 library(DT)
-library(gsm)
+library(gsm.core)
 library(gsm.mapping)
 library(dplyr)
 

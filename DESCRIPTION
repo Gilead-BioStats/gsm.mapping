@@ -23,14 +23,14 @@ Imports:
     dplyr,
     duckdb,
     glue, 
-    gsm,
+    gsm.core,
     log4r,
     purrr,
     stringr,
     tidyr,
     yaml
 Remotes:
-    gsm=Gilead-BioStats/gsm@dev
+    gsm.core=Gilead-BioStats/gsm.core@dev
 Suggests:
     DT,
     knitr,
