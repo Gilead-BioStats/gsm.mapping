@@ -10,10 +10,9 @@ vignette: >
 
 # Mapping Workflows
 
-Currently, there exist 20 domains that have respective workflows that require mapping from source/raw data. 14 are general domains used across several packages and extensions:
+Currently, there exist 19 domains that have respective workflows that require mapping from source/raw data. 13 are general domains used across several packages and extensions:
 
 -   AE
--   COUNTRY
 -   DATACHG
 -   DATAENT
 -   ENROLL
@@ -44,6 +43,7 @@ library(DT)
 library(gsm.core)
 library(gsm.mapping)
 library(dplyr)
+library(reactable)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
@@ -72,15 +72,35 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
 # Combine all domains into one table
 raw_final_table <- do.call(rbind, raw_result)
 row.names(raw_final_table) <- NULL
-raw_final_table %>%
-    DT::datatable(
-      extensions = 'FixedColumns',
-      options = list(
-        scrollX = FALSE,
-        fixedColumns = TRUE
-      ),
-      rownames = FALSE
+
+reactable(
+  raw_final_table,
+  groupBy = "Domain",
+  defaultPageSize = 15,
+  searchable = TRUE,
+  bordered = FALSE, # Removes unnecessary borders
+  highlight = TRUE, # Highlights row on hover
+  theme = reactableTheme(
+    borderColor = "#dee2e6",
+    backgroundColor = "white",
+    style = list(
+      fontFamily = "Arial, sans-serif",
+      fontSize = "14px"
+    ),
+    headerStyle = list(
+      fontWeight = "bold",
+      fontSize = "16px",
+      backgroundColor = "#f8f9fa",
+      borderBottom = "2px solid #dee2e6"
     )
+  ),
+  columns = list(
+    Domain = colDef(name = "Domain", style = list(fontWeight = "bold", fontSize = "15px")),
+    Source_Variable = colDef(name = "Source Variable"),
+    Mapped_Variable = colDef(name = "Mapped Variable"),
+    Type = colDef(name = "Type")
+  )
+)
 ```
 
 
@@ -115,13 +135,32 @@ raw_result_ep <- lapply(names(mappings_ep), function(domain_name) {
 # Combine all domains into one table
 raw_final_table_ep <- do.call(rbind, raw_result_ep)
 row.names(raw_final_table_ep) <- NULL
-raw_final_table_ep %>%
-    DT::datatable(
-      extensions = 'FixedColumns',
-      options = list(
-        scrollX = FALSE,
-        fixedColumns = TRUE
-      ),
-      rownames = FALSE
+reactable(
+  raw_final_table_ep,
+  groupBy = "Domain",
+  defaultPageSize = 15,
+  searchable = TRUE,
+  bordered = FALSE, # Removes unnecessary borders
+  highlight = TRUE, # Highlights row on hover
+  theme = reactableTheme(
+    borderColor = "#dee2e6",
+    backgroundColor = "white",
+    style = list(
+      fontFamily = "Arial, sans-serif",
+      fontSize = "14px"
+    ),
+    headerStyle = list(
+      fontWeight = "bold",
+      fontSize = "16px",
+      backgroundColor = "#f8f9fa",
+      borderBottom = "2px solid #dee2e6"
     )
+  ),
+  columns = list(
+    Domain = colDef(name = "Domain", style = list(fontWeight = "bold", fontSize = "15px")),
+    Source_Variable = colDef(name = "Source Variable"),
+    Mapped_Variable = colDef(name = "Mapped Variable"),
+    Type = colDef(name = "Type")
+  )
+)
 ```
