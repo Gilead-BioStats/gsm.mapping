@@ -34,6 +34,7 @@ Remotes:
 Suggests:
     DT,
     knitr,
+    reactable,
     rmarkdown,
     testthat,
     tibble

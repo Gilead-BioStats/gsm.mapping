@@ -1,6 +1,6 @@
 meta:
   Type: Mapped
-  ID: VISIT
+  ID: Visit
   Description: Visit Data Mapping
   Priority: 1
 spec:

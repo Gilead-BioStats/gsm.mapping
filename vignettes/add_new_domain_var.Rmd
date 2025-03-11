@@ -1,5 +1,6 @@
 ---
 title: "Requesting New Domains or Variables"
+description: "Detailed instructions for adding mapping specifications for a new domain or a new variable in an existing domain."
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Requesting New Domains or Variables}
