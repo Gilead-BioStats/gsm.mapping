@@ -12,8 +12,6 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Mapping Specifications">
-<meta name="description" content="A Vignette that details all mapping specifications for all domains in {gsm.mapping}">
-<meta property="og:description" content="A Vignette that details all mapping specifications for all domains in {gsm.mapping}">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -23,7 +21,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gsm.mapping</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +38,6 @@
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -56,15 +53,19 @@
 
 
 
-<script src="mapping_spec_files/core-js-2.5.3/shim.min.js"></script><script src="mapping_spec_files/react-18.2.0/react.min.js"></script><script src="mapping_spec_files/react-18.2.0/react-dom.min.js"></script><script src="mapping_spec_files/reactwidget-2.0.0/react-tools.js"></script><link href="mapping_spec_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="mapping_spec_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="mapping_spec_files/reactable-0.4.4/reactable.css" rel="stylesheet">
-<script src="mapping_spec_files/reactable-binding-0.4.4/reactable.js"></script><div class="row">
+<link href="mapping_spec_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="mapping_spec_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="mapping_spec_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="mapping_spec_files/datatables-binding-0.33/datatables.js"></script><link href="mapping_spec_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="mapping_spec_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="mapping_spec_files/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="mapping_spec_files/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+<script src="mapping_spec_files/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script><link href="mapping_spec_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="mapping_spec_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Mapping Specifications</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.mapping/blob/gsm.mapping-v1.0.0-rc/vignettes/mapping_spec.Rmd" class="external-link"><code>vignettes/mapping_spec.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.mapping/blob/47/merge/vignettes/mapping_spec.Rmd" class="external-link"><code>vignettes/mapping_spec.Rmd</code></a></small>
       <div class="d-none name"><code>mapping_spec.Rmd</code></div>
     </div>
 
@@ -73,17 +74,16 @@
 <div class="section level2">
 <h2 id="mapping-workflows">Mapping Workflows<a class="anchor" aria-label="anchor" href="#mapping-workflows"></a>
 </h2>
-<p>Currently, there exist 19 domains that have respective workflows that
-require mapping from source/raw data. 13 are general domains used across
-several packages and extensions:</p>
+<p>Currently, there exist 13 domains that have respective workflows that
+require mapping from source/raw data:</p>
 <ul>
 <li>AE</li>
+<li>COUNTRY</li>
 <li>DATACHG</li>
 <li>DATAENT</li>
 <li>ENROLL</li>
 <li>LB</li>
 <li>PD</li>
-<li>PK</li>
 <li>QUERY</li>
 <li>SDRGCOMP</li>
 <li>SITE</li>
@@ -91,35 +91,14 @@ several packages and extensions:</p>
 <li>STUDY</li>
 <li>SUBJ</li>
 </ul>
-<p>And 6 are domains that are currently specific to the
-<code>gsm.endpoints</code> extension package:</p>
-<ul>
-<li>Baseline</li>
-<li>Consents</li>
-<li>Death</li>
-<li>OverallResponse</li>
-<li>Randomization</li>
-<li>Visit</li>
-</ul>
-<p>Each of the above 20 domains generally map directly 1-to-1 from a raw
+<p>Each of the above 13 domains generally map directly 1-to-1 from a raw
 source, except <code>COUNTRY</code> which relies on the same dataset as
 <code>SUBJ</code>. The following variables/types from their respective
 domains is <strong>REQUIRED</strong> in the source/raw data:</p>
-<div class="section level4">
-<h4 id="core-mappings">Core Mappings<a class="anchor" aria-label="anchor" href="#core-mappings"></a>
-</h4>
-<div class="reactable html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Domain":["AE","AE","AE","AE","AE","AE","AE","ENROLL","ENROLL","ENROLL","ENROLL","ENROLL","ENROLL","LB","LB","PD","PD","SDRGCOMP","SDRGCOMP","SDRGCOMP","STUDCOMP","STUDCOMP","STUDCOMP","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","DATACHG","DATACHG","DATACHG","DATACHG","DATAENT","DATAENT","DATAENT","DATAENT","QUERY","QUERY","QUERY","QUERY","QUERY","COUNTRY","COUNTRY","COUNTRY","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY"],"Source_Variable":["subjid","aeser","aest_dt","aeen_dt","mdrpt_nsv","mdrsoc_nsv","aetoxgr","studyid","invid","country","subjid","subjectid","enrollyn","subjid","toxgrg_nsv","subjectenrollmentnumber","deemedimportant","subjid","sdrgyn","phase","subjid","compyn","compreas","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","firstparticipantdate","firstdosedate","timeontreatment","agerep","sex","race","subjectname","n_changes","subjid","subject_nsv","subjectname","data_entry_lag","subjid","subject_nsv","subjectname","querystatus","queryage","subjid","subject_nsv","country","invid","subjid","protocol","pi_number","pi_first_name","pi_last_name","site_status","city","state","country","studyid","invid","subjid","protocol_number","nickname","protocol_title","status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid","enrollyn"],"Mapped_Variable":["subjid","aeser","aest_dt","aeen_dt","mdrpt_nsv","mdrsoc_nsv","aetoxgr","studyid","invid","country","subjid","subjectid","enrollyn","subjid","toxgrg_nsv","subjid","deemedimportant","subjid","sdrgyn","phase","subjid","compyn","completion_reason","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","firstparticipantdate","firstdosedate","timeontreatment","agerep","sex","race","subject_nsv","n_changes","subjid","subject_nsv","subject_nsv","data_entry_lag","subjid","subject_nsv","subject_nsv","querystatus","queryage","subjid","subject_nsv","country","invid","subjid","studyid","invid","InvestigatorFirstName","InvestigatorLastName","site_status","City","State","Country","studyid","invid","subjid","studyid","nickname","protocol_title","status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid","enrollyn"],"Type":["character","character","Date","Date","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","Date","Date","numeric","character","character","character","character","integer","character","character","character","integer","character","character","character","character","integer","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","integer","Date","Date","Date","Date","character","character","character","character","character","character","character","character"]},"columns":[{"id":"Domain","name":"Domain","type":"character","style":{"fontWeight":"bold","fontSize":"15px"}},{"id":"Source_Variable","name":"Source Variable","type":"character"},{"id":"Mapped_Variable","name":"Mapped Variable","type":"character"},{"id":"Type","name":"Type","type":"character"}],"groupBy":["Domain"],"searchable":true,"defaultPageSize":15,"highlight":true,"theme":{"backgroundColor":"white","borderColor":"#dee2e6","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px"},"headerStyle":{"fontWeight":"bold","fontSize":"16px","backgroundColor":"#f8f9fa","borderBottom":"2px solid #dee2e6"}},"dataKey":"ded1253db0d7aed53aee4360557e720a"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"data":[["AE","AE","AE","AE","AE","AE","AE","ENROLL","ENROLL","ENROLL","ENROLL","ENROLL","ENROLL","LB","LB","PD","PD","SDRGCOMP","SDRGCOMP","SDRGCOMP","STUDCOMP","STUDCOMP","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","DATACHG","DATACHG","DATACHG","DATACHG","DATAENT","DATAENT","DATAENT","DATAENT","QUERY","QUERY","QUERY","QUERY","QUERY","COUNTRY","COUNTRY","COUNTRY","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY"],["subjid","aeser","aest_dt","aeen_dt","mdrpt_nsv","mdrsoc_nsv","aetoxgr","studyid","invid","country","subjid","subjectid","enrollyn","subjid","toxgrg_nsv","subjectenrollmentnumber","deemedimportant","subjid","sdrgyn","phase","subjid","compyn","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","firstparticipantdate","firstdosedate","timeontreatment","agerep","sex","race","subjectname","n_changes","subjid","subject_nsv","subjectname","data_entry_lag","subjid","subject_nsv","subjectname","querystatus","queryage","subjid","subject_nsv","country","invid","subjid","protocol","pi_number","pi_first_name","pi_last_name","site_status","city","state","country","studyid","invid","subjid","protocol_number","nickname","protocol_title","status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid"],["subjid","aeser","aest_dt","aeen_dt","mdrpt_nsv","mdrsoc_nsv","aetoxgr","studyid","invid","country","subjid","subjectid","enrollyn","subjid","toxgrg_nsv","subjid","deemedimportant","subjid","sdrgyn","phase","subjid","compyn","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","firstparticipantdate","firstdosedate","timeontreatment","agerep","sex","race","subject_nsv","n_changes","subjid","subject_nsv","subject_nsv","data_entry_lag","subjid","subject_nsv","subject_nsv","querystatus","queryage","subjid","subject_nsv","country","invid","subjid","studyid","invid","InvestigatorFirstName","InvestigatorLastName","site_status","City","State","Country","studyid","invid","subjid","studyid","nickname","protocol_title","status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid"],["character","character","Date","Date","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","Date","Date","numeric","character","character","character","character","integer","character","character","character","integer","character","character","character","character","integer","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","integer","Date","Date","Date","Date","character","character","character","character","character","character","character"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Domain<\/th>\n      <th>Source_Variable<\/th>\n      <th>Mapped_Variable<\/th>\n      <th>Type<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":false,"fixedColumns":true,"columnDefs":[{"name":"Domain","targets":0},{"name":"Source_Variable","targets":1},{"name":"Mapped_Variable","targets":2},{"name":"Type","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="section level3">
-<h3 id="endpoint-mappings">Endpoint Mappings<a class="anchor" aria-label="anchor" href="#endpoint-mappings"></a>
-</h3>
-<div class="reactable html-widget html-fill-item" id="htmlwidget-e5c8c404fe174e4c81bd" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Domain":["Baseline","Baseline","OverallResponse","OverallResponse","OverallResponse","OverallResponse","Randomization","Randomization","Randomization","Randomization","Randomization","Randomization","STUDCOMP","STUDCOMP","STUDCOMP","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","SUBJ","Visit","Visit","Visit","Visit","Consents","Consents","Consents","Consents","Death","Death","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","SITE","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY","STUDY"],"Source_Variable":["SUBJID","SCANDAT","SUBJID","FOLDERNAME","OVRLRESP_STD","RSDAT","STUDYID","INVID","SUBJID","RGMNDTN","STATUS","COUNTRY","subjid","compyn","compreas","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","firstparticipantdate","firstdosedate","timeontreatment","agerep","sex","race","subjid","visit_dt","foldername","invid","SUBJID","CONSDAT","CONSTYPE","CONSCAT","SUBJID","DEATHDAT","protocol","pi_number","pi_first_name","pi_last_name","site_status","city","state","country","studyid","invid","subjid","protocol_number","nickname","protocol_title","status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid","enrollyn"],"Mapped_Variable":["subjid","baseline_scan_date","subjid","response_folder","response","response_date","studyid","invid","subjid","randomization_date","status","country","subjid","compyn","completion_reason","studyid","invid","country","subjid","subject_nsv","enrollyn","timeonstudy","firstparticipantdate","firstdosedate","timeontreatment","agerep","sex","race","subjid","visit_date","visit","invid","subjid","consdat","constype","conscat","subjid","death_date","studyid","invid","InvestigatorFirstName","InvestigatorLastName","site_status","City","State","Country","studyid","invid","subjid","studyid","nickname","protocol_title","status","num_plan_site","num_plan_subj","act_fpfv","est_fpfv","est_lplv","est_lpfv","therapeutic_area","protocol_indication","phase","product","studyid","invid","subjid","enrollyn"],"Type":["character","Date","character","character","character","Date","character","character","character","Date","character","character","character","character","character","character","character","character","character","character","character","integer","Date","Date","numeric","character","character","character","character","character","character","character","character","Date","character","character","character","Date","character","character","character","character","character","character","character","character","character","character","character","character","character","character","character","integer","integer","Date","Date","Date","Date","character","character","character","character","character","character","character","character"]},"columns":[{"id":"Domain","name":"Domain","type":"character","style":{"fontWeight":"bold","fontSize":"15px"}},{"id":"Source_Variable","name":"Source Variable","type":"character"},{"id":"Mapped_Variable","name":"Mapped Variable","type":"character"},{"id":"Type","name":"Type","type":"character"}],"groupBy":["Domain"],"searchable":true,"defaultPageSize":15,"highlight":true,"theme":{"backgroundColor":"white","borderColor":"#dee2e6","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px"},"headerStyle":{"fontWeight":"bold","fontSize":"16px","backgroundColor":"#f8f9fa","borderBottom":"2px solid #dee2e6"}},"dataKey":"dc412d7eb1d0d070fddbad8b780a2417"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
+  </main>
 </div>
 
 
