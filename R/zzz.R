@@ -10,4 +10,3 @@ globalVariables(c("."))
   logger <- logger("DEBUG", appenders = console_appender(layout = gsm.core::cli_fmt))
   gsm.core::SetLogger(logger)
 }
-
