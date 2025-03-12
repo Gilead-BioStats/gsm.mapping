@@ -25,13 +25,17 @@ retrieve the data. The resulting data frames are stored in a list, where each da
 corresponds to a domain in the specification.
 }
 \examples{
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
-                   "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
+core_mappings <- c(
+  "AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+  "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ"
+)
 
 lSourceData <- gsm.core::lSource
 
-lIngestWorkflow <- gsm.core::MakeWorkflowList(strName = core_mappings,
-                    strPath = "workflow/1_mappings", strPackage = "gsm.mapping")[[1]]
+lIngestWorkflow <- gsm.core::MakeWorkflowList(
+  strName = core_mappings,
+  strPath = "workflow/1_mappings", strPackage = "gsm.mapping"
+)[[1]]
 lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
 
 }
