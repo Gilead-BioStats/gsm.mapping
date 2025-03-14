@@ -1,13 +1,13 @@
 meta:
   Type: Mapped
   ID: SITE
-  Description: SITE Data Mapping 
+  Description: SITE Data Mapping
   Priority: 3
 spec:
   Raw_SITE:
     studyid:
       type: character
-      source_col: protocol 
+      source_col: protocol
     invid:
       type: character
       source_col: pi_number
@@ -37,27 +37,27 @@ spec:
       type: character
 steps:
   - output: Temp_CTMSSiteWide
-    name: RunQuery
+    name: gsm.core::RunQuery
     params:
       df: Raw_SITE
       strQuery: "SELECT invid as GroupID, * FROM df"
   - output: Temp_CTMSSite
-    name: MakeLongMeta
+    name: gsm.mapping::MakeLongMeta
     params:
       data: Temp_CTMSSiteWide
       strGroupLevel: 'Site'
   - output: Temp_SiteCountsWide
-    name: RunQuery
+    name: gsm.core::RunQuery
     params:
       df: Mapped_SUBJ
       strQuery: "SELECT invid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY invid"
   - output: Temp_SiteCounts
-    name: MakeLongMeta
+    name: gsm.mapping::MakeLongMeta
     params:
       data: Temp_SiteCountsWide
       strGroupLevel: "Site"
   - output: Mapped_SITE
-    name: bind_rows
+    name: dplyr::bind_rows
     params:
       Temp_CTMSSite: Temp_CTMSSite
       Temp_SiteCounts: Temp_SiteCounts

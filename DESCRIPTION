@@ -1,6 +1,6 @@
 Package: gsm.mapping
 Title: Good Statistical Monitoring Mapping
-Version: 0.0.2
+Version: 1.0.0
 Authors@R: c(
     person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = c("aut", "cre")),
     person("Laura", "Maxwell", , "laura.maxwell@atorusresearch.com", role = "aut"),
@@ -23,19 +23,18 @@ Imports:
     dplyr,
     duckdb,
     glue, 
-    gsm,
+    gsm.core,
     log4r,
     purrr,
     stringr,
     tidyr,
     yaml
 Remotes:
-    clindata=Gilead-BioStats/clindata,
-    gsm=Gilead-BioStats/gsm@gsm-core-test
+    gsm.core=Gilead-BioStats/gsm.core@v1.0.0
 Suggests:
-    clindata,
     DT,
     knitr,
+    reactable,
     rmarkdown,
     testthat,
     tibble

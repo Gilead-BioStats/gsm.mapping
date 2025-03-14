@@ -1,0 +1,26 @@
+meta:
+  Type: Mapped
+  ID: OverallResponse
+  Description: Overall Response Data Mapping
+  Priority: 1
+spec:
+  Raw_OverallResponse:
+    subjid:
+      source_col: SUBJID
+      type: character
+    response_folder:
+      source_col: FOLDERNAME
+      type: character
+    response:
+      source_col: OVRLRESP_STD
+      type: character
+    response_date:
+      source_col: RSDAT
+      type: Date
+steps:
+  - name: gsm.core::RunQuery
+    output: Mapped_OverallResponse
+    params:
+      df: Raw_OverallResponse
+      strQuery: "SELECT subjid, response_folder, response, response_date FROM df
+                WHERE subjid IS NOT NULL"
