@@ -14,19 +14,23 @@
 #' specification.
 #'
 #' @examples
-#' core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
-#'                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
+#' core_mappings <- c(
+#'   "AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+#'   "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ"
+#' )
 #'
 #' lSourceData <- gsm.core::lSource
 #'
-#' lIngestWorkflow <- gsm.core::MakeWorkflowList(strName = core_mappings,
-#'                     strPath = "workflow/1_mappings", strPackage = "gsm.mapping")[[1]]
+#' lIngestWorkflow <- gsm.core::MakeWorkflowList(
+#'   strName = core_mappings,
+#'   strPath = "workflow/1_mappings", strPackage = "gsm.mapping"
+#' )[[1]]
 #' lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
 #'
 #' @export
 
 Ingest <- function(lSourceData, lSpec, strDomain = "Raw") {
-  gsm.core::stop_if(!is.list(lSourceData),"[ lSourceData ] must be a list.")
+  gsm.core::stop_if(!is.list(lSourceData), "[ lSourceData ] must be a list.")
   gsm.core::stop_if(!is.list(lSpec), "[ lSpec ] must be a list.")
 
   # If there is a domain (specificed with and underscore) in lSourceData/lSpec names, remove it
