@@ -9,7 +9,7 @@ spec:
       source_col: SUBJID
       type: character
     death_date:
-      source_col: DEATHDAT
+      source_col: death_dt
       type: Date
 steps:
   - name: gsm.core::RunQuery

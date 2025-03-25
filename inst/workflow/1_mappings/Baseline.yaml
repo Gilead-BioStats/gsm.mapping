@@ -9,7 +9,7 @@ spec:
       source_col: SUBJID
       type: character
     baseline_scan_date:
-      source_col: SCANDAT
+      source_col: scan_dt
       type: Date
 steps:
   - name: gsm.core::RunQuery

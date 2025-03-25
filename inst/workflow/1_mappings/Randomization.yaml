@@ -15,7 +15,7 @@ spec:
       source_col: SUBJID
       type: character
     randomization_date:
-      source_col: RGMNDTN
+      source_col: RGMN_DT
       type: Date
     status:
       source_col: STATUS

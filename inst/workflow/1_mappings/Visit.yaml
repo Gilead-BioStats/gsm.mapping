@@ -15,7 +15,6 @@ spec:
       type: character
     invid:
       type: character
-
 steps:
   - output: Mapped_VISIT
     name: gsm.core::RunQuery

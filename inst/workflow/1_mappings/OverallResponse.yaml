@@ -12,10 +12,10 @@ spec:
       source_col: FOLDERNAME
       type: character
     response:
-      source_col: OVRLRESP_STD
+      source_col: ovrlesp
       type: character
     response_date:
-      source_col: RSDAT
+      source_col: rs_dt
       type: Date
 steps:
   - name: gsm.core::RunQuery

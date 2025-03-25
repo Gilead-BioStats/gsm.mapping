@@ -9,13 +9,11 @@ spec:
       source_col: SUBJID
       type: character
     consdat:
-      source_col: CONSDAT
+      source_col: cons_dt
       type: Date
     constype:
-      source_col: CONSTYPE
       type: character
     conscat:
-      source_col: CONSCAT
       type: character
 
 steps:

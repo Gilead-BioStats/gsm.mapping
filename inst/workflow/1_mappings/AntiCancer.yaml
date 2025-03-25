@@ -9,10 +9,10 @@ spec:
       source_col: SUBJID
       type: character
     act_treatment:
-      source_col: CMTRT
+      source_col: cmtrt
       type: character
     act_date:
-      source_col: CMSTDAT
+      source_col: cmst_dt
       type: Date
 
 steps:
