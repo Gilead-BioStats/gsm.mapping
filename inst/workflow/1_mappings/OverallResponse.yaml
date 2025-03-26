@@ -7,7 +7,8 @@ spec:
   Raw_OverallResponse:
     subjid:
       type: character
-    foldername:
+    response_folder:
+      source_col: foldername
       type: character
     ovrlesp:
       type: character
@@ -18,5 +19,5 @@ steps:
     output: Mapped_OverallResponse
     params:
       df: Raw_OverallResponse
-      strQuery: "SELECT subjid, foldername, ovrlesp, rs_dt FROM df
+      strQuery: "SELECT subjid, response_folder, ovrlesp, rs_dt FROM df
                 WHERE subjid IS NOT NULL"

@@ -9,7 +9,8 @@ spec:
       type: character
     visit_dt:
       type: character
-    foldername:
+    visit_folder:
+      source_col: foldername
       type: character
     invid:
       type: character
@@ -18,6 +19,6 @@ steps:
     name: gsm.core::RunQuery
     params:
       df: Raw_VISIT
-      strQuery: "SELECT subjid, visit_dt, foldername, invid FROM df"
+      strQuery: "SELECT subjid, visit_dt, visit_folder, invid FROM df"
 
 
