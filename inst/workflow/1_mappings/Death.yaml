@@ -6,22 +6,20 @@ meta:
 spec:
   Raw_Death:
     subjid:
-      source_col: SUBJID
       type: character
-    death_date:
-      source_col: death_dt
+    death_dt:
       type: Date
 steps:
   - name: gsm.core::RunQuery
     output: Temp_Death
     params:
       df: Raw_Death
-      strQuery: "SELECT subjid, death_date FROM df
-                WHERE subjid IS NOT NULL AND death_date IS NOT NULL"
+      strQuery: "SELECT subjid, death_dt FROM df
+                WHERE subjid IS NOT NULL AND death_dt IS NOT NULL"
   - name: gsm.endpoints::complete_death
     output: Mapped_Death
     params:
       dfDeath: Temp_Death
-      dfStudyCompletion: Mapped_StudyCompletion
+      dfStudyCompletion: Mapped_STUDCOMP
       dfOverallResponse: Mapped_OverallResponse
 
