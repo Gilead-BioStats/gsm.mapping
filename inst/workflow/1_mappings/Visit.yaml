@@ -8,7 +8,7 @@ spec:
     subjid:
       type: character
     visit_dt:
-      type: character
+      type: Date
     visit_folder:
       source_col: foldername
       type: character
