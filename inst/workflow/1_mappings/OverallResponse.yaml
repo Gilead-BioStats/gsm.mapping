@@ -10,7 +10,7 @@ spec:
     response_folder:
       source_col: foldername
       type: character
-    ovrlesp:
+    ovrlresp:
       type: character
     rs_dt:
       type: Date
