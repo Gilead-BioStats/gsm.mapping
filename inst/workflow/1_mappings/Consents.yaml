@@ -20,7 +20,7 @@ steps:
     params:
       df: Raw_Consents
       strQuery: "SELECT subjid, cons_dt, constype, conscat FROM df
-                WHERE constype = 'WITHDRAWAL OF CONSENT' AND conscat = 'STUDY CONSENT'"
+                WHERE constype = 'WITHDRAWAL OF CONSENT' AND conscat = 'MAIN STUDY CONSENT'"
   - name: gsm.endpoints::complete_consents
     output: Mapped_Consents
     params:
