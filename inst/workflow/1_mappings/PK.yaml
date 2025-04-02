@@ -7,7 +7,8 @@ spec:
   Raw_PK:
     subjid:
       type: character
-    foldername:
+    visit:
+      source_col: foldername
       type: character
     pkdat:
       type: character
@@ -18,7 +19,8 @@ spec:
   Raw_VISIT:
     subjid:
       type: character
-    foldername:
+    visit:
+      source_col: foldername
       type: character
     visit_dt:
       type: Date
@@ -30,7 +32,7 @@ steps:
       y: Raw_VISIT
       by:
         - subjid
-        - foldername
+        - visit
   - output: Mapped_PK
     name: gsm.core::RunQuery
     params:
