@@ -1,3 +1,7 @@
+# gsm.mapping 1.0.1 
+
+This patch release adds a new mapping yaml for PK Compliance data and updates the mappings for `gsm.endpoints` 
+
 # gsm.mapping 1.0.0
 
 We are excited to announce the first major release of the `gsm.mapping` package, which contains essential mapping-specific functions and workflows for the GSM (Good Statistical Modeling) pipeline. This release introduces significant improvements, new features, and bug fixes, all aimed at improving the ease of use and functionality for users working with data mapping in the GSM pipeline.
