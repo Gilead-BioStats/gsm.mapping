@@ -6,16 +6,12 @@ meta:
 spec:
   Raw_Consents:
     subjid:
-      source_col: SUBJID
       type: character
-    consdat:
-      source_col: CONSDAT
+    cons_dt:
       type: Date
     constype:
-      source_col: CONSTYPE
       type: character
     conscat:
-      source_col: CONSCAT
       type: character
 
 steps:
@@ -23,11 +19,11 @@ steps:
     output: Temp_Consents
     params:
       df: Raw_Consents
-      strQuery: "SELECT subjid, consdat, constype, conscat FROM df
-                WHERE constype = 'WITHDRAWAL OF CONSENT' AND conscat = 'STUDY CONSENT'"
+      strQuery: "SELECT subjid, cons_dt, constype, conscat FROM df
+                WHERE constype = 'WITHDRAWAL OF CONSENT' AND conscat = 'MAIN STUDY CONSENT'"
   - name: gsm.endpoints::complete_consents
     output: Mapped_Consents
     params:
       dfConsents: Temp_Consents
-      dfStudyCompletion: Mapped_StudyCompletion
+      dfStudyCompletion: Mapped_STUDCOMP
 

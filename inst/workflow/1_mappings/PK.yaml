@@ -4,20 +4,42 @@ meta:
   Description: PK Data Mapping 
   Priority: 1
 spec: 
- Raw_PK:
+  Raw_PK:
     subjid:
-      required: true
+      type: character
+    visit:
+      source_col: foldername
+      type: character
+    pkdat:
       type: character
     pktpt:
-      required: true
       type: character
     pkperf:
-      required: true
       type: character
+  Raw_VISIT:
+    subjid:
+      type: character
+    visit:
+      source_col: foldername
+      type: character
+    visit_dt:
+      type: Date
 steps:
-  - output: Mapped_PK
-    name: =
+  - output: PK_VISIT
+    name: dplyr::left_join
     params:
-      lhs: Mapped_PK
-      rhs: Raw_PK
+      x: Raw_PK
+      "y": Raw_VISIT
+      by:
+        - subjid
+        - visit
+  - output: Mapped_PK
+    name: gsm.core::RunQuery
+    params:
+      df: PK_VISIT
+      strQuery: |
+        SELECT *
+        FROM df
+        WHERE visit_dt IS NOT NULL
+          AND pkperf IN ('Yes', 'No')
 

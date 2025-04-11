@@ -6,21 +6,18 @@ meta:
 spec:
   Raw_OverallResponse:
     subjid:
-      source_col: SUBJID
       type: character
     response_folder:
-      source_col: FOLDERNAME
+      source_col: foldername
       type: character
-    response:
-      source_col: OVRLRESP_STD
+    ovrlresp:
       type: character
-    response_date:
-      source_col: RSDAT
+    rs_dt:
       type: Date
 steps:
   - name: gsm.core::RunQuery
     output: Mapped_OverallResponse
     params:
       df: Raw_OverallResponse
-      strQuery: "SELECT subjid, response_folder, response, response_date FROM df
+      strQuery: "SELECT subjid, response_folder, ovrlresp, rs_dt FROM df
                 WHERE subjid IS NOT NULL"

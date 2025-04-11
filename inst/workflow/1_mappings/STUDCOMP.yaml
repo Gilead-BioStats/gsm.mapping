@@ -9,8 +9,7 @@ spec:
       type: character
     compyn:
       type: character
-    completion_reason:
-      source_col: compreas
+    compreas:
       type: character
 steps:
   - output: Mapped_STUDCOMP
