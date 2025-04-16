@@ -1,0 +1,26 @@
+meta:
+  Type: Mapped
+  ID: IE
+  Description: Inclusion/Exclusion Criteria Data Mapping
+  Priority: 1
+spec:
+  Raw_IE:
+    subjid:
+      type: character
+    tiver_std:
+      type: character
+    ietest_std:
+      type: character
+    ietestcd_std:
+      type: character
+    ieorres_std:
+      type: character
+    iecat_std:
+      type: character
+
+steps:
+  - output: Mapped_ENROLL
+    name: =
+    params:
+      lhs: Mapped_ENROLL
+      rhs: Raw_ENROLL
