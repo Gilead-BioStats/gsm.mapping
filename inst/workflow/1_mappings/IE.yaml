@@ -11,7 +11,7 @@ spec:
       type: character
     IETEST_STD:
       type: character
-    IETEST_STD:
+    IETESTCD_STD:
       type: character
     IEORRES_STD:
       type: character
