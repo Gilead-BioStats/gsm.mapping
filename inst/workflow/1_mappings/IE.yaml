@@ -7,20 +7,20 @@ spec:
   Raw_IE:
     subjid:
       type: character
-    tiver_std:
+    TIVER_STD:
       type: character
-    ietest_std:
+    IETEST_STD:
       type: character
-    ietestcd_std:
+    IETEST_STD:
       type: character
-    ieorres_std:
+    IEORRES_STD:
       type: character
-    iecat_std:
+    IECAT_STD:
       type: character
 
 steps:
-  - output: Mapped_ENROLL
+  - output: Mapped_IE
     name: =
     params:
-      lhs: Mapped_ENROLL
-      rhs: Raw_ENROLL
+      lhs: Mapped_IE
+      rhs: Raw_IE
