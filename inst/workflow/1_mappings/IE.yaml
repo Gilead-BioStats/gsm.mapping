@@ -7,15 +7,15 @@ spec:
   Raw_IE:
     subjid:
       type: character
-    TIVER_STD:
+    TIVER:
       type: character
-    IETEST_STD:
+    IETEST:
       type: character
-    IETESTCD_STD:
+    IETESTCD:
       type: character
-    IEORRES_STD:
+    IEORRES:
       type: character
-    IECAT_STD:
+    IECAT:
       type: character
 
 steps:
