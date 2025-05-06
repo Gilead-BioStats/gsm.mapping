@@ -19,6 +19,12 @@ spec:
       type: character
     aetoxgr:
       type: character
+    aeongo:
+      type: character
+    aerel:
+      type: character
+    mincreated_dts:
+      type: Datetime
 steps:
   - output: Mapped_AE
     name: =
