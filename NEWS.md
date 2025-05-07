@@ -1,3 +1,7 @@
+# gsm.mapping 1.0.2
+
+This patch release updates the description file to incorporate min version for `{gsm.core}`.
+
 # gsm.mapping 1.0.1 
 
 This patch release adds a new mapping yaml for PK Compliance data and updates the mappings for `gsm.endpoints` 
