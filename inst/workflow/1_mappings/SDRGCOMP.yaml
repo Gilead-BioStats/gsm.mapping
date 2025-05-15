@@ -12,7 +12,7 @@ spec:
     phase:
       type: character
     mincreated_dts:
-      type: Datetime
+      type: timestamp
 steps:
   - output: Mapped_SDRGCOMP
     name: =

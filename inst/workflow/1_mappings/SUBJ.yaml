@@ -32,7 +32,7 @@ spec:
     race:
       type: character
     mincreated_dts:
-      type: Datetime
+      type: timestamp
 steps:
   - output: Mapped_SUBJ
     name: gsm.core::RunQuery

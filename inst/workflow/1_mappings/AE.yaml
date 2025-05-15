@@ -24,7 +24,7 @@ spec:
     aerel:
       type: character
     mincreated_dts:
-      type: Datetime
+      type: timestamp
 steps:
   - output: Mapped_AE
     name: =
