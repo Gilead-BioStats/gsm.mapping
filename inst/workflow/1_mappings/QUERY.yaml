@@ -12,6 +12,8 @@ spec:
       type: character
     queryage:
       type: integer
+    created:
+      type: Date
   Mapped_SUBJ:
     subjid:
       type: character

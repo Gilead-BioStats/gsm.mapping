@@ -10,6 +10,8 @@ spec:
       source_col: subjectname
     n_changes:
       type: integer
+    visit_date:
+      type: Date
   Mapped_SUBJ:
     subjid:
       type: character

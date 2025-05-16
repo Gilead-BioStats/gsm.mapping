@@ -11,6 +11,8 @@ spec:
       type: character
     compreas:
       type: character
+    mincreated_dts:
+      type: timestamp
 steps:
   - output: Mapped_STUDCOMP
     name: =
