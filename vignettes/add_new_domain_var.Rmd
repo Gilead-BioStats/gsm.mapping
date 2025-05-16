@@ -44,7 +44,7 @@ Complete the following fields:
     -   If this variable has an original source, provide the name of the source column.
 3.  **Variable Metadata:**
     -   Provide detailed metadata for each variable, including:
-        -   Expected Data Type (e.g., Character, Numeric, Date, timestamp)
+        -   Expected Data Type (e.g., character, numeric, Date, timestamp)
 4.  **Rationale for Addition:**
     -   Explain why this domain or variable is important for your monitoring needs. Include specific use cases if possible.
 5.  **Example Data:**
