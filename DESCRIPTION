@@ -23,12 +23,14 @@ Imports:
     dplyr,
     duckdb,
     glue, 
-    gsm.core (>= 1.1.0),
+    gsm.core (>= 1.1.1),
     log4r,
     purrr,
     stringr,
     tidyr,
     yaml
+Remotes:
+    gsm.core=Gilead-BioStats/gsm.core#30
 Suggests:
     DT,
     knitr,
@@ -36,8 +38,6 @@ Suggests:
     rmarkdown,
     testthat,
     tibble
-Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@main
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
