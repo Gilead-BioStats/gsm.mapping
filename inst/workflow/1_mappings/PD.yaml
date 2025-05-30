@@ -5,16 +5,22 @@ meta:
   Priority: 1
 spec:
   Raw_PD:
+    studyid:
+      type: character
     subjid:
       type: character
       source_col: subjectenrollmentnumber
     deemedimportant:
       type: character
-    category:
+    dvdecod:
       type: character
-      source_col: companycategory
-    deviationdate:
-      type: Date
+      source_col: crocategory
+    dvterm:
+      type: character
+      source_col: description
+    dvdtm:
+      type: timestamp
+      source_col: deviationdate
 steps:
   - output: Mapped_PD
     name: =
