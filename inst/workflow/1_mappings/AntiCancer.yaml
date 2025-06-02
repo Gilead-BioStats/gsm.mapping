@@ -5,18 +5,21 @@ meta:
   Priority: 1
 spec:
   Raw_AntiCancer:
+    studyid:
+      type: character
     subjid:
       type: character
     cmtrt:
       type: character
     cmst_dt:
-      type: Date
+      type: character
 steps:
-  - name: gsm.core::RunQuery
-    output: Mapped_AntiCancer
+  - output: Mapped_AntiCancer
+    name: gsm.core::RunQuery
     params:
       df: Raw_AntiCancer
-      strQuery: "SELECT subjid, ANY_VALUE(cmtrt) as cmtrt, MIN(cmst_dt) AS cmst_dt FROM df
-                WHERE cmtrt != ''
-                GROUP BY subjid"
-
+      strQuery: |
+        SELECT subjid, ANY_VALUE(cmtrt) as cmtrt, MIN(cmst_dt) AS cmst_dt FROM df
+        WHERE cmtrt != ''
+          AND cmst_dt != ''
+        GROUP BY subjid

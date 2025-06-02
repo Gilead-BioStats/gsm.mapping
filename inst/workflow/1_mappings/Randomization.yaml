@@ -12,15 +12,19 @@ spec:
     subjid:
       type: character
     rgmn_dt:
-      type: Date
+      type: character
     status:
       type: character
     country:
       type: character
 steps:
-  - name: gsm.core::RunQuery
-    output: Mapped_Randomization
+  - output: Mapped_Randomization
+    name: gsm.core::RunQuery
     params:
       df: Raw_Randomization
-      strQuery: "SELECT  studyid, invid, subjid, rgmn_dt, status, country FROM df
-                WHERE subjid IS NOT NULL AND (status != 'Screen Failed' OR status IS NULL)"
+      strQuery: |
+        SELECT *
+        FROM df
+        WHERE subjid IS NOT NULL
+          AND (status != 'Screen Failed' OR status IS NULL)
+          AND rgmn_dt != ''
