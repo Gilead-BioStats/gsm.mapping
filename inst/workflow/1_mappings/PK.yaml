@@ -1,10 +1,12 @@
 meta:
   Type: Mapped
   ID: PK
-  Description: PK Data Mapping 
+  Description: PK Data Mapping
   Priority: 1
-spec: 
+spec:
   Raw_PK:
+    studyid:
+      type: character
     subjid:
       type: character
     visit:
@@ -17,6 +19,8 @@ spec:
     pkperf:
       type: character
   Raw_VISIT:
+    studyid:
+      type: character
     subjid:
       type: character
     visit:
@@ -31,6 +35,7 @@ steps:
       x: Raw_PK
       "y": Raw_VISIT
       by:
+        - studyid
         - subjid
         - visit
   - output: Mapped_PK
