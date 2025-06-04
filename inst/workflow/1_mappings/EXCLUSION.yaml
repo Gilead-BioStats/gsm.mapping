@@ -72,12 +72,13 @@ steps:
     params:
       df: Mapped_PD
       strQuery: "SELECT
+        studyid,
         subjid,
         array_to_string(array_agg(dvdtm), ';;;') AS dvdtm,
         array_to_string(array_agg(dvterm), ';;;') AS eligibility_criteria
       FROM df
       WHERE dvdecod IN ('Exclusion Criteria', 'Inclusion Criteria')
-      GROUP BY subjid"
+      GROUP BY studyid, subjid"
   - output: premapped
     name: dplyr::left_join
     params:
