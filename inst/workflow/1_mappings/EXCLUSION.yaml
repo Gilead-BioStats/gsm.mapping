@@ -56,7 +56,7 @@ steps:
         array_to_string(array_agg(ietestcd), ',') AS ietestcd_concat,
         ie_violation
       FROM df
-      GROUP BY studyid, invid, subjid, ie_violation"
+      GROUP BY studyid, subjid, ie_violation"
   - output: add_ie
     name: dplyr::left_join
     params:
