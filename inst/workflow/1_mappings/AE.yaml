@@ -5,6 +5,8 @@ meta:
   Priority: 1
 spec:
  Raw_AE:
+    studyid:
+      type: character
     subjid:
       type: character
     aeser:
