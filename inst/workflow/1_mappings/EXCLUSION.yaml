@@ -84,6 +84,7 @@ steps:
       'y': pivot_pd
       by:
         - subjid
+        - studyid
   - output: Mapped_EXCLUSION
     name: gsm.core::RunQuery
     params:
