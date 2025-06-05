@@ -54,7 +54,7 @@ steps:
         subjid,
         studyid,
         invid,
-        array_to_string(array_agg(ietestcd), ';;;') AS ietestcd_concat,
+        array_to_string(array_agg(ietestcd), ',') AS ietestcd_concat,
         ie_violation
       FROM df
       GROUP BY studyid, invid, subjid, ie_violation"
@@ -92,8 +92,8 @@ steps:
       df: premapped
       strQuery: "SELECT *,
         CASE
-          WHEN ie_violation = 'Y' AND eligibility_criteria IS NULL THEN 'Ineligible -- IE only, check PD'
-          WHEN ie_violation IS NULL AND eligibility_criteria IS NOT NULL THEN 'Ineligible -- PD only, check IE'
+          WHEN ie_violation = 'Y' AND eligibility_criteria IS NULL THEN 'EDC I/E'
+          WHEN ie_violation IS NULL AND eligibility_criteria IS NOT NULL THEN 'Eligibility IPD'
           WHEN ie_violation = 'Y' AND eligibility_criteria IS NOT NULL THEN 'Ineligible, Both Criteria'
         ELSE 'Neither'
       END AS Source  FROM df WHERE enrollyn = 'Y'"
