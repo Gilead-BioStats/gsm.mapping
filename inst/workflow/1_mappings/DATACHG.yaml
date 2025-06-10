@@ -29,6 +29,7 @@ steps:
       .data: Mapped_SUBJ
       subjid: subjid
       subject_nsv: subject_nsv
+      studyid: studyid
   - output: Mapped_DATACHG
     name: dplyr::left_join
     params:
