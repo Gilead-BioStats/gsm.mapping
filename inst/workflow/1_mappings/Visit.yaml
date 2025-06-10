@@ -21,6 +21,6 @@ steps:
     name: gsm.core::RunQuery
     params:
       df: Raw_VISIT
-      strQuery: "SELECT subjid, visit_dt, visit_folder, invid FROM df"
+      strQuery: "SELECT studyid, subjid, visit_dt, visit_folder, invid FROM df"
 
 
