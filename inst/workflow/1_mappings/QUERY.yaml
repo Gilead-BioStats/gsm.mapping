@@ -27,6 +27,7 @@ steps:
     name: dplyr::select
     params:
       .data: Mapped_SUBJ
+      studyid: studyid
       subjid: subjid
       subject_nsv: subject_nsv
   - output: Mapped_QUERY
