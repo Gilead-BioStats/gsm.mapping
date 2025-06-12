@@ -24,6 +24,8 @@ spec:
   Mapped_ENROLL:
     studyid:
       type: character
+    subjectid:
+      type: character
     subjid:
       type: character
     invid:
