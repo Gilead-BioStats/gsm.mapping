@@ -17,6 +17,8 @@ spec:
     created:
       type: Date
   Mapped_SUBJ:
+    studyid:
+      type: character
     subjid:
       type: character
     subject_nsv:
