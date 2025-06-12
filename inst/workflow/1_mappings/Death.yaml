@@ -11,12 +11,25 @@ spec:
       type: character
     death_dt:
       type: Date
+  Mapped_STUDCOMP:
+    studyid:
+      type: character
+    invid:
+      type: character
+    subjid:
+      type: character
+    compyn:
+      type: character
+    compreas:
+      type: character
+    mincreated_dts:
+      type: timestamp
 steps:
   - name: gsm.core::RunQuery
     output: Temp_Death
     params:
       df: Raw_Death
-      strQuery: "SELECT subjid, death_dt FROM df
+      strQuery: "SELECT studuyid, subjid, death_dt FROM df
                 WHERE subjid IS NOT NULL AND death_dt IS NOT NULL"
   - name: gsm.endpoints::complete_death
     output: Mapped_Death

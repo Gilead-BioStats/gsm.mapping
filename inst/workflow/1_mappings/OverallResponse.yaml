@@ -21,5 +21,5 @@ steps:
     output: Mapped_OverallResponse
     params:
       df: Raw_OverallResponse
-      strQuery: "SELECT subjid, response_folder, ovrlresp, rs_dt FROM df
+      strQuery: "SELECT studyid, subjid, response_folder, ovrlresp, rs_dt FROM df
                 WHERE subjid IS NOT NULL"
