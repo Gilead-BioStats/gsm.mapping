@@ -18,7 +18,7 @@ spec:
       type: character
     pkperf:
       type: character
-  Raw_VISIT:
+  Mapped_VISIT:
     studyid:
       type: character
     subjid:
