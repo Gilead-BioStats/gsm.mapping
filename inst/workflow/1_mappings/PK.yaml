@@ -32,7 +32,7 @@ steps:
     name: dplyr::left_join
     params:
       x: Raw_PK
-      "y": Raw_VISIT
+      "y": Mapped_VISIT
       by:
         - studyid
         - subjid
