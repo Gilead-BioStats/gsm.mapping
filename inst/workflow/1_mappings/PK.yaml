@@ -24,7 +24,6 @@ spec:
     subjid:
       type: character
     visit:
-      source_col: foldername
       type: character
     visit_dt:
       type: Date
