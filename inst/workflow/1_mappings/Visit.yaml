@@ -1,6 +1,6 @@
 meta:
   Type: Mapped
-  ID: Visit
+  ID: VISIT
   Description: Visit Data Mapping
   Priority: 1
 spec:
@@ -11,7 +11,7 @@ spec:
       type: character
     visit_dt:
       type: Date
-    visit_folder:
+    visit:
       source_col: foldername
       type: character
     invid:
