@@ -16,5 +16,5 @@ steps:
     output: Mapped_Baseline
     params:
       df: Raw_Baseline
-      strQuery: "SELECT subjid, scan_dt FROM df
+      strQuery: "SELECT studyid, subjid, scan_dt FROM df
                 WHERE subjid IS NOT NULL"
