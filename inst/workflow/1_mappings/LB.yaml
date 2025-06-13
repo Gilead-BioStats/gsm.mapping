@@ -5,6 +5,8 @@ meta:
   Priority: 1
 spec:
   Raw_LB:
+    studyid:
+      type: character
     subjid:
       type: character
     toxgrg_nsv:
