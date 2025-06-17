@@ -20,5 +20,5 @@ steps:
       df: Raw_AntiCancer
       strQuery: "SELECT studyid, subjid, ANY_VALUE(cmtrt) as cmtrt, MIN(cmst_dt) AS cmst_dt FROM df
                 WHERE cmtrt != ''
-                GROUP BY subjid"
+                GROUP BY studyid, subjid"
 
