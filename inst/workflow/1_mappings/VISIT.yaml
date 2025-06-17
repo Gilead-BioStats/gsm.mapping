@@ -1,15 +1,17 @@
 meta:
   Type: Mapped
-  ID: Visit
+  ID: VISIT
   Description: Visit Data Mapping
   Priority: 1
 spec:
   Raw_VISIT:
+    studyid:
+      type: character
     subjid:
       type: character
     visit_dt:
       type: Date
-    visit_folder:
+    visit:
       source_col: foldername
       type: character
     invid:
@@ -19,6 +21,6 @@ steps:
     name: gsm.core::RunQuery
     params:
       df: Raw_VISIT
-      strQuery: "SELECT subjid, visit_dt, visit_folder, invid FROM df"
+      strQuery: "SELECT studyid, subjid, visit_dt, visit, invid FROM df"
 
 
