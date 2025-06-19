@@ -1,3 +1,13 @@
+# gsm.mapping 1.1.0
+
+## Notable Changes:
+
+**New Mapping Workflows:**
+A new workflow for inclusion/exclusion data has been added, denoted as 'IE'. PR [#69](https://github.com/Gilead-BioStats/gsm.mapping/pull/69)
+
+**Other Updates:**
+We have made small modifications to most mappings to include `studyid` and harmonize across other `gsm` ecosystem packages like `gsm.datasim`. PR [#73](https://github.com/Gilead-BioStats/gsm.mapping/pull/73)
+
 # gsm.mapping 1.0.2
 
 This patch release updates the description file to incorporate min version for `{gsm.core}`.
