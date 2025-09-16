@@ -1,3 +1,7 @@
+# gsm.mapping 1.1.1
+
+This patch release adds new contributor guidelines and standardized issue templates. 
+
 # gsm.mapping 1.1.0
 
 ## Notable Changes:
