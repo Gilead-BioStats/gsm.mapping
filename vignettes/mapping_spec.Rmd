@@ -84,16 +84,18 @@ final_table <- merge(raw_final_table, metadata_df, by = "Domain", all.x = TRUE)
 final_table <- final_table[, c("Domain", "Description", "Dataset", "Source_Variable", "Mapped_Variable", "Type")]
 
 
+# Sort by Domain to keep domains together
+final_table <- final_table[order(final_table$Domain, final_table$Dataset, final_table$Mapped_Variable), ]
+
 reactable::reactable(
   final_table,
-  groupBy = c("Domain"),
-  defaultPageSize = 30,
+  defaultPageSize = 50,
   searchable = TRUE,
   filterable = TRUE,
   sortable = TRUE,
   resizable = TRUE,
   showPageSizeOptions = TRUE,
-  pageSizeOptions = c(10, 20, 50, 100),
+  pageSizeOptions = c(25, 50, 100, 200),
   bordered = FALSE,
   highlight = TRUE,
   striped = TRUE,
