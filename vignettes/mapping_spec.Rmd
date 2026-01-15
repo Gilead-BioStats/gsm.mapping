@@ -45,7 +45,6 @@ domain_metadata <- lapply(mapping_files, function(file) {
   list(
     Domain = domain_name,
     Description = yaml_content$meta$Description %||% "No description available",
-    Priority = yaml_content$meta$Priority %||% NA,
     Type = yaml_content$meta$Type %||% "Unknown"
   )
 })
@@ -69,7 +68,6 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
         }),
       Mapped_Variable = names(variables),
       Type = sapply(variables, function(var) var$type),
-      Required = ifelse(sapply(variables, function(var) is.null(var$optional) || !var$optional), "Yes", "No"),
       stringsAsFactors = FALSE
     )
   }))
