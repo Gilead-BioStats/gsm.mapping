@@ -10,46 +10,47 @@ vignette: >
 
 # Mapping Workflows
 
-Currently, there exist 19 domains that have respective workflows that require mapping from source/raw data. 13 are general domains used across several packages and extensions:
-
--   AE
--   DATACHG
--   DATAENT
--   ENROLL
--   LB
--   PD
--   PK
--   QUERY
--   SDRGCOMP
--   SITE
--   STUDCOMP
--   STUDY
--   SUBJ
-
-And 6 are domains that are currently specific to the `gsm.endpoints` extension package:
-
-- Baseline
-- Consents
-- Death
-- OverallResponse
-- Randomization
-- Visit
-
-Each of the above 20 domains generally map directly 1-to-1 from a raw source, except `COUNTRY` which relies on the same dataset as `SUBJ`. The following variables/types from their respective domains is **REQUIRED** in the source/raw data:
-
-### Core Mappings
-```{r core, echo = FALSE, message = FALSE, error = FALSE}
+```{r discover_domains, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
 library(DT)
 library(gsm.core)
 library(gsm.mapping)
 library(dplyr)
 library(reactable)
+library(yaml)
+library(htmltools)
 
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
-                   "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
+# Automatically discover all mapping domains from the inst/workflow/1_mappings folder
+mapping_files <- list.files(
+  system.file("workflow/1_mappings", package = "gsm.mapping"), 
+  pattern = "\\.yaml$", 
+  full.names = TRUE
+)
+all_domains <- tools::file_path_sans_ext(basename(mapping_files))
+```
 
-# Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
-mappings_wf <- MakeWorkflowList(strNames = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+Currently, there exist **`r length(all_domains)` domains** that have respective workflows that require mapping from source/raw data. Each domain generally maps directly 1-to-1 from a raw source, except `COUNTRY` which relies on the same dataset as `SUBJ`. The following variables/types from their respective domains is **REQUIRED** in the source/raw data:
+
+### All Domain Mappings
+```{r all_mappings, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
+# Create Mapped Data Layer for all discovered domains
+mappings_wf <- MakeWorkflowList(strNames = all_domains, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+
+# Extract domain metadata from YAML files
+domain_metadata <- lapply(mapping_files, function(file) {
+  yaml_content <- yaml::read_yaml(file)
+  domain_name <- tools::file_path_sans_ext(basename(file))
+  
+  list(
+    Domain = domain_name,
+    Description = yaml_content$meta$Description %||% "No description available",
+    Priority = yaml_content$meta$Priority %||% NA,
+    Type = yaml_content$meta$Type %||% "Unknown"
+  )
+})
+
+# Convert metadata to data frame
+metadata_df <- do.call(rbind, lapply(domain_metadata, data.frame, stringsAsFactors = FALSE)) %>% 
+  dplyr::select(-Type)
 
 # Extract the nested variables and their types correctly
 raw_result <- lapply(names(mappings_wf), function(domain_name) {
@@ -58,6 +59,7 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
     variables <- domain[[var_name]]
     data.frame(
       Domain = domain_name,
+      Dataset = var_name,
       Source_Variable = sapply(seq_along(variables), function(i){
         ifelse(is.null(variables[[i]]$source_col), 
                names(variables)[i], 
@@ -65,102 +67,110 @@ raw_result <- lapply(names(mappings_wf), function(domain_name) {
         }),
       Mapped_Variable = names(variables),
       Type = sapply(variables, function(var) var$type),
+      Required = ifelse(sapply(variables, function(var) is.null(var$optional) || !var$optional), "Yes", "No"),
       stringsAsFactors = FALSE
     )
   }))
 })
+
 # Combine all domains into one table
 raw_final_table <- do.call(rbind, raw_result)
 row.names(raw_final_table) <- NULL
 
+# Merge with metadata
+final_table <- merge(raw_final_table, metadata_df, by = "Domain", all.x = TRUE)
+
+# Reorder columns for better presentation
+final_table <- final_table[, c("Domain", "Description", "Dataset", "Source_Variable", "Mapped_Variable", "Type")]
+
+
 reactable::reactable(
-  raw_final_table,
-  groupBy = "Domain",
-  defaultPageSize = 15,
+  final_table,
+  groupBy = c("Domain"),
+  defaultPageSize = 30,
   searchable = TRUE,
-  bordered = FALSE, # Removes unnecessary borders
-  highlight = TRUE, # Highlights row on hover
+  filterable = TRUE,
+  sortable = TRUE,
+  resizable = TRUE,
+  showPageSizeOptions = TRUE,
+  pageSizeOptions = c(10, 20, 50, 100),
+  bordered = FALSE,
+  highlight = TRUE,
+  striped = TRUE,
+  compact = TRUE,
+  wrap = FALSE,
   theme = reactable::reactableTheme(
     borderColor = "#dee2e6",
     backgroundColor = "white",
+    stripedColor = "#f8f9fa",
     style = list(
       fontFamily = "Arial, sans-serif",
-      fontSize = "14px"
+      fontSize = "12px"
     ),
     headerStyle = list(
       fontWeight = "bold",
-      fontSize = "16px",
-      backgroundColor = "#f8f9fa",
-      borderBottom = "2px solid #dee2e6"
-    )
-  ),
-  columns = list(
-    Domain = reactable::colDef(name = "Domain", style = list(fontWeight = "bold", fontSize = "15px")),
-    Source_Variable = reactable::colDef(name = "Source Variable"),
-    Mapped_Variable = reactable::colDef(name = "Mapped Variable"),
-    Type = reactable::colDef(name = "Type")
-  )
-)
-```
-
-
-## Endpoint Mappings
-
-```{r endpoints, echo = FALSE, message = FALSE, error = FALSE}
-endpoint_mappings <- c("Baseline", "Consents", "Death", "OverallResponse", "Randomization",
-                   "Visit", "STUDY", "STUDCOMP","SITE", "SUBJ")
-
-
-# Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
-mappings_ep <- MakeWorkflowList(strNames = endpoint_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
-
-# Extract the nested variables and their types correctly
-raw_result_ep <- lapply(names(mappings_ep), function(domain_name) {
-  domain <- mappings_ep[[domain_name]]$spec
-  do.call(rbind, lapply(names(domain), function(var_name) {
-    variables <- domain[[var_name]]
-    data.frame(
-      Domain = domain_name,
-      Source_Variable = sapply(seq_along(variables), function(i){
-        ifelse(is.null(variables[[i]]$source_col), 
-               names(variables)[i], 
-               variables[[i]]$source_col)
-        }),
-      Mapped_Variable = names(variables),
-      Type = sapply(variables, function(var) var$type),
-      stringsAsFactors = FALSE
-    )
-  }))
-})
-# Combine all domains into one table
-raw_final_table_ep <- do.call(rbind, raw_result_ep)
-row.names(raw_final_table_ep) <- NULL
-reactable::reactable(
-  raw_final_table_ep,
-  groupBy = "Domain",
-  defaultPageSize = 15,
-  searchable = TRUE,
-  bordered = FALSE, # Removes unnecessary borders
-  highlight = TRUE, # Highlights row on hover
-  theme = reactable::reactableTheme(
-    borderColor = "#dee2e6",
-    backgroundColor = "white",
-    style = list(
-      fontFamily = "Arial, sans-serif",
-      fontSize = "14px"
+      fontSize = "13px",
+      backgroundColor = "#e9ecef",
+      borderBottom = "2px solid #6c757d",
+      color = "#495057"
     ),
-    headerStyle = list(
+    groupHeaderStyle = list(
       fontWeight = "bold",
-      fontSize = "16px",
-      backgroundColor = "#f8f9fa",
-      borderBottom = "2px solid #dee2e6"
+      backgroundColor = "#f1f3f4",
+      borderBottom = "1px solid #dee2e6"
     )
   ),
   columns = list(
-    Domain = reactable::colDef(name = "Domain", style = list(fontWeight = "bold", fontSize = "15px")),
-    Source_Variable = reactable::colDef(name = "Source Variable"),
-    Mapped_Variable = reactable::colDef(name = "Mapped Variable"),
-    Type = reactable::colDef(name = "Type")
+    Domain = reactable::colDef(
+      name = "Domain", 
+      style = list(fontWeight = "bold", fontSize = "13px"),
+      minWidth = 160
+    ),
+    Description = reactable::colDef(
+      name = "Description",
+      style = list(fontSize = "11px", color = "#6c757d"),
+      cell = function(value) {
+        div(title = value, 
+            style = "cursor: help; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;", 
+            value)
+      }
+    ),
+    Dataset = reactable::colDef(
+      name = "Dataset", 
+      minWidth = 100,
+      style = list(fontSize = "12px"),
+      cell = function(value) {
+        div(title = value, 
+            style = "cursor: help; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;", 
+            value)
+      }
+    ),
+    Source_Variable = reactable::colDef(
+      name = "Source Variable", 
+      style = list(fontSize = "12px", fontFamily = "monospace")
+    ),
+    Mapped_Variable = reactable::colDef(
+      name = "Mapped Variable",
+      style = list(fontSize = "12px", fontFamily = "monospace")
+    ),
+    Type = reactable::colDef(
+      name = "Type", 
+      width = 90,
+      style = function(value) {
+        color <- switch(tolower(value),
+                       "character" = "#007bff",
+                       "integer" = "#28a745",
+                       "numeric" = "#28a745", 
+                       "date" = "#dc3545",
+                       "timestamp" = "#6f42c1",
+                       "#6c757d")
+        list(color = color, fontWeight = "500", fontSize = "11px")
+      }
+    )
+  ),
+  defaultColDef = reactable::colDef(
+    style = list(fontSize = "12px"),
+    headerStyle = list(fontSize = "12px")
   )
 )
 ```
