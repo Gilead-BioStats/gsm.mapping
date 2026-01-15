@@ -30,7 +30,7 @@ all_domains <- tools::file_path_sans_ext(basename(mapping_files))
 
 Currently, there exist **`r length(all_domains)` domains** that have mapping specifications for transforming raw/source data into standardized formats for GSM workflows. Each mapping specification defines the required variables, their data types, and transformation rules needed to create consistent, analysis-ready datasets.
 
-The table below shows all available domain mappings with their specifications. Use the search and filter functionality to find specific domains or variable types. Hover over truncated descriptions and dataset names to see the full text.
+The table below shows all available domain mappings with their specifications. Use the domain dropdown filter to select specific domains, or use the search and filter functionality to find specific variable types. Hover over truncated descriptions and dataset names to see the full text.
 
 ### All Domain Mappings
 ```{r all_mappings, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
@@ -86,8 +86,10 @@ final_table <- final_table %>%
   dplyr::arrange(Domain)
 
 
-reactable::reactable(
+# Create the table with an elementId for JavaScript filtering
+table_widget <- reactable::reactable(
   final_table,
+  elementId = "domain-mapping-table",
   defaultPageSize = 50,
   searchable = TRUE,
   filterable = TRUE,
@@ -125,7 +127,19 @@ reactable::reactable(
     Domain = reactable::colDef(
       name = "Domain", 
       style = list(fontWeight = "bold", fontSize = "13px"),
-      minWidth = 160
+      minWidth = 160,
+      filterInput = function(values, name) {
+        tags$select(
+          # Add "All" option at the beginning
+          tags$option(value = "", "All Domains"),
+          # Add unique domain options
+          lapply(unique(sort(values)), function(value) {
+            tags$option(value = value, value)
+          }),
+          onchange = sprintf("Reactable.setFilter('%s', '%s', this.value)", 
+                           "domain-mapping-table", name)
+        )
+      }
     ),
     Description = reactable::colDef(
       name = "Description",
@@ -174,4 +188,7 @@ reactable::reactable(
     headerStyle = list(fontSize = "12px")
   )
 )
+
+# Display the table
+table_widget
 ```
