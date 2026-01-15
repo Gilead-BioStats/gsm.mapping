@@ -13,7 +13,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/Gilead-BioStats/gsm.mapping/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/Gilead-BioStats/gsm.mapping/blob/dev/DESCRIPTION)
 
 Wildfire J, Maxwell L, Zhu Z (2026). *gsm.mapping: Good Statistical
 Monitoring Mapping*. R package version 1.1.1,
