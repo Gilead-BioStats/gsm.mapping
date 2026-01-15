@@ -81,11 +81,10 @@ row.names(raw_final_table) <- NULL
 final_table <- merge(raw_final_table, metadata_df, by = "Domain", all.x = TRUE)
 
 # Reorder columns for better presentation
-final_table <- final_table[, c("Domain", "Description", "Dataset", "Source_Variable", "Mapped_Variable", "Type")]
+final_table <- final_table %>%
+  dplyr::select(Domain, Description, Dataset, Source_Variable, Mapped_Variable, Type) %>%
+  dplyr::arrange(Domain)
 
-
-# Sort by Domain to keep domains together
-final_table <- final_table[order(final_table$Domain, final_table$Dataset, final_table$Mapped_Variable), ]
 
 reactable::reactable(
   final_table,
