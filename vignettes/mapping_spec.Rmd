@@ -44,14 +44,12 @@ domain_metadata <- lapply(mapping_files, function(file) {
   
   list(
     Domain = domain_name,
-    Description = yaml_content$meta$Description %||% "No description available",
-    Type = yaml_content$meta$Type %||% "Unknown"
+    Description = yaml_content$meta$Description %||% "No description available"
   )
 })
 
 # Convert metadata to data frame
-metadata_df <- do.call(rbind, lapply(domain_metadata, data.frame, stringsAsFactors = FALSE)) %>% 
-  dplyr::select(-Type)
+metadata_df <- do.call(rbind, lapply(domain_metadata, data.frame, stringsAsFactors = FALSE))
 
 # Extract the nested variables and their types correctly
 raw_result <- lapply(names(mappings_wf), function(domain_name) {
