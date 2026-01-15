@@ -9,8 +9,9 @@ their data types, and transformation rules needed to create consistent,
 analysis-ready datasets.
 
 The table below shows all available domain mappings with their
-specifications. Use the search and filter functionality to find specific
-domains or variable types. Hover over truncated descriptions and dataset
-names to see the full text.
+specifications. Use the domain dropdown filter to select specific
+domains, or use the search and filter functionality to find specific
+variable types. Hover over truncated descriptions and dataset names to
+see the full text.
 
 #### All Domain Mappings
