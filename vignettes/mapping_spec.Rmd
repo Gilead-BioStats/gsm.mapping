@@ -44,7 +44,9 @@ domain_metadata <- lapply(mapping_files, function(file) {
   
   list(
     Domain = domain_name,
-    Description = yaml_content$meta$Description %||% "No description available"
+    Description = ifelse(!is.null(yaml_content$meta$Description), 
+                         yaml_content$meta$Description, 
+                         "No description available")
   )
 })
 
