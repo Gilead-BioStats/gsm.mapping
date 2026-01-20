@@ -1,5 +1,4 @@
-library(gsm.mapping)
-library(gsm.reporting)
+library(yaml)
 
 set.seed(123)
 
