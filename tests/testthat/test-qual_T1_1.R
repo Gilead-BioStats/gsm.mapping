@@ -13,8 +13,9 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   mapped_p1_yaml <- map(
     priority1,
     ~ read_yaml(
-      test_path(
-        "qual_workflows",
+      file.path(
+        system.file(package = "gsm.mapping"),
+        "workflow",
         "1_mappings",
         .x
       )
@@ -55,8 +56,9 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   mapped_p2_yaml <- map(
     priority2,
     ~ read_yaml(
-      test_path(
-        "qual_workflows",
+      file.path(
+        system.file(package = "gsm.mapping"),
+        "workflow",
         "1_mappings",
         .x
       )
@@ -92,8 +94,9 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   mapped_p3_yaml <- map(
     priority3,
     ~ read_yaml(
-      test_path(
-        "qual_workflows",
+      file.path(
+        system.file(package = "gsm.mapping"),
+        "workflow",
         "1_mappings",
         .x
       )
