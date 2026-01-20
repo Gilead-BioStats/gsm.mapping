@@ -44,19 +44,12 @@ lData <- list(
 
 ## Data with missing values (15% NA's)
 
-## ONLY USED IN T2_2
-lData_missing_values <- map(lData, function(df) {
-  df %>%
-    mutate(
-      across(
-        !contains("GroupID"),
-        ~ replace(., sample(row_number(), size = .15 * n()), NA)
-      )
-    )
-})
+## specify domains
+domains <- gsub("Raw_", "", names(lData))
 
 ## Get Mapped data
 mappings_wf <- MakeWorkflowList(
+  strNames = domains,
   strPath = file.path(system.file(package = "gsm.mapping"), "workflow", "1_mappings")
 )
 
