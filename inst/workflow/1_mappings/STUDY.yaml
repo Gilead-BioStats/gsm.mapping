@@ -26,6 +26,8 @@ spec:
       type: Date
     est_lpfv:
       type: Date
+    db_lock_dt:
+      type: Date
     therapeutic_area:
       type: character
     protocol_indication:
