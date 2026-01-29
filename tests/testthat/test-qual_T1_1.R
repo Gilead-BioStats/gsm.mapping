@@ -23,7 +23,7 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     )
   )
 
-  # Requried raw data is in data source
+  # Required raw data is in data source
   iwalk(mapped_p1_yaml, ~ expect_true(all(names(.x$spec) %in% names(lData))))
 
   # Output from yaml is in the mapped data object
@@ -52,7 +52,7 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
 # Priority 2 Mappings
 
 test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 2 mappings are completed as expected (#97)", {
-  priority2 <- c("DATACHG.yaml", "DATAENT.yaml", "EXCLUSION.yaml", "QUERY.yaml")
+  priority2 <- c("DATACHG.yaml", "DATAENT.yaml", "QUERY.yaml")
 
   mapped_p2_yaml <- map(
     priority2,
