@@ -3,7 +3,6 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   priority1 <- c(
     "AE.yaml",
     "ENROLL.yaml",
-    "IE.yaml",
     "LB.yaml",
     "PD.yaml",
     "SDRGCOMP.yaml",
@@ -110,14 +109,19 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   )
 
   temp_objs <- c(
-    "Temp_CTMSStudyWide",
-    "Temp_CTMSStudy",
-    "Temp_CTMSplanned",
-    "Temp_StudyCountsWide",
-    "Temp_CountTargetsWide",
-    "Temp_CountTargetsWide_addsite",
-    "Temp_CountTargetsWide_addsitepts",
-    "Temp_CountTargetsPercs"
+    "Temp_CountryCountsWide", # COUNTRY
+    "Temp_CTMSSiteWide", # SITE
+    "Temp_CTMSSite", # SITE
+    "Temp_SiteCountsWide", # SITE
+    "Temp_SiteCounts", # SITE
+    "Temp_CTMSStudyWide",  # STUDY
+    "Temp_CTMSStudy", # STUDY
+    "Temp_CTMSplanned", # STUDY
+    "Temp_StudyCountsWide", # STUDY
+    "Temp_CountTargetsWide", # STUDY
+    "Temp_CountTargetsWide_addsite", # STUDY
+    "Temp_CountTargetsWide_addsitepts", # STUDY
+    "Temp_CountTargetsPercs" # STUDY
   )
 
   iwalk(
