@@ -1,5 +1,10 @@
 # Changelog
 
+## gsm.mapping 1.1.2
+
+This patch release adds `db_lock_dt` to spec of `STUDY.yaml` and makes
+wording/phrasing changes for `EXCLUSION.yaml`.
+
 ## gsm.mapping 1.1.1
 
 This patch release adds new contributor guidelines and standardized
