@@ -110,15 +110,14 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   )
 
   temp_objs <- c(
-    "Temp_CountryCountsWide",
-    "Temp_CTMSSiteWide",
-    "Temp_CTMSSite",
-    "Temp_SiteCountsWide",
-    "Temp_SiteCounts",
     "Temp_CTMSStudyWide",
     "Temp_CTMSStudy",
+    "Temp_CTMSplanned",
     "Temp_StudyCountsWide",
-    "Temp_StudyCounts"
+    "Temp_CountTargetsWide",
+    "Temp_CountTargetsWide_addsite",
+    "Temp_CountTargetsWide_addsitepts",
+    "Temp_CountTargetsPercs"
   )
 
   iwalk(
