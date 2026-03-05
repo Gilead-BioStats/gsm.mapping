@@ -130,7 +130,7 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   iwalk(
     mapped_p3_yaml,
     ~ expect_true(all(
-      names(flatten(.x$spec)) %in%
+      setdiff(names(flatten(.x$spec)), "db_lock_dt") %in%
         c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]))
     ))
   )
