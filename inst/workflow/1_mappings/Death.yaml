@@ -77,7 +77,8 @@ steps:
       strQuery: "SELECT COALESCE(df.studyid, df2.studyid) as studyid,
                         COALESCE(df.subjid, df2.subjid) as subjid,
                         df2.death_dt,
-                        CASE WHEN df2.death_dt IS NOT NULL THEN 1 ELSE 0 END as death
+                        CASE WHEN df2.death_dt IS NOT NULL THEN 1 ELSE 0 END as death,
+                        df2.death_days
                 FROM df
                 FULL OUTER JOIN df2 ON df.studyid = df2.studyid AND df.subjid = df2.subjid"
   - name: gsm.core::RunQuery
@@ -104,7 +105,7 @@ steps:
                         COALESCE(df.subjid, df2.subjid) as subjid,
                         df.death_dt,
                         df.death,
-                        df.death_day,
+                        df.death_days,
                         df2.pd_date
                 FROM df
                 FULL OUTER JOIN df2 ON df.studyid = df2.studyid AND df.subjid = df2.subjid"
