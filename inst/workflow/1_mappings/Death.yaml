@@ -45,7 +45,6 @@ steps:
   - name: dplyr::left_join
     output: Raw_Death_Rand
     params:
-      params:
       x: Raw_Death
       "y": Mapped_Randomization
       by:
