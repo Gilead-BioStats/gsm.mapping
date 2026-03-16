@@ -30,7 +30,6 @@ spec:
     subjid:
       type: character
     response_folder:
-      source_col: foldername
       type: character
     ovrlresp:
       type: character
@@ -70,18 +69,22 @@ steps:
       strQuery: "SELECT studyid, subjid, compreas
                 FROM df
                 WHERE compreas = 'DEATH'"
-  - name: gsm.core::RunQuery
+  - name: dplyr::full_join
     output: Death_Joined
     params:
-      df: Temp_Death_Filtered
-      df2: Temp_Death2
-      strQuery: "SELECT COALESCE(df.studyid, df2.studyid) as studyid,
-                        COALESCE(df.subjid, df2.subjid) as subjid,
-                        df2.death_dt,
-                        CASE WHEN df2.death_dt IS NOT NULL THEN 1 ELSE 0 END as death,
-                        df2.death_days
-                FROM df
-                FULL OUTER JOIN df2 ON df.studyid = df2.studyid AND df.subjid = df2.subjid"
+      x: Temp_Death_Filtered
+      "y": Temp_Death2
+      by:
+        - studyid
+        - subjid
+  - name: gsm.core::RunQuery
+    output: Death_Joined_Final
+    params:
+      df: Death_Joined
+      strQuery: "SELECT studyid, subjid, death_dt,
+                        CASE WHEN death_dt IS NOT NULL THEN 1 ELSE 0 END as death,
+                        death_days
+                FROM df"
   - name: gsm.core::RunQuery
     output: PD_Data
     params:
@@ -97,17 +100,12 @@ steps:
       strQuery: "SELECT studyid, subjid, pd_date
                 FROM df
                 WHERE rn = 1"
-  - name: gsm.core::RunQuery
+  - name: dplyr::full_join
     output: Mapped_Death
     params:
-      df: Death_Joined
-      df2: PD_Filtered
-      strQuery: "SELECT COALESCE(df.studyid, df2.studyid) as studyid,
-                        COALESCE(df.subjid, df2.subjid) as subjid,
-                        df.death_dt,
-                        df.death,
-                        df.death_days,
-                        df2.pd_date
-                FROM df
-                FULL OUTER JOIN df2 ON df.studyid = df2.studyid AND df.subjid = df2.subjid"
+      x: Death_Joined_Final
+      "y": PD_Filtered
+      by:
+        - studyid
+        - subjid
 

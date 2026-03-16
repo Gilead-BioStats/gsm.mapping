@@ -39,7 +39,11 @@ lData <- list(
     rename(visit = foldername),
   Raw_IE = lSource$Raw_IE,
   Raw_VISIT = lSource$Raw_VISIT %>%
-    rename(visit = foldername)
+    rename(visit = foldername),
+  Raw_Death = lSource$Raw_DEATH,
+  Raw_OverallResponse = lSource$Raw_OverallResponse %>%
+    rename(response_folder = foldername),
+  Raw_Randomization = lSource$Raw_Randomization
 )
 
 ## Data with missing values (15% NA's)
