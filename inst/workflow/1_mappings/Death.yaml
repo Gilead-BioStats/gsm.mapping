@@ -37,6 +37,8 @@ spec:
     rs_dt:
       type: Date
   Mapped_Randomization:
+    studyid:
+      type: character
     subjid:
       type: character
     rgmn_dt:
@@ -48,6 +50,7 @@ steps:
       x: Raw_Death
       "y": Mapped_Randomization
       by:
+        - studyid
         - subjid
   - name: gsm.core::RunQuery
     output: Temp_Death
