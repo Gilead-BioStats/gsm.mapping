@@ -54,8 +54,7 @@ steps:
     output: Temp_Death
     params:
       df: Raw_Death_Rand
-      strQuery: "SELECT *, DATEDIFF('day', rgmn_dt, death_dt) as death_days FROM df
-                 WHERE death_dt IS NOT NULL AND DATEDIFF('day', rgmn_dt, death_dt) <= 90"
+      strQuery: "SELECT *, DATEDIFF('day', rgmn_dt, death_dt) as death_days FROM df"
   - name: gsm.core::RunQuery
     output: Temp_Death2
     params:
