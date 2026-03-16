@@ -69,13 +69,13 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
 
   iwalk(
     mapped_p2_yaml,
-    ~ expect_true(all(names(.x$spec) %in% c(names(lData), "Mapped_SUBJ")))
+    ~ expect_true(all(names(.x$spec) %in% c(names(lData), "Mapped_SUBJ", "Mapped_Randomization", "Mapped_OverallResponse", "Mapped_STUDCOMP")))
   )
 
   iwalk(
     mapped_p2_yaml,
     ~ expect_true(
-      flatten(.x$steps)$output %in% c(names(mapped_data), "Temp_SubjectLookup")
+      flatten(.x$steps)$output %in% c(names(mapped_data), "Temp_SubjectLookup", "Raw_Death_Rand")
     )
   )
 
@@ -83,7 +83,8 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     mapped_p2_yaml,
     ~ expect_true(all(
       names(flatten(.x$spec)) %in%
-        c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]))
+        c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]), names(lData["Raw_Randomization"][[1]]),
+          names(lData["Raw_OverallResponse"][[1]]), names(lData["Raw_STUDCOMP"][[1]]))
     ))
   )
 })
