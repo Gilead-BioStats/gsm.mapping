@@ -1,4 +1,4 @@
-test_that("CalculatePercentage calculates percentage and formats correctly", {
+test_that("CalculatePercentage calculates percentage and formats correctly (#noissue)", {
   # Sample data
   sample_data <- data.frame(
     current = c(50, 20, 30),
