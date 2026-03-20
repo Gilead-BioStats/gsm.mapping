@@ -1,4 +1,4 @@
-test_that("Ingest works with optional columns", {
+test_that("Ingest works with optional columns (#2)", {
   lSourceData <- list(
     df1 = data.frame(
       a = 1:10,
