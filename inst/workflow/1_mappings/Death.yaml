@@ -66,9 +66,9 @@ steps:
     output: Temp_Death_Filtered
     params:
       df: Mapped_STUDCOMP
-      strQuery: "SELECT studyid, subjid, compreas
+      strQuery: "SELECT *
                 FROM df
-                WHERE compreas = 'DEATH'"
+                WHERE compreas = 'Death'"
   - name: dplyr::full_join
     output: Death_Joined
     params:
@@ -81,18 +81,18 @@ steps:
     output: Death_Joined_Final
     params:
       df: Death_Joined
-      strQuery: "SELECT studyid, subjid, death_dt,
-                        CASE WHEN death_dt IS NOT NULL THEN 1 ELSE 0 END as death,
+      strQuery: "SELECT *,
+                        death = 1,
                         death_days
                 FROM df"
   - name: gsm.core::RunQuery
     output: PD_Data
     params:
       df: Mapped_OverallResponse
-      strQuery: "SELECT studyid, subjid, rs_dt as pd_date,
+      strQuery: "SELECT *,
                         ROW_NUMBER() OVER (PARTITION BY subjid ORDER BY rs_dt) as rn
                 FROM df
-                WHERE ovrlresp = 'PD' AND rs_dt IS NOT NULL"
+                WHERE ovrlresp = 'PD' AND rs_dt IS NOT NULL AND rn = 1"
   - name: gsm.core::RunQuery
     output: PD_Filtered
     params:
