@@ -43,59 +43,16 @@ spec:
     rgmn_dt:
       type: Date
 steps:
-  - name: dplyr::left_join
-    output: Raw_Death_Rand
-    params:
-      x: Raw_Death
-      "y": Mapped_Randomization
-      by:
-        - studyid
-        - subjid
   - name: gsm.core::RunQuery
     output: Temp_Death
     params:
-      df: Raw_Death_Rand
-      strQuery: "SELECT studyid, subjid, death_dt, DATEDIFF('day', rgmn_dt, death_dt) as death_dy
-                FROM df
+      df: Raw_Death
+      strQuery: "SELECT studyid, subjid, death_dt FROM df
                 WHERE subjid IS NOT NULL AND death_dt IS NOT NULL"
-  - name: gsm.core::RunQuery
-    output: Temp_Death_Filtered
-    params:
-      df: Mapped_STUDCOMP
-      strQuery: "SELECT studyid, invid, subjid, compyn, mincreated_dts
-                FROM df
-                WHERE compreas = 'Death'"
-  - name: dplyr::full_join
-    output: Death_Joined
-    params:
-      x: Temp_Death_Filtered
-      "y": Temp_Death
-      by:
-        - studyid
-        - subjid
-  - name: gsm.core::RunQuery
-    output: Death_Joined_Final
-    params:
-      df: Death_Joined
-      strQuery: "SELECT *, 1 as death
-                FROM df"
-  - name: gsm.core::RunQuery
-    output: PD_Filtered
-    params:
-      df: Mapped_OverallResponse
-      strQuery: "SELECT studyid, subjid, rs_dt AS pd_date
-                FROM (
-                  SELECT *, ROW_NUMBER() OVER (PARTITION BY subjid ORDER BY rs_dt) as rn
-                  FROM df
-                  WHERE ovrlresp = 'PD' AND rs_dt IS NOT NULL
-                )
-                WHERE rn = 1"
-  - name: dplyr::full_join
+  - name: gsm.endpoints::complete_death
     output: Mapped_Death
     params:
-      x: Death_Joined_Final
-      "y": PD_Filtered
-      by:
-        - studyid
-        - subjid
-
+      dfDeath: Temp_Death
+      dfStudyCompletion: Mapped_STUDCOMP
+      dfOverallResponse: Mapped_OverallResponse
+      dfRandomization: Mapped_Randomization
