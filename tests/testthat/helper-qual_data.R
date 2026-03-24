@@ -42,8 +42,7 @@ lData <- list(
     rename(visit = foldername),
   Raw_Death = lSource$Raw_Death,
   Raw_OverallResponse = lSource$Raw_OverallResponse %>%
-    rename(response_folder = foldername) %>%
-    mutate(pd_date = rs_dt),
+    rename(response_folder = foldername),
   Raw_Randomization = lSource$Raw_Randomization
 )
 

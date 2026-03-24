@@ -33,8 +33,7 @@ spec:
       type: character
     ovrlresp:
       type: character
-    pd_date:
-      source_col: rs_dt
+    rs_dt:
       type: Date
   Mapped_Randomization:
     studyid:
@@ -84,11 +83,11 @@ steps:
     output: PD_Filtered
     params:
       df: Mapped_OverallResponse
-      strQuery: "SELECT studyid, subjid, pd_date
+      strQuery: "SELECT studyid, subjid, rs_dt AS pd_date
                 FROM (
-                  SELECT *, ROW_NUMBER() OVER (PARTITION BY subjid ORDER BY pd_date) as rn
+                  SELECT *, ROW_NUMBER() OVER (PARTITION BY subjid ORDER BY rs_dt) as rn
                   FROM df
-                  WHERE ovrlresp = 'PD' AND pd_date IS NOT NULL
+                  WHERE ovrlresp = 'PD' AND rs_dt IS NOT NULL
                 )
                 WHERE rn = 1"
   - name: dplyr::full_join
