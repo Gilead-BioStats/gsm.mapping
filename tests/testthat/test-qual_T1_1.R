@@ -75,7 +75,7 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   iwalk(
     mapped_p2_yaml,
     ~ expect_true(
-      flatten(.x$steps)$output %in% c(names(mapped_data), "Temp_SubjectLookup", "Raw_Death_Rand")
+      flatten(.x$steps)$output %in% c(names(mapped_data), "Temp_SubjectLookup", "Temp_Death")
     )
   )
 
