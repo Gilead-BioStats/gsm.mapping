@@ -84,7 +84,7 @@ complete_death <- function(
     "studyid",
     "subjid",
     "death_dt",
-    chrDeathDayCol,
+    "death_dy",
     "death",
     "pd_date"
   )
