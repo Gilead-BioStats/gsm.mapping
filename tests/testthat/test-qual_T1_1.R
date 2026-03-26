@@ -1,5 +1,5 @@
 # Priority 1 mappings
-test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 1 mappings are completed as expected (#97)", {
+test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 1 mappings are completed as expected (#97, #114)", {
   priority1 <- c(
     "AE.yaml",
     "ENROLL.yaml",
@@ -7,7 +7,9 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     "PD.yaml",
     "SDRGCOMP.yaml",
     "STUDCOMP.yaml",
-    "SUBJ.yaml"
+    "SUBJ.yaml",
+    "OverallResponse.yaml",
+    "Randomization.yaml"
   )
 
   mapped_p1_yaml <- map(
@@ -50,8 +52,8 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
 
 # Priority 2 Mappings
 
-test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 2 mappings are completed as expected (#97)", {
-  priority2 <- c("DATACHG.yaml", "DATAENT.yaml", "QUERY.yaml")
+test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 2 mappings are completed as expected (#97, #114)", {
+  priority2 <- c("DATACHG.yaml", "DATAENT.yaml", "QUERY.yaml", "Death.yaml")
 
   mapped_p2_yaml <- map(
     priority2,
@@ -67,13 +69,13 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
 
   iwalk(
     mapped_p2_yaml,
-    ~ expect_true(all(names(.x$spec) %in% c(names(lData), "Mapped_SUBJ")))
+    ~ expect_true(all(names(.x$spec) %in% c(names(lData), "Mapped_SUBJ", "Mapped_Randomization", "Mapped_OverallResponse", "Mapped_STUDCOMP")))
   )
 
   iwalk(
     mapped_p2_yaml,
     ~ expect_true(
-      flatten(.x$steps)$output %in% c(names(mapped_data), "Temp_SubjectLookup")
+      flatten(.x$steps)$output %in% c(names(mapped_data), "Temp_SubjectLookup", "Temp_Death")
     )
   )
 
@@ -81,7 +83,8 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     mapped_p2_yaml,
     ~ expect_true(all(
       names(flatten(.x$spec)) %in%
-        c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]))
+        c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]), names(lData["Raw_Randomization"][[1]]),
+          names(lData["Raw_OverallResponse"][[1]]), names(lData["Raw_STUDCOMP"][[1]]))
     ))
   )
 })
