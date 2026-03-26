@@ -83,7 +83,7 @@ complete_death <- function(
   select_cols <- c(
     "studyid",
     "subjid",
-    chrDeathDateCol,
+    "death_dt",
     chrDeathDayCol,
     "death",
     "pd_date"
