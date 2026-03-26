@@ -48,7 +48,6 @@ complete_death <- function(
   dfOverallResponse,
   dfRandomization,
   chrDeathDateCol = "death_dt",
-  chrDeathDayCol = "death_dy",
   chrStudyDiscontinuationReasonCol = "compreas",
   chrDeathResponse = "Death",
   chrResponseCol = "ovrlresp",
@@ -83,8 +82,8 @@ complete_death <- function(
   select_cols <- c(
     "studyid",
     "subjid",
-    chrDeathDateCol,
-    chrDeathDayCol,
+    "death_dt",
+    "death_dy",
     "death",
     "pd_date"
   )
