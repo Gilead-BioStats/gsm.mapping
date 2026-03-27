@@ -18,7 +18,7 @@ testthat::test_that("verify complete_death() internal study_comp filter is worki
   expect_identical(sort(original_code$subjid), sort(double_code))
 })
 
-testthat::test_that("verify complete_death() internal reponse filter is working properly", {
+testthat::test_that("verify complete_death() internal response filter is working properly", {
   original_code <- mapped_data$Mapped_OverallResponse %>%
     filter(
       .data$ovrlresp == "PD",
