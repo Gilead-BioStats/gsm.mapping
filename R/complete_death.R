@@ -3,6 +3,7 @@
 #' @param dfDeath `data.frame` death data frame with mapped names
 #' @param dfStudyCompletion `data.frame` study completion data frame with mapped names
 #' @param dfOverallResponse `data.frame` overall response data frame with mapped names
+#' @param dfRandomization `data.frame` randomization data frame with mapped names
 #' @param chrDeathDateCol `character` name of column in `dfDeath` that contains
 #'   the death date. Default: `"death_dt"`.
 #' @param chrStudyDiscontinuationReasonCol `character` name of column in `dfStudyCompletion` that contains
@@ -13,6 +14,8 @@
 #' @param chrPDResponse `character` value of `ovrlresp` in `dfOverallResponse` that indicates PD. Default is "PD"
 #' @param chrResponseDateCol `character` name of column in `dfOverallResponse` that contains
 #'   the overall response date. Default: `"rs_dt"`.
+#' @param chrRandomizationDateCol `character` name of column in `dfRandomization` that contains the randomization date.
+#'   Default: `"rgmn_dt"`.
 #'
 #' @return a `data.frame` combining death status and first PD status
 #' @export
