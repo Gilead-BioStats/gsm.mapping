@@ -57,26 +57,26 @@ complete_death <- function(
 ) {
   death <- dfStudyCompletion %>%
     filter(
-      .data[[ chrStudyDiscontinuationReasonCol ]] == chrDeathResponse
+      .data[[chrStudyDiscontinuationReasonCol]] == chrDeathResponse
     ) %>%
     full_join(dfDeath) %>%
     left_join(dfRandomization, by = c("studyid", "subjid")) %>%
     mutate(
-      death_dt = .data[[ chrDeathDateCol ]],
-      death_dy = as.numeric(.data[[ chrDeathDateCol ]] - .data[[ chrRandomizationDateCol ]]),
+      death_dt = .data[[chrDeathDateCol]],
+      death_dy = as.numeric(.data[[chrDeathDateCol]] - .data[[chrRandomizationDateCol]]),
       death = TRUE
     )
 
   pd <- dfOverallResponse %>%
     filter(
-      .data[[ chrResponseCol ]] == chrPDResponse,
-      !is.na(.data[[ chrResponseDateCol ]])
+      .data[[chrResponseCol]] == chrPDResponse,
+      !is.na(.data[[chrResponseDateCol]])
     ) %>%
     group_by(.data$subjid) %>%
-    slice(which.min(.data[[ chrResponseDateCol ]])) %>%
+    slice(which.min(.data[[chrResponseDateCol]])) %>%
     ungroup() %>%
     mutate(
-      pd_date = .data[[ chrResponseDateCol ]]
+      pd_date = .data[[chrResponseDateCol]]
     )
 
   select_cols <- c(
@@ -119,4 +119,3 @@ complete_death <- function(
 
   return(output)
 }
-

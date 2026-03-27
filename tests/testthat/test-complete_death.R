@@ -143,7 +143,7 @@ test_that("complete_death handles missing randomization dates gracefully", {
 
   dfRandomization <- data.frame(
     studyid = "STUDY001",
-    subjid = "SUBJ002",  # Different subject - no match
+    subjid = "SUBJ002", # Different subject - no match
     rgmn_dt = as.Date("2023-01-01")
   )
 
