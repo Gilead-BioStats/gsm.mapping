@@ -23,7 +23,7 @@ Imports:
     dplyr,
     duckdb,
     glue, 
-    gsm.core (>= 1.1.2),
+    gsm.core (>= 1.2.0),
     log4r,
     purrr,
     stringr,
