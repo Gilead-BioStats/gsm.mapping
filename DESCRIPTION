@@ -30,7 +30,7 @@ Imports:
     tidyr,
     yaml
 Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@gsm.core-v1.2.0-rc
+    gsm.core=Gilead-BioStats/gsm.core@main
 Suggests:
     DT,
     knitr,
