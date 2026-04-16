@@ -3,6 +3,7 @@
 #' @param dfDeath `data.frame` death data frame with mapped names
 #' @param dfStudyCompletion `data.frame` study completion data frame with mapped names
 #' @param dfOverallResponse `data.frame` overall response data frame with mapped names
+#' @param dfRandomization `data.frame` randomization data frame with mapped names
 #' @param chrDeathDateCol `character` name of column in `dfDeath` that contains
 #'   the death date. Default: `"death_dt"`.
 #' @param chrStudyDiscontinuationReasonCol `character` name of column in `dfStudyCompletion` that contains
@@ -13,6 +14,8 @@
 #' @param chrPDResponse `character` value of `ovrlresp` in `dfOverallResponse` that indicates PD. Default is "PD"
 #' @param chrResponseDateCol `character` name of column in `dfOverallResponse` that contains
 #'   the overall response date. Default: `"rs_dt"`.
+#' @param chrRandomizationDateCol `character` name of column in `dfRandomization` that contains the randomization date.
+#'   Default: `"rgmn_dt"`.
 #'
 #' @return a `data.frame` combining death status and first PD status
 #' @export
@@ -57,26 +60,26 @@ complete_death <- function(
 ) {
   death <- dfStudyCompletion %>%
     filter(
-      .data[[ chrStudyDiscontinuationReasonCol ]] == chrDeathResponse
+      .data[[chrStudyDiscontinuationReasonCol]] == chrDeathResponse
     ) %>%
     full_join(dfDeath) %>%
     left_join(dfRandomization, by = c("studyid", "subjid")) %>%
     mutate(
-      death_dt = .data[[ chrDeathDateCol ]],
-      death_dy = as.numeric(.data[[ chrDeathDateCol ]] - .data[[ chrRandomizationDateCol ]]),
+      death_dt = .data[[chrDeathDateCol]],
+      death_dy = as.numeric(.data[[chrDeathDateCol]] - .data[[chrRandomizationDateCol]]),
       death = TRUE
     )
 
   pd <- dfOverallResponse %>%
     filter(
-      .data[[ chrResponseCol ]] == chrPDResponse,
-      !is.na(.data[[ chrResponseDateCol ]])
+      .data[[chrResponseCol]] == chrPDResponse,
+      !is.na(.data[[chrResponseDateCol]])
     ) %>%
     group_by(.data$subjid) %>%
-    slice(which.min(.data[[ chrResponseDateCol ]])) %>%
+    slice(which.min(.data[[chrResponseDateCol]])) %>%
     ungroup() %>%
     mutate(
-      pd_date = .data[[ chrResponseDateCol ]]
+      pd_date = .data[[chrResponseDateCol]]
     )
 
   select_cols <- c(
@@ -119,4 +122,3 @@ complete_death <- function(
 
   return(output)
 }
-

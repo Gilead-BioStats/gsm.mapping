@@ -18,7 +18,7 @@ testthat::test_that("verify complete_death() internal study_comp filter is worki
   expect_identical(sort(original_code$subjid), sort(double_code))
 })
 
-testthat::test_that("verify complete_death() internal reponse filter is working properly", {
+testthat::test_that("verify complete_death() internal response filter is working properly", {
   original_code <- mapped_data$Mapped_OverallResponse %>%
     filter(
       .data$ovrlresp == "PD",
@@ -143,7 +143,7 @@ test_that("complete_death handles missing randomization dates gracefully", {
 
   dfRandomization <- data.frame(
     studyid = "STUDY001",
-    subjid = "SUBJ002",  # Different subject - no match
+    subjid = "SUBJ002", # Different subject - no match
     rgmn_dt = as.Date("2023-01-01")
   )
 
