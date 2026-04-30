@@ -1,3 +1,5 @@
+# gsm.mapping (development version)
+
 # gsm.mapping 1.1.3
 
 This minor update includes new/updated domain mapping specs, improved mapping documentation, and expanded qualification/unit testing and CI workflows.
