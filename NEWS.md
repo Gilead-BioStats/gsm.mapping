@@ -1,3 +1,12 @@
+# gsm.mapping 1.1.3
+
+This minor update includes new/updated domain mapping specs, improved mapping documentation, and expanded qualification/unit testing and CI workflows.
+
+**Changes:**
+- Added `complete_death()` to `gsm.mapping` and updated the Death workflow spec to use it (including calculating `death_dy` with `Randomization` data).
+- Refreshed mapping-spec vignette to auto-discover YAML domains and render a richer, filterable mapping table.
+- Added qualification/unit tests (including snapshots) and modernized GitHub Actions workflows (qcthat + new pkgdown workflow), alongside version bump/remotes update.
+
 # gsm.mapping 1.1.2
 
 This patch release adds `db_lock_dt` to spec of `STUDY.yaml` and makes wording/phrasing changes for `EXCLUSION.yaml`.

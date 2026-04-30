@@ -24,7 +24,7 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     )
   )
 
-  # Requried raw data is in data source
+  # Required raw data is in data source
   iwalk(mapped_p1_yaml, ~ expect_true(all(names(.x$spec) %in% names(lData))))
 
   # Output from yaml is in the mapped data object
@@ -83,8 +83,10 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     mapped_p2_yaml,
     ~ expect_true(all(
       names(flatten(.x$spec)) %in%
-        c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]), names(lData["Raw_Randomization"][[1]]),
-          names(lData["Raw_OverallResponse"][[1]]), names(lData["Raw_STUDCOMP"][[1]]))
+        c(
+          names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]), names(lData["Raw_Randomization"][[1]]),
+          names(lData["Raw_OverallResponse"][[1]]), names(lData["Raw_STUDCOMP"][[1]])
+        )
     ))
   )
 })
@@ -133,7 +135,7 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
   iwalk(
     mapped_p3_yaml,
     ~ expect_true(all(
-      setdiff(names(flatten(.x$spec)), "db_lock_dt") %in%
+      names(flatten(.x$spec)) %in%
         c(names(lData[names(.x$spec)][[1]]), names(lData["Raw_SUBJ"][[1]]))
     ))
   )
