@@ -22,10 +22,11 @@ Imports:
     dbplyr,
     dplyr,
     duckdb,
-    glue, 
+    glue,
     gsm.core (>= 1.2.0),
     log4r,
     purrr,
+    rlang,
     stringr,
     tidyr,
     yaml
