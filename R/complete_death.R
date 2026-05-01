@@ -28,7 +28,7 @@
 #'   Source_STUDCOMP = gsm.endpoints::lSource_ep$Raw_STUDCOMP
 #' )
 #'
-#' lMapping <- gsm.core::MakeWorkflowList(
+#' lMapping <- workr::MakeWorkflowList(
 #'   strPath = "workflow/1_mappings",
 #'   strNames = c("Death", "OverallResponse", "STUDCOMP"),
 #'   strPackage = "gsm.mapping"

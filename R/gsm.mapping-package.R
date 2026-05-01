@@ -3,7 +3,6 @@
 
 ## usethis namespace: start
 #' @import dplyr
-#' @import gsm.core
 #' @import purrr
 #' @import log4r
 #' @import tidyr

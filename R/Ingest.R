@@ -21,7 +21,7 @@
 #'
 #' lSourceData <- gsm.core::lSource
 #'
-#' lIngestWorkflow <- gsm.core::MakeWorkflowList(
+#' lIngestWorkflow <- workr::MakeWorkflowList(
 #'   strName = core_mappings,
 #'   strPath = "workflow/1_mappings", strPackage = "gsm.mapping"
 #' )[[1]]
@@ -39,7 +39,7 @@ Ingest <- function(lSourceData, lSpec, strDomain = "Raw") {
 
   lMappedData <- lSpec %>% imap(
     function(columnSpecs, domain) {
-      LogMessage(
+      gsm.core::LogMessage(
         level = "info",
         message = "Ingesting data for {domain}.",
         cli_detail = "alert_info"

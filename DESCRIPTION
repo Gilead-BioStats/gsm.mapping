@@ -28,9 +28,11 @@ Imports:
     purrr,
     stringr,
     tidyr,
+    workr,
     yaml
 Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@main
+    gsm.core=Gilead-BioStats/gsm.core@main,
+    workr=Gilead-BioStats/workr@main
 Suggests:
     DT,
     knitr,

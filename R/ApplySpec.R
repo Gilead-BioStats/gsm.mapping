@@ -34,8 +34,8 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
     imap(
       function(spec, name) {
         mapping <- list(target = name)
-        mapping$source <- spec$source_col %||% name
-        mapping$type <- spec$type %||% NULL
+        mapping$source <- if (is.null(spec$source_col)) name else spec$source_col
+        mapping$type <- if (is.null(spec$type)) NULL else spec$type
         return(mapping)
       }
     ) %>%
@@ -46,7 +46,7 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
   sourceCols <- columnMapping %>% map("source")
   if (!all(sourceCols %in% names(dfSource))) {
     missingCols <- sourceCols[!sourceCols %in% names(dfSource)]
-    LogMessage(
+    gsm.core::LogMessage(
       level = "error",
       message = "Columns not found in source data for domain '{domain}': {missingCols}."
     )
@@ -67,9 +67,9 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
   strQuery <- glue("SELECT {strColQuery} FROM df")
 
   # call RunQuery to get the data
-  dfTarget <- gsm.core::RunQuery(
-    dfSource,
+  dfTarget <- workr::RunQuery(
     strQuery = strQuery,
+    df = dfSource,
     bUseSchema = T,
     lColumnMapping = columnMapping
   )
