@@ -32,7 +32,7 @@ Imports:
     yaml
 Remotes:
     gsm.core=Gilead-BioStats/gsm.core@workr-implementation,
-    workr=Gilead-BioStats/workr@main
+    workr=Gilead-BioStats/workr
 Suggests:
     DT,
     knitr,
