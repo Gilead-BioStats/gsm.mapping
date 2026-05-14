@@ -20,7 +20,6 @@
 #' @importFrom DBI dbExecute
 #' @importFrom DBI dbGetQuery
 #' @importFrom DBI dbWriteTable
-#' @importFrom dbplyr remote_name
 #' @importFrom duckdb duckdb
 #' @importFrom glue glue
 #' @importFrom rlang :=
