@@ -1,5 +1,9 @@
 # Good Statistical Monitoring Mapping {gsm.mapping} R package
 
+[![R-CMD-check](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml)
+[![pkgdown-all](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml)
+
 The {gsm} ecosystem provides a standardized Risk Based Quality
 Monitoring (RBQM) framework for clinical trials that pairs a flexible
 data pipeline with robust reports like the one shown below.
@@ -12,6 +16,26 @@ data transformation from raw/source datasets to appropriate domains.
 This README provides a high-level overview of {gsm.mapping}; see the
 [package website](https://gilead-biostats.github.io/gsm.mapping/) for
 additional details.
+
+## Installation
+
+You can install the latest release of gsm.mapping from
+[GitHub](https://github.com/) with:
+
+``` r
+
+# install.packages("pak")
+pak::pak("Gilead-BioStats/gsm.mapping@*release")
+```
+
+You can install the development version of gsm.mapping from
+[GitHub](https://github.com/) with:
+
+``` r
+
+# install.packages("pak")
+pak::pak("Gilead-BioStats/gsm.mapping")
+```
 
 # Background
 

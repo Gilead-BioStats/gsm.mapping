@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gsm.mapping</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,9 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
+  <main id="main" class="col-md-9"><div class="pkgdown-devel">
+<p><a href="https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev" alt="R-CMD-check"></a> <a href="https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml" class="external-link"><img src="https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml/badge.svg?branch=dev" alt="test-coverage"></a> <a href="https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml" class="external-link"><img src="https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml/badge.svg?branch=dev" alt="pkgdown-all"></a></p>
+</div>
 <!-- badges: end -->
 <div class="section level1">
 <div class="page-header"><h1 id="good-statistical-monitoring-mapping-gsmmapping-r-package">Good Statistical Monitoring Mapping {gsm.mapping} R package<a class="anchor" aria-label="anchor" href="#good-statistical-monitoring-mapping-gsmmapping-r-package"></a>
@@ -64,6 +66,20 @@
 <p><img src="reference/figures/gsm_report_screenshot_1.png"></p>
 </center>
 <p>The <a href="https://github.com/Gilead-BioStats/gsm.mapping" class="external-link">gsm.mapping</a> package provides the necessary functions and workflows to perform the data transformation from raw/source datasets to appropriate domains. This README provides a high-level overview of {gsm.mapping}; see the <a href="https://gilead-biostats.github.io/gsm.mapping/">package website</a> for additional details.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the latest release of gsm.mapping from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Gilead-BioStats/gsm.mapping@*release"</span><span class="op">)</span></span></code></pre></div>
+<div class="pkgdown-devel">
+<p>You can install the development version of gsm.mapping from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Gilead-BioStats/gsm.mapping"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
 </div>
 <div class="section level1">
 <h1 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
@@ -118,12 +134,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/Gilead-BioStats/gsm.mapping/actions" class="external-link"><img src="https://github.com/Gilead-BioStats/gsm.mapping/workflows/R-CMD-check-main/badge.svg" alt="R-CMD-check"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>
