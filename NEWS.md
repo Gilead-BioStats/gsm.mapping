@@ -1,3 +1,8 @@
+# gsm.mapping 1.1.4
+
+This patch release updates the GitHub action workflows to align with the new federated action framework in `gsm.utils`
+
+
 # gsm.mapping 1.1.3
 
 This minor update includes new/updated domain mapping specs, improved mapping documentation, and expanded qualification/unit testing and CI workflows.
