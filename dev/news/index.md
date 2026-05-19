@@ -1,6 +1,9 @@
 # Changelog
 
-## gsm.mapping (development version)
+## gsm.mapping 1.1.4
+
+This patch release updates the GitHub action workflows to align with the
+new federated action framework in `gsm.utils`
 
 ## gsm.mapping 1.1.3
 
