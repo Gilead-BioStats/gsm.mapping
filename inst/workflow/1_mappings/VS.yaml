@@ -17,9 +17,19 @@ spec:
       type: character
     weight:
       type: numeric
+    height:
+      type: numeric
+    bmi:
+      type: numeric
     sysbp:
       type: numeric
     diabp:
+      type: numeric
+    pulse:
+      type: numeric
+    temp:
+      type: numeric
+    resp:
       type: numeric
 steps:
   - output: Mapped_VS
