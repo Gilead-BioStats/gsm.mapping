@@ -9,10 +9,7 @@ lSource <- gsm.core::lSource
 lData <- list(
   Raw_SUBJ = lSource$Raw_SUBJ,
   Raw_AE = lSource$Raw_AE %>%
-    mutate(
-      aeout = NA_character_,
-      aereldrv = NA_character_
-    ),
+    mutate(aereldrv = NA_character_),
   Raw_PD = lSource$Raw_PD %>%
     rename(subjid = subjectenrollmentnumber) %>%
     rename(dvdecod = crocategory) %>%
