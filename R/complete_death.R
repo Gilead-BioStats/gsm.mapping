@@ -88,6 +88,7 @@ complete_death <- function(
     "death_dt",
     "death_dy",
     "death",
+    "deathcls_std",
     "pd_date"
   )
 
