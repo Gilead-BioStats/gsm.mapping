@@ -25,7 +25,7 @@ spec:
       type: character
     aerel:
       type: character
-    aereldrv:
+    aeout:
       type: character
     mincreated_dts:
       type: timestamp
