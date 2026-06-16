@@ -2,7 +2,6 @@
 library(gsm.core)
 library(gsm.mapping)
 library(dplyr)
-library(purrr)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
 				   "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")

@@ -22,7 +22,7 @@
 #' lSourceData <- gsm.core::lSource
 #'
 #' lIngestWorkflow <- workr::MakeWorkflowList(
-#'   strName = core_mappings,
+#'   strNames = core_mappings,
 #'   strPath = "workflow/1_mappings", strPackage = "gsm.mapping"
 #' )[[1]]
 #' lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)

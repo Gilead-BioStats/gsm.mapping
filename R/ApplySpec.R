@@ -42,16 +42,6 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
     # Drop non-specified columns that aren't in dfSource.
     purrr::keep(~ .x$source %in% colnames(dfSource))
 
-  # check that the columns exists in the source data
-  sourceCols <- columnMapping %>% map("source")
-  if (!all(sourceCols %in% names(dfSource))) {
-    missingCols <- sourceCols[!sourceCols %in% names(dfSource)]
-    gsm.core::LogMessage(
-      level = "error",
-      message = "Columns not found in source data for domain '{domain}': {missingCols}."
-    )
-  }
-
   # Write query to select/rename columns from source to target
   strColQuery <- columnMapping %>%
     map_chr(function(mapping) {
@@ -70,7 +60,7 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
   dfTarget <- workr::RunQuery(
     strQuery = strQuery,
     df = dfSource,
-    bUseSchema = T,
+    bUseSchema = TRUE,
     lColumnMapping = columnMapping
   )
 
