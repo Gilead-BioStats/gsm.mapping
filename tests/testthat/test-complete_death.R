@@ -59,7 +59,7 @@ testthat::test_that("verify complete_death() output is valid for data.frame inpu
   expect_identical(sort(test$subjid), sort(total$subjid))
   expect_true(
     all(
-      c("subjid", "pd_date", "death_dt", "death", "deathcls_std") %in% names(test)
+      c("subjid", "pd_date", "death_dt", "death", "deathcls") %in% names(test)
     )
   )
 })
@@ -71,7 +71,7 @@ test_that("complete_death calculates death_dy correctly", {
     studyid = c("STUDY001", "STUDY001"),
     subjid = c("SUBJ001", "SUBJ002"),
     death_dt = as.Date(c("2023-06-15", "2023-07-20")),
-    deathcls_std = c("Adverse Event", "Disease Progression")
+    deathcls = c("Adverse Event", "Disease Progression")
   )
 
   dfStudyCompletion <- data.frame(
@@ -127,7 +127,7 @@ test_that("complete_death handles missing randomization dates gracefully", {
     studyid = "STUDY001",
     subjid = "SUBJ001",
     death_dt = as.Date("2023-06-15"),
-    deathcls_std = "Adverse Event"
+    deathcls = "Adverse Event"
   )
 
   dfStudyCompletion <- data.frame(
