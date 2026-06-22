@@ -8,8 +8,7 @@ lSource <- gsm.core::lSource
 # Step 0 - Data Ingestion - standardize tables/columns names
 lData <- list(
   Raw_SUBJ = lSource$Raw_SUBJ,
-  Raw_AE = lSource$Raw_AE %>%
-    mutate(aereldrv = NA_character_),
+  Raw_AE = lSource$Raw_AE,
   Raw_PD = lSource$Raw_PD %>%
     rename(subjid = subjectenrollmentnumber) %>%
     rename(dvdecod = crocategory) %>%
@@ -42,7 +41,7 @@ lData <- list(
   Raw_VISIT = lSource$Raw_VISIT %>%
     rename(visit = foldername),
   Raw_Death = lSource$Raw_Death %>%
-    mutate(deathcls_std = NA_character_),
+    mutate(deathcls = NA_character_),
   Raw_OverallResponse = lSource$Raw_OverallResponse %>%
     rename(response_folder = foldername),
   Raw_Randomization = lSource$Raw_Randomization
