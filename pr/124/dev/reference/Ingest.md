@@ -50,6 +50,9 @@ lIngestWorkflow <- workr::MakeWorkflowList(
 lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
 #> ℹ Ingesting data for AE.
 #> [INFO] Creating a new temporary DuckDB connection.
+#> duckdb: caching downloaded extensions in the package library:
+#> ℹ /home/runner/work/_temp/Library/duckdb/extensions
+#> ℹ This is removed when the package is re-installed; see `?duckdb_storage` to choose a different location.
 #> [INFO] SQL Query complete: 3000 rows returned.
 #> [INFO] Disconnected from temporary DuckDB connection.
 ```
