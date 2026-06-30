@@ -18,6 +18,11 @@
 #' @export
 
 ApplySpec <- function(dfSource, columnSpecs, domain) {
+  quote_identifier <- function(identifier) {
+    escaped_identifier <- gsub('"', '""', identifier, fixed = TRUE)
+    glue('"{escaped_identifier}"')
+  }
+
   # Add all columns to the spec if '_all' is present.
   if ("_all" %in% names(columnSpecs)) {
     missingColumnSpecs <- setdiff(names(dfSource), names(columnSpecs))
@@ -46,9 +51,9 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
   strColQuery <- columnMapping %>%
     map_chr(function(mapping) {
       if (mapping$source == mapping$target) {
-        mapping$source
+        quote_identifier(mapping$source)
       } else {
-        glue("{mapping$source} AS {mapping$target}")
+        glue("{quote_identifier(mapping$source)} AS {quote_identifier(mapping$target)}")
       }
     }) %>%
     paste(collapse = ", ")

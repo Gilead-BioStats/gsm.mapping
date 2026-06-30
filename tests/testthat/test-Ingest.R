@@ -41,3 +41,23 @@ test_that("ApplySpec maps source columns and applies workr schema types (#131)",
   )
   expect_identical(test_result, expected_result)
 })
+
+test_that("ApplySpec supports dotted target column names", {
+  dfSource <- data.frame(
+    Title = c("Signal 1", "Signal 2"),
+    State = c("Awaiting Triage", "Open Action")
+  )
+  columnSpecs <- list(
+    "System.Title" = list(source_col = "Title", type = "character"),
+    "System.State" = list(source_col = "State", type = "character")
+  )
+
+  test_result <- ApplySpec(dfSource, columnSpecs, "RiskSignalWorkItems")
+
+  expected_result <- data.frame(
+    "System.Title" = c("Signal 1", "Signal 2"),
+    "System.State" = c("Awaiting Triage", "Open Action"),
+    check.names = FALSE
+  )
+  expect_identical(test_result, expected_result)
+})
