@@ -18,6 +18,11 @@
 #' @export
 
 ApplySpec <- function(dfSource, columnSpecs, domain) {
+  quote_identifier <- function(identifier) {
+    escaped_identifier <- gsub('"', '""', identifier, fixed = TRUE)
+    glue('"{escaped_identifier}"')
+  }
+
   # Add all columns to the spec if '_all' is present.
   if ("_all" %in% names(columnSpecs)) {
     missingColumnSpecs <- setdiff(names(dfSource), names(columnSpecs))
@@ -34,31 +39,21 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
     imap(
       function(spec, name) {
         mapping <- list(target = name)
-        mapping$source <- spec$source_col %||% name
-        mapping$type <- spec$type %||% NULL
+        mapping$source <- if (is.null(spec$source_col)) name else spec$source_col
+        mapping$type <- if (is.null(spec$type)) NULL else spec$type
         return(mapping)
       }
     ) %>%
     # Drop non-specified columns that aren't in dfSource.
     purrr::keep(~ .x$source %in% colnames(dfSource))
 
-  # check that the columns exists in the source data
-  sourceCols <- columnMapping %>% map("source")
-  if (!all(sourceCols %in% names(dfSource))) {
-    missingCols <- sourceCols[!sourceCols %in% names(dfSource)]
-    LogMessage(
-      level = "error",
-      message = "Columns not found in source data for domain '{domain}': {missingCols}."
-    )
-  }
-
   # Write query to select/rename columns from source to target
   strColQuery <- columnMapping %>%
     map_chr(function(mapping) {
       if (mapping$source == mapping$target) {
-        mapping$source
+        quote_identifier(mapping$source)
       } else {
-        glue("{mapping$source} AS {mapping$target}")
+        glue("{quote_identifier(mapping$source)} AS {quote_identifier(mapping$target)}")
       }
     }) %>%
     paste(collapse = ", ")
@@ -67,10 +62,10 @@ ApplySpec <- function(dfSource, columnSpecs, domain) {
   strQuery <- glue("SELECT {strColQuery} FROM df")
 
   # call RunQuery to get the data
-  dfTarget <- gsm.core::RunQuery(
-    dfSource,
+  dfTarget <- workr::RunQuery(
     strQuery = strQuery,
-    bUseSchema = T,
+    df = dfSource,
+    bUseSchema = TRUE,
     lColumnMapping = columnMapping
   )
 
