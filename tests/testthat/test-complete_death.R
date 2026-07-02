@@ -121,7 +121,7 @@ test_that("complete_death calculates death_dy correctly", {
   expect_equal(subj002_result$death_dt, as.Date("2023-07-20"))
 })
 
-test_that("complete_death handles missing randomization dates gracefully", {
+test_that("complete_death handles missing randomization dates gracefully (#134)", {
   # Test data with missing randomization date
   dfDeath <- data.frame(
     studyid = "STUDY001",
