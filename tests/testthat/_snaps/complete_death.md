@@ -1,4 +1,4 @@
-# verify complete_death() output is valid for data.frame input (#47)
+# verify complete_death() output is valid for data.frame input (#47, #134)
 
     Code
       test
