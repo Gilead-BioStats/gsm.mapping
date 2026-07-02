@@ -43,13 +43,13 @@ core_mappings <- c(
 
 lSourceData <- gsm.core::lSource
 
-lIngestWorkflow <- gsm.core::MakeWorkflowList(
-  strName = core_mappings,
+lIngestWorkflow <- workr::MakeWorkflowList(
+  strNames = core_mappings,
   strPath = "workflow/1_mappings", strPackage = "gsm.mapping"
 )[[1]]
 lRawData <- Ingest(lSourceData, lIngestWorkflow$spec)
 #> ℹ Ingesting data for AE.
-#> Creating a new temporary DuckDB connection.
-#> ✔ SQL Query complete: 3000 rows returned.
-#> Disconnected from temporary DuckDB connection.
+#> [INFO] Creating a new temporary DuckDB connection.
+#> [INFO] SQL Query complete: 3000 rows returned.
+#> [INFO] Disconnected from temporary DuckDB connection.
 ```
