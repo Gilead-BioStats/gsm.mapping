@@ -16,7 +16,7 @@
 #' @export
 CalculatePercentage <- function(data, strCurrentCol, strTargetCol, strPercVal, strPercStrVal) {
   if (!(strCurrentCol %in% names(data))) {
-    LogMessage(
+    gsm.core::LogMessage(
       level = "fatal",
       message = "Check that {strCurrentCol} is in data"
     )

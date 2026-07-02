@@ -53,7 +53,7 @@ lData <- list(
 domains <- gsub("Raw_", "", names(lData))
 
 ## Get Mapped data
-mappings_wf <- MakeWorkflowList(
+mappings_wf <- workr::MakeWorkflowList(
   strNames = domains,
   strPath = file.path(system.file(package = "gsm.mapping"), "workflow", "1_mappings")
 )
@@ -63,7 +63,7 @@ gsm.core::SetLogger(log4r::logger(
   threshold = "WARN",
   appenders = ConsoleAppender
 ))
-mapped_data <- RunWorkflows(mappings_wf, lData)
+mapped_data <- workr::RunWorkflows(mappings_wf, lData)
 gsm.core::SetLogger(log4r::logger(
   "DEBUG",
   appenders = ConsoleAppender
