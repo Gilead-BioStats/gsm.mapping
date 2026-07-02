@@ -55,8 +55,8 @@ jobs:
       uat-assignees: ${{ (github.event_name == 'pull_request' && github.base_ref == 'main' && 'jwildfire') || (github.event_name == 'pull_request' && github.base_ref != 'main' && 'lauramaxwell,nandriychuk') || '' }}
       # Event context passed through to the core workflow
       has-uat-label: ${{ contains(github.event.issue.labels.*.name, 'qcthat-uat') }}
-      pr-number: ${{ github.event.pull_request.number || inputs['pr-number'] || '' }}
+      pr-number: ${{ github.event.pull_request.number || inputs.pr-number || '' }}
       milestone: ${{ github.event.pull_request.milestone.title || inputs.milestone || '' }}
       tag: ${{ github.event.release.tag_name || inputs.tag || '' }}
-      issue-number: ${{ github.event.issue.number || inputs['issue-number'] || '' }}
-      qcthat-ref: ${{ inputs['qcthat-ref'] || '@*release' }}
+      issue-number: ${{ github.event.issue.number || inputs.issue-number || '' }}
+      qcthat-ref: ${{ inputs.qcthat-ref || '@*release' }}
