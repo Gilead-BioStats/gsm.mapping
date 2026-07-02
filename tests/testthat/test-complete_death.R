@@ -40,7 +40,7 @@ testthat::test_that("verify complete_death() internal response filter is working
   expect_identical(original_code$pd_date, double_code$first_pd)
 })
 
-testthat::test_that("verify complete_death() output is valid for data.frame input (#47)", {
+testthat::test_that("verify complete_death() output is valid for data.frame input (#47, #134)", {
   expect_snapshot(test)
   pd <- mapped_data$Mapped_OverallResponse %>%
     filter(ovrlresp == "PD") %>%
