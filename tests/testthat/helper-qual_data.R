@@ -43,7 +43,10 @@ lData <- list(
   Raw_Death = lSource$Raw_Death %>%
     mutate(deathcls = NA_character_),
   Raw_OverallResponse = lSource$Raw_OverallResponse %>%
-    rename(response_folder = foldername),
+    rename(response_folder = foldername) %>%
+    # gsm.core::lSource supplies rs_dt as a character string; coerce to Date to
+    # match the mapping spec (rs_dt: type: Date) and the production Ingest() path.
+    mutate(rs_dt = as.Date(rs_dt)),
   Raw_Randomization = lSource$Raw_Randomization
 )
 
