@@ -131,3 +131,43 @@ test_that("complete_non_starter respects a custom nWindowDays (#139)", {
   expect_equal(status[["X"]], "Potential-within")
   expect_equal(status[["Y"]], "Potential-outside")
 })
+
+test_that("complete_non_starter tolerates companion frames carrying invid/other columns (#139)", {
+  # The real Mapped_SDRGCOMP / Mapped_STUDCOMP carry invid (and more) which must
+  # not collide with Mapped_SUBJ's invid on the join.
+  dfSubjects <- data.frame(
+    studyid = "S",
+    subjid = c("A", "B"),
+    invid = c("I1", "I2"),
+    country = c("US", "US"),
+    firstdosedate = as.Date(c(NA, "2020-01-01")),
+    timeonstudy = c(10L, 10L),
+    stringsAsFactors = FALSE
+  )
+  dfStudyDrugCompletion <- data.frame(
+    studyid = "S",
+    subjid = "A",
+    invid = "I1",
+    sdrgyn = "Y",
+    sdrgreas = NEVER_DOSED,
+    stringsAsFactors = FALSE
+  )
+  dfStudyCompletion <- data.frame(
+    studyid = "S",
+    subjid = "A",
+    invid = "I1",
+    compyn = "Y",
+    compreas = "",
+    colendat = as.Date("2020-02-01"),
+    stringsAsFactors = FALSE
+  )
+  out <- complete_non_starter(
+    dfSubjects,
+    dfStudyDrugCompletion,
+    dfStudyCompletion
+  )
+  expect_true("invid" %in% names(out))
+  expect_equal(out$invid[out$subjid == "A"], "I1")
+  expect_equal(out$nonstarter_status[out$subjid == "A"], "Confirmed")
+  expect_equal(out$confirmed_nonstarter[out$subjid == "A"], 1L)
+})

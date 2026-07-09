@@ -45,9 +45,18 @@ complete_non_starter <- function(
   nWindowDays = 30,
   chrNeverDosedReason = "Subject Never Dosed with Study Drug"
 ) {
+  # Select only the columns each companion frame contributes before joining:
+  # the mapped SDRGCOMP/STUDCOMP frames also carry invid/other columns that
+  # would collide with Mapped_SUBJ on the join and be suffixed away.
   dfSubjects %>%
-    dplyr::left_join(dfStudyDrugCompletion, by = c("studyid", "subjid")) %>%
-    dplyr::left_join(dfStudyCompletion, by = c("studyid", "subjid")) %>%
+    dplyr::left_join(
+      dplyr::select(dfStudyDrugCompletion, "studyid", "subjid", "sdrgreas"),
+      by = c("studyid", "subjid")
+    ) %>%
+    dplyr::left_join(
+      dplyr::select(dfStudyCompletion, "studyid", "subjid", "colendat"),
+      by = c("studyid", "subjid")
+    ) %>%
     dplyr::mutate(
       dosed = !is.na(.data$firstdosedate),
       confirmed = !.data$dosed &
