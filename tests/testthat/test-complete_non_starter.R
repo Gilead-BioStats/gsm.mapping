@@ -132,6 +132,63 @@ test_that("complete_non_starter respects a custom nWindowDays (#139)", {
   expect_equal(status[["Y"]], "Potential-outside")
 })
 
+test_that("complete_non_starter does not fan out on duplicate SDRGCOMP rows (#139)", {
+  # Mapped_SDRGCOMP is a multi-record-per-subject domain in real data (per-phase
+  # / snapshot rows; clindata::rawplus_sdrgcomp carries up to 2 rows per subject).
+  # A confirmed non-starter with >1 SDRGCOMP row must still yield ONE output row
+  # and contribute 1 to the numerator, not N.
+  dfSubjects <- data.frame(
+    studyid = "S",
+    subjid = c("A", "B"),
+    invid = c("I1", "I2"),
+    country = c("US", "US"),
+    firstdosedate = as.Date(c(NA, "2020-01-01")),
+    timeonstudy = c(10L, 10L),
+    stringsAsFactors = FALSE
+  )
+  # A appears twice in SDRGCOMP, both carrying the coded never-dosed reason.
+  dfStudyDrugCompletion <- data.frame(
+    studyid = "S",
+    subjid = c("A", "A"),
+    sdrgreas = c(NEVER_DOSED, NEVER_DOSED),
+    stringsAsFactors = FALSE
+  )
+  out <- complete_non_starter(dfSubjects, dfStudyDrugCompletion, empty_stud())
+
+  expect_equal(nrow(out), 2L)
+  expect_equal(sum(out$subjid == "A"), 1L)
+  expect_equal(out$nonstarter_status[out$subjid == "A"], "Confirmed")
+  expect_equal(out$confirmed_nonstarter[out$subjid == "A"], 1L)
+  # Numerator (sum of the 0/1 flag) must not exceed one per confirmed subject.
+  expect_equal(sum(out$confirmed_nonstarter), 1L)
+})
+
+test_that("complete_non_starter does not fan out when duplicate SDRGCOMP rows disagree (#139)", {
+  # Duplicate SDRGCOMP rows can disagree across snapshots; a subject is confirmed
+  # by reason if ANY of their rows carries the coded never-dosed value, and still
+  # collapses to a single output row.
+  dfSubjects <- data.frame(
+    studyid = "S",
+    subjid = "A",
+    invid = "I1",
+    country = "US",
+    firstdosedate = as.Date(NA),
+    timeonstudy = 100L,
+    stringsAsFactors = FALSE
+  )
+  dfStudyDrugCompletion <- data.frame(
+    studyid = "S",
+    subjid = c("A", "A"),
+    sdrgreas = c("Study Drug Completed", NEVER_DOSED),
+    stringsAsFactors = FALSE
+  )
+  out <- complete_non_starter(dfSubjects, dfStudyDrugCompletion, empty_stud())
+
+  expect_equal(nrow(out), 1L)
+  expect_equal(out$nonstarter_status, "Confirmed")
+  expect_equal(out$confirmed_nonstarter, 1L)
+})
+
 test_that("complete_non_starter tolerates companion frames carrying invid/other columns (#139)", {
   # The real Mapped_SDRGCOMP / Mapped_STUDCOMP carry invid (and more) which must
   # not collide with Mapped_SUBJ's invid on the join.

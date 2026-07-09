@@ -45,23 +45,36 @@ complete_non_starter <- function(
   nWindowDays = 30,
   chrNeverDosedReason = "Subject Never Dosed with Study Drug"
 ) {
-  # Select only the columns each companion frame contributes before joining:
-  # the mapped SDRGCOMP/STUDCOMP frames also carry invid/other columns that
-  # would collide with Mapped_SUBJ on the join and be suffixed away.
+  # Collapse each companion frame to one row per (studyid, subjid) before
+  # joining. Mapped_SDRGCOMP/STUDCOMP are multi-record-per-subject domains in
+  # real data (per-phase / snapshot rows; clindata::rawplus_sdrgcomp carries up
+  # to two rows per subject), so a bare left_join would fan out Mapped_SUBJ and
+  # over-count the confirmed-non-starter numerator downstream. Reducing to a
+  # per-subject flag (confirmed by reason if ANY row carries the coded value)
+  # also drops the invid/other columns that would otherwise collide on the join.
+  sdrg_by_subject <- dfStudyDrugCompletion %>%
+    dplyr::group_by(.data$studyid, .data$subjid) %>%
+    dplyr::summarise(
+      never_dosed_reason = any(
+        !is.na(.data$sdrgreas) & .data$sdrgreas == chrNeverDosedReason
+      ),
+      .groups = "drop"
+    )
+  stud_by_subject <- dfStudyCompletion %>%
+    dplyr::group_by(.data$studyid, .data$subjid) %>%
+    dplyr::summarise(
+      has_colendat = any(!is.na(.data$colendat)),
+      .groups = "drop"
+    )
+
   dfSubjects %>%
-    dplyr::left_join(
-      dplyr::select(dfStudyDrugCompletion, "studyid", "subjid", "sdrgreas"),
-      by = c("studyid", "subjid")
-    ) %>%
-    dplyr::left_join(
-      dplyr::select(dfStudyCompletion, "studyid", "subjid", "colendat"),
-      by = c("studyid", "subjid")
-    ) %>%
+    dplyr::left_join(sdrg_by_subject, by = c("studyid", "subjid")) %>%
+    dplyr::left_join(stud_by_subject, by = c("studyid", "subjid")) %>%
     dplyr::mutate(
       dosed = !is.na(.data$firstdosedate),
       confirmed = !.data$dosed &
-        (!is.na(.data$colendat) |
-          (!is.na(.data$sdrgreas) & .data$sdrgreas == chrNeverDosedReason)),
+        (dplyr::coalesce(.data$has_colendat, FALSE) |
+          dplyr::coalesce(.data$never_dosed_reason, FALSE)),
       nonstarter_status = dplyr::case_when(
         .data$dosed ~ "Started",
         .data$confirmed ~ "Confirmed",
