@@ -84,12 +84,16 @@ complete_non_starter <- function(
       confirmed_nonstarter = as.integer(.data$confirmed)
     ) %>%
     dplyr::select(
-      "studyid",
-      "subjid",
-      "invid",
-      "country",
-      "dosed",
-      "nonstarter_status",
-      "confirmed_nonstarter"
+      dplyr::all_of(
+        c(
+          "studyid",
+          "subjid",
+          "invid",
+          "country",
+          "dosed",
+          "nonstarter_status",
+          "confirmed_nonstarter"
+        )
+      )
     )
 }
