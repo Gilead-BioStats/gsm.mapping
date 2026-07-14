@@ -42,7 +42,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@dev,
+    gsm.core=Gilead-BioStats/gsm.core@feature-156-lsource-nonstarter,
     workr=Gilead-BioStats/workr
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
