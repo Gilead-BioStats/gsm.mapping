@@ -1487,7 +1487,7 @@ font-size: 0.95em;
 <h1 class="title toc-ignore">Example Mapping Workflow</h1>
 <h4 class="author"><a href="https://gilead-biostats.github.io/gsm.mapping">gsm.mapping</a>
 Example</h4>
-<h4 class="date">July 09, 2026 12:07:57 UTC</h4>
+<h4 class="date">July 14, 2026 09:14:33 UTC</h4>
 
 </div>
 
@@ -1560,55 +1560,108 @@ standardize the required columns from the raw/source data.</p>
 <pre class="r"><code>lRaw &lt;- Ingest(lSource, mappings_spec)
 #&gt; ℹ Ingesting data for AE.
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; duckdb is keeping downloaded extensions in a temporary directory:
+#&gt; ℹ /tmp/RtmpsmbsSQ/duckdb/extensions
+#&gt; This is removed when the R session ends, so extensions are re-downloaded each session.
+#&gt; ℹ To keep them, point `options(duckdb.extension_directory =)` or the `DUCKDB_EXTENSION_DIRECTORY` environment variable at a permanent path.
 #&gt; [INFO] SQL Query complete: 3000 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for ENROLL.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 1000 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for LB.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
-#&gt; [INFO] SQL Query complete: 405720 rows returned.
+#&gt; 
+#&gt; [INFO] SQL Query complete: 406080 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for PD.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 3000 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for SDRGCOMP.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 100 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for STUDCOMP.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 100 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for SUBJ.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 1000 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for DATACHG.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 435968 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for SUBJ.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 1000 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for DATAENT.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 108992 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for QUERY.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 27248 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for SITE.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 150 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; ℹ Ingesting data for STUDY.
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] SQL Query complete: 1 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.</code></pre>
 </div>
 <div id="step-4---run-the-workflows" class="section level2">
@@ -1645,8 +1698,8 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] lhs = Mapped_LB: No matching data found. Passing &#39;Mapped_LB&#39; as a string.
 #&gt; [INFO] rhs = Raw_LB: Passing lData$Raw_LB.
 #&gt; [INFO] Calling `=`
-#&gt; [INFO] 405720x4 data.frame saved as `lData$Mapped_LB`.
-#&gt; [INFO] Returning results from final step: 405720x4 data.frame`.
+#&gt; [INFO] 406080x4 data.frame saved as `lData$Mapped_LB`.
+#&gt; [INFO] Returning results from final step: 406080x4 data.frame`.
 #&gt; [INFO] Completed `Mapped_LB` Workflow
 #&gt; [INFO] Initializing `Mapped_PD` Workflow
 #&gt; [INFO] Checking data against spec
@@ -1665,8 +1718,8 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] lhs = Mapped_SDRGCOMP: No matching data found. Passing &#39;Mapped_SDRGCOMP&#39; as a string.
 #&gt; [INFO] rhs = Raw_SDRGCOMP: Passing lData$Raw_SDRGCOMP.
 #&gt; [INFO] Calling `=`
-#&gt; [INFO] 100x5 data.frame saved as `lData$Mapped_SDRGCOMP`.
-#&gt; [INFO] Returning results from final step: 100x5 data.frame`.
+#&gt; [INFO] 100x6 data.frame saved as `lData$Mapped_SDRGCOMP`.
+#&gt; [INFO] Returning results from final step: 100x6 data.frame`.
 #&gt; [INFO] Completed `Mapped_SDRGCOMP` Workflow
 #&gt; [INFO] Initializing `Mapped_STUDCOMP` Workflow
 #&gt; [INFO] Checking data against spec
@@ -1675,8 +1728,8 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] lhs = Mapped_STUDCOMP: No matching data found. Passing &#39;Mapped_STUDCOMP&#39; as a string.
 #&gt; [INFO] rhs = Raw_STUDCOMP: Passing lData$Raw_STUDCOMP.
 #&gt; [INFO] Calling `=`
-#&gt; [INFO] 100x6 data.frame saved as `lData$Mapped_STUDCOMP`.
-#&gt; [INFO] Returning results from final step: 100x6 data.frame`.
+#&gt; [INFO] 100x7 data.frame saved as `lData$Mapped_STUDCOMP`.
+#&gt; [INFO] Returning results from final step: 100x7 data.frame`.
 #&gt; [INFO] Completed `Mapped_STUDCOMP` Workflow
 #&gt; [INFO] Initializing `Mapped_SUBJ` Workflow
 #&gt; [INFO] Checking data against spec
@@ -1686,10 +1739,10 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] strQuery = SELECT * FROM df WHERE enrollyn == &#39;Y&#39;: No matching data found. Passing &#39;SELECT * FROM df WHERE enrollyn == &#39;Y&#39;&#39; as a string.
 #&gt; [INFO] Calling `workr::RunQuery`
 #&gt; [INFO] Creating a new temporary DuckDB connection.
-#&gt; [INFO] SQL Query complete: 762 rows returned.
+#&gt; [INFO] SQL Query complete: 740 rows returned.
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
-#&gt; [INFO] 762x14 data.frame saved as `lData$Mapped_SUBJ`.
-#&gt; [INFO] Returning results from final step: 762x14 data.frame`.
+#&gt; [INFO] 740x14 data.frame saved as `lData$Mapped_SUBJ`.
+#&gt; [INFO] Returning results from final step: 740x14 data.frame`.
 #&gt; [INFO] Completed `Mapped_SUBJ` Workflow
 #&gt; [INFO] Initializing `Mapped_DATACHG` Workflow
 #&gt; [INFO] Checking data against spec
@@ -1700,7 +1753,7 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] subject_nsv = subject_nsv: No matching data found. Passing &#39;subject_nsv&#39; as a string.
 #&gt; [INFO] studyid = studyid: No matching data found. Passing &#39;studyid&#39; as a string.
 #&gt; [INFO] Calling `dplyr::select`
-#&gt; [INFO] 762x3 data.frame saved as `lData$Temp_SubjectLookup`.
+#&gt; [INFO] 740x3 data.frame saved as `lData$Temp_SubjectLookup`.
 #&gt; [INFO] Workflow Step 2 of 2: `dplyr::left_join`
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
 #&gt; [INFO] x = Raw_DATACHG: Passing lData$Raw_DATACHG.
@@ -1719,7 +1772,7 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] subject_nsv = subject_nsv: No matching data found. Passing &#39;subject_nsv&#39; as a string.
 #&gt; [INFO] studyid = studyid: No matching data found. Passing &#39;studyid&#39; as a string.
 #&gt; [INFO] Calling `dplyr::select`
-#&gt; [INFO] 762x3 data.frame saved as `lData$Temp_SubjectLookup`.
+#&gt; [INFO] 740x3 data.frame saved as `lData$Temp_SubjectLookup`.
 #&gt; [INFO] Workflow Step 2 of 2: `dplyr::left_join`
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
 #&gt; [INFO] x = Raw_DATAENT: Passing lData$Raw_DATAENT.
@@ -1738,7 +1791,7 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] subjid = subjid: No matching data found. Passing &#39;subjid&#39; as a string.
 #&gt; [INFO] subject_nsv = subject_nsv: No matching data found. Passing &#39;subject_nsv&#39; as a string.
 #&gt; [INFO] Calling `dplyr::select`
-#&gt; [INFO] 762x3 data.frame saved as `lData$Temp_SubjectLookup`.
+#&gt; [INFO] 740x3 data.frame saved as `lData$Temp_SubjectLookup`.
 #&gt; [INFO] Workflow Step 2 of 2: `dplyr::left_join`
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
 #&gt; [INFO] x = Raw_QUERY: Passing lData$Raw_QUERY.
@@ -1790,22 +1843,22 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] strQuery = SELECT invid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY invid: No matching data found. Passing &#39;SELECT invid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY invid&#39; as a string.
 #&gt; [INFO] Calling `workr::RunQuery`
 #&gt; [INFO] Creating a new temporary DuckDB connection.
-#&gt; [INFO] SQL Query complete: 143 rows returned.
+#&gt; [INFO] SQL Query complete: 144 rows returned.
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
-#&gt; [INFO] 143x3 data.frame saved as `lData$Temp_SiteCountsWide`.
+#&gt; [INFO] 144x3 data.frame saved as `lData$Temp_SiteCountsWide`.
 #&gt; [INFO] Workflow Step 4 of 5: `gsm.mapping::MakeLongMeta`
 #&gt; [INFO] Evaluating 2 parameter(s) for `gsm.mapping::MakeLongMeta`
 #&gt; [INFO] data = Temp_SiteCountsWide: Passing lData$Temp_SiteCountsWide.
 #&gt; [INFO] strGroupLevel = Site: No matching data found. Passing &#39;Site&#39; as a string.
 #&gt; [INFO] Calling `gsm.mapping::MakeLongMeta`
-#&gt; [INFO] 286x4 data.frame saved as `lData$Temp_SiteCounts`.
+#&gt; [INFO] 288x4 data.frame saved as `lData$Temp_SiteCounts`.
 #&gt; [INFO] Workflow Step 5 of 5: `dplyr::bind_rows`
 #&gt; [INFO] Evaluating 2 parameter(s) for `dplyr::bind_rows`
 #&gt; [INFO] Temp_CTMSSite = Temp_CTMSSite: Passing lData$Temp_CTMSSite.
 #&gt; [INFO] Temp_SiteCounts = Temp_SiteCounts: Passing lData$Temp_SiteCounts.
 #&gt; [INFO] Calling `dplyr::bind_rows`
-#&gt; [INFO] 1636x4 data.frame saved as `lData$Mapped_SITE`.
-#&gt; [INFO] Returning results from final step: 1636x4 data.frame`.
+#&gt; [INFO] 1638x4 data.frame saved as `lData$Mapped_SITE`.
+#&gt; [INFO] Returning results from final step: 1638x4 data.frame`.
 #&gt; [INFO] Completed `Mapped_SITE` Workflow
 #&gt; [INFO] Initializing `Mapped_STUDY` Workflow
 #&gt; [INFO] Checking data against spec
