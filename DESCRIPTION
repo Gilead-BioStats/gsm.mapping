@@ -43,7 +43,8 @@ VignetteBuilder:
     knitr
 Remotes:
     gsm.core=Gilead-BioStats/gsm.core@gsm.core-v1.3.0-rc,
-    workr=Gilead-BioStats/workr@rc-v1.1.0
+    workr=Gilead-BioStats/workr@rc-v1.1.0,
+    log4r=r-lib/log4r
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
