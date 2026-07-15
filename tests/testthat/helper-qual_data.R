@@ -61,15 +61,14 @@ mappings_wf <- workr::MakeWorkflowList(
   strPath = file.path(system.file(package = "gsm.mapping"), "workflow", "1_mappings")
 )
 
-ConsoleAppender <- log4r::console_appender(layout = gsm.core::cli_fmt)
-gsm.core::SetLogger(log4r::logger(
-  threshold = "WARN",
-  appenders = ConsoleAppender
+gsm.core::SetLogger(list(
+  level = "WARN",
+  appender = gsm.core::cli_fmt
 ))
 mapped_data <- workr::RunWorkflows(mappings_wf, lData)
-gsm.core::SetLogger(log4r::logger(
-  "DEBUG",
-  appenders = ConsoleAppender
+gsm.core::SetLogger(list(
+  level = "DEBUG",
+  appender = gsm.core::cli_fmt
 ))
 
 mapping_output <- map(mappings_wf, ~ .x$steps[[1]]$output) %>% unlist()

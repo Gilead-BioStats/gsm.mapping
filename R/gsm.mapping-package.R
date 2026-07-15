@@ -3,7 +3,6 @@
 
 ## usethis namespace: start
 #' @import dplyr
-#' @import log4r
 #' @import purrr
 #' @import tidyr
 #' @importFrom cli cli_abort
@@ -14,6 +13,7 @@
 #' @importFrom cli cli_alert_warning
 #' @importFrom cli cli_text
 #' @importFrom cli cli_warn
+#' @importFrom dbplyr db_collect
 #' @importFrom DBI dbConnect
 #' @importFrom DBI dbDisconnect
 #' @importFrom DBI dbExecute
