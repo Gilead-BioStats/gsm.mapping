@@ -61,14 +61,8 @@ mappings_wf <- workr::MakeWorkflowList(
   strPath = file.path(system.file(package = "gsm.mapping"), "workflow", "1_mappings")
 )
 
-gsm.core::SetLogger(list(
-  level = "WARN",
-  appender = gsm.core::cli_fmt
-))
+gsm.core::SetLogLevel(level = "WARN")
 mapped_data <- workr::RunWorkflows(mappings_wf, lData)
-gsm.core::SetLogger(list(
-  level = "DEBUG",
-  appender = gsm.core::cli_fmt
-))
+gsm.core::SetLogLevel(level = "DEBUG")
 
 mapping_output <- map(mappings_wf, ~ .x$steps[[1]]$output) %>% unlist()
