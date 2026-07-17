@@ -40,7 +40,7 @@ testthat::test_that("verify complete_death() internal response filter is working
   expect_identical(original_code$pd_date, double_code$first_pd)
 })
 
-testthat::test_that("verify complete_death() output is valid for data.frame input (#47)", {
+testthat::test_that("verify complete_death() output is valid for data.frame input (#47, #134)", {
   expect_snapshot(test)
   pd <- mapped_data$Mapped_OverallResponse %>%
     filter(ovrlresp == "PD") %>%
@@ -59,7 +59,7 @@ testthat::test_that("verify complete_death() output is valid for data.frame inpu
   expect_identical(sort(test$subjid), sort(total$subjid))
   expect_true(
     all(
-      c("subjid", "pd_date", "death_dt", "death") %in% names(test)
+      c("subjid", "pd_date", "death_dt", "death", "deathcls") %in% names(test)
     )
   )
 })
@@ -70,7 +70,8 @@ test_that("complete_death calculates death_dy correctly", {
   dfDeath <- data.frame(
     studyid = c("STUDY001", "STUDY001"),
     subjid = c("SUBJ001", "SUBJ002"),
-    death_dt = as.Date(c("2023-06-15", "2023-07-20"))
+    death_dt = as.Date(c("2023-06-15", "2023-07-20")),
+    deathcls = c("Adverse Event", "Disease Progression")
   )
 
   dfStudyCompletion <- data.frame(
@@ -120,12 +121,13 @@ test_that("complete_death calculates death_dy correctly", {
   expect_equal(subj002_result$death_dt, as.Date("2023-07-20"))
 })
 
-test_that("complete_death handles missing randomization dates gracefully", {
+test_that("complete_death handles missing randomization dates gracefully (#134)", {
   # Test data with missing randomization date
   dfDeath <- data.frame(
     studyid = "STUDY001",
     subjid = "SUBJ001",
-    death_dt = as.Date("2023-06-15")
+    death_dt = as.Date("2023-06-15"),
+    deathcls = "Adverse Event"
   )
 
   dfStudyCompletion <- data.frame(

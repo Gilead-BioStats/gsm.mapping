@@ -1,0 +1,106 @@
+---
+title: "Example Mapping Workflow"
+author: "[gsm.mapping](https://gilead-biostats.github.io/gsm.mapping) Example"
+description: "Example of creating the Mapped Data Layer step-by-step using the standard mappings in gsm.mapping"
+index: 1
+date: "`r format(Sys.time(), '%B %d, %Y %H:%M:%S %Z')`"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Set Up
+
+This page walks through creating the **Mapped Data Layer** step-by-step using the
+standard mappings shipped with the `gsm.mapping` package. The Mapped Data Layer
+filters, aggregates, and joins raw/source data into the standardized datasets that
+downstream `gsm` packages (e.g. `gsm.kri`) expect.
+
+Expand the "Setup" section below to see the libraries and source data used, or
+scroll down to follow the workflow.
+
+<details>
+<summary>Setup</summary>
+
+```{r}
+# Load libraries
+library(gsm.core)
+library(gsm.mapping)
+library(dplyr)
+
+# The 12 standard domains used to build a KRI report
+core_mappings <- c(
+  "AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+  "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ"
+)
+
+# Sample raw/source data provided by gsm.core
+lSource <- gsm.core::lSource
+```
+
+</details>
+
+# Create the Mapped Data Layer
+
+The Mapped Data Layer is created in a short, four-step workflow: build the list of
+mapping workflows, combine their specifications, ingest the raw data, and run the
+workflows to produce the mapped data.
+
+## Step 1 - Build the mapping workflows
+
+`workr::MakeWorkflowList()` reads the YAML mapping specifications shipped in
+`inst/workflow/1_mappings` for each requested domain.
+
+```{r}
+mappings_wf <- workr::MakeWorkflowList(
+  strNames = core_mappings,
+  strPath = "workflow/1_mappings",
+  strPackage = "gsm.mapping"
+)
+```
+
+## Step 2 - Combine the specifications
+
+`CombineSpecs()` collapses the individual domain specifications into a single
+specification describing every raw dataset and column required.
+
+```{r}
+mappings_spec <- CombineSpecs(mappings_wf)
+```
+
+## Step 3 - Ingest the raw data
+
+`Ingest()` uses the combined specification to select and standardize the required
+columns from the raw/source data.
+
+```{r}
+lRaw <- Ingest(lSource, mappings_spec)
+```
+
+## Step 4 - Run the workflows
+
+`workr::RunWorkflows()` executes each mapping workflow against the ingested data to
+filter, aggregate, and join it into the final Mapped Data Layer.
+
+```{r}
+mapped <- workr::RunWorkflows(mappings_wf, lRaw)
+```
+
+# Review the Output
+
+`mapped` is a named list of standardized datasets, one per mapped domain, ready for
+use in downstream `gsm` reporting workflows.
+
+```{r}
+names(mapped)
+```

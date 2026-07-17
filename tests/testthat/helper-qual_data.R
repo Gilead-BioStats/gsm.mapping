@@ -40,9 +40,13 @@ lData <- list(
   Raw_IE = lSource$Raw_IE,
   Raw_VISIT = lSource$Raw_VISIT %>%
     rename(visit = foldername),
-  Raw_Death = lSource$Raw_Death,
+  Raw_Death = lSource$Raw_Death %>%
+    mutate(deathcls = NA_character_),
   Raw_OverallResponse = lSource$Raw_OverallResponse %>%
-    rename(response_folder = foldername),
+    rename(response_folder = foldername) %>%
+    # gsm.core::lSource supplies rs_dt as a character string; coerce to Date to
+    # match the mapping spec (rs_dt: type: Date) and the production Ingest() path.
+    mutate(rs_dt = as.Date(rs_dt)),
   Raw_Randomization = lSource$Raw_Randomization
 )
 
@@ -52,7 +56,7 @@ lData <- list(
 domains <- gsub("Raw_", "", names(lData))
 
 ## Get Mapped data
-mappings_wf <- MakeWorkflowList(
+mappings_wf <- workr::MakeWorkflowList(
   strNames = domains,
   strPath = file.path(system.file(package = "gsm.mapping"), "workflow", "1_mappings")
 )
@@ -62,7 +66,7 @@ gsm.core::SetLogger(log4r::logger(
   threshold = "WARN",
   appenders = ConsoleAppender
 ))
-mapped_data <- RunWorkflows(mappings_wf, lData)
+mapped_data <- workr::RunWorkflows(mappings_wf, lData)
 gsm.core::SetLogger(log4r::logger(
   "DEBUG",
   appenders = ConsoleAppender

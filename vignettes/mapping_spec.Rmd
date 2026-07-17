@@ -12,8 +12,8 @@ vignette: >
 
 ```{r discover_domains, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
 library(DT)
-library(gsm.core)
 library(gsm.mapping)
+library(workr)
 library(dplyr)
 library(reactable)
 library(yaml)
@@ -35,7 +35,7 @@ The table below shows all available domain mappings with their specifications. U
 ### All Domain Mappings
 ```{r all_mappings, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
 # Create Mapped Data Layer for all discovered domains
-mappings_wf <- MakeWorkflowList(strNames = all_domains, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+mappings_wf <- workr::MakeWorkflowList(strNames = all_domains, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 
 # Extract domain metadata from YAML files
 domain_metadata <- lapply(mapping_files, function(file) {
