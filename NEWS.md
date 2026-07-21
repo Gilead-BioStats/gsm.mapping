@@ -1,3 +1,13 @@
+# gsm.mapping 1.1.5
+
+This release migrates query execution and workflow discovery to the new `workr` package and includes mapping and documentation improvements.
+
+**Changes:**
+- Migrated `RunQuery()` and `MakeWorkflowList()` calls from `gsm.core` to the new `workr` package across `ApplySpec()`, the R functions, and all mapping workflow specs.
+- Fixed `ApplySpec()` to quote SQL column identifiers, so source/target columns with special characters or reserved words map correctly.
+- Added the `deathcls` field to the Death mapping (`Death.yaml`).
+- Converted the Example Mapping Workflow article from `.R` to `.Rmd` for a richer, rendered walkthrough on the package site.
+
 # gsm.mapping 1.1.4
 
 This patch release updates the GitHub action workflows to align with the new federated action framework in `gsm.utils`
