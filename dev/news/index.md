@@ -1,5 +1,7 @@
 # Changelog
 
+## gsm.mapping (development version)
+
 ## gsm.mapping 1.1.5
 
 This release migrates query execution and workflow discovery to the new
