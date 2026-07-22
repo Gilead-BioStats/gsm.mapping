@@ -1,3 +1,5 @@
+# gsm.mapping (development version)
+
 # gsm.mapping 1.1.5
 
 This release migrates query execution and workflow discovery to the new `workr` package and includes mapping and documentation improvements.
