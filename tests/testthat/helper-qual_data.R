@@ -14,7 +14,11 @@ lData <- list(
     rename(dvdecod = crocategory) %>%
     rename(dvterm = description) %>%
     rename(dvdtm = deviationdate),
-  Raw_LB = lSource$Raw_LB,
+  Raw_LB = lSource$Raw_LB %>%
+    mutate(
+      lbtstnam = "ALT (SGPT)",
+      rptresn = 25
+    ),
   Raw_STUDCOMP = lSource$Raw_STUDCOMP,
   Raw_SDRGCOMP = lSource$Raw_SDRGCOMP %>%
     mutate(phase = as.character(phase)),
