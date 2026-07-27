@@ -3,27 +3,25 @@
 
 ## usethis namespace: start
 #' @import dplyr
-#' @import gsm.core
 #' @import purrr
-#' @import log4r
 #' @import tidyr
 #' @importFrom cli cli_abort
 #' @importFrom cli cli_alert
-#' @importFrom cli cli_alert_info
 #' @importFrom cli cli_alert_danger
+#' @importFrom cli cli_alert_info
 #' @importFrom cli cli_alert_success
 #' @importFrom cli cli_alert_warning
 #' @importFrom cli cli_text
 #' @importFrom cli cli_warn
-#' @importFrom dbplyr remote_con
-#' @importFrom dbplyr remote_name
+#' @importFrom dbplyr db_collect
 #' @importFrom DBI dbConnect
+#' @importFrom DBI dbDisconnect
 #' @importFrom DBI dbExecute
 #' @importFrom DBI dbGetQuery
-#' @importFrom DBI dbDisconnect
 #' @importFrom DBI dbWriteTable
 #' @importFrom duckdb duckdb
 #' @importFrom glue glue
+#' @importFrom rlang :=
 #' @importFrom stringr str_detect
 #' @importFrom stringr str_replace
 #' @importFrom yaml read_yaml

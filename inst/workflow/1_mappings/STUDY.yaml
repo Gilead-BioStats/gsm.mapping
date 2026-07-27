@@ -26,6 +26,8 @@ spec:
       type: Date
     est_lpfv:
       type: Date
+    db_lock_dt:
+      type: Date
     therapeutic_area:
       type: character
     protocol_indication:
@@ -45,7 +47,7 @@ spec:
       type: character
 steps:
   - output: Temp_CTMSStudyWide
-    name: gsm.core::RunQuery
+    name: workr::RunQuery
     params:
       df: Raw_STUDY
       strQuery: "SELECT studyid as GroupID, * FROM df"
@@ -55,12 +57,12 @@ steps:
       data: Temp_CTMSStudyWide
       strGroupLevel: "Study"
   - output: Temp_CTMSplanned
-    name: gsm.core::RunQuery
+    name: workr::RunQuery
     params:
       df: Raw_STUDY
       strQuery: "SELECT studyid as GroupID, num_plan_site as SiteTarget, num_plan_subj as ParticipantTarget FROM df"
   - output: Temp_StudyCountsWide
-    name: gsm.core::RunQuery
+    name: workr::RunQuery
     params:
       df: Raw_SUBJ
       strQuery: "SELECT studyid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df WHERE enrollyn == 'Y' GROUP BY studyid"

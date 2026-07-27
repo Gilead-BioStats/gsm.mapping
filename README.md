@@ -1,6 +1,20 @@
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/Gilead-BioStats/gsm.mapping/workflows/R-CMD-check-main/badge.svg)](https://github.com/Gilead-BioStats/gsm.mapping/actions) 
+<div class="pkgdown-release">
+
+[![R-CMD-check](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml)
+[![pkgdown-all](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml/badge.svg?branch=main)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml)
+
+</div>
+
+<div class="pkgdown-devel">
+
+[![R-CMD-check](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml)
+[![pkgdown-all](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml)
+
+</div>
 
 <!-- badges: end -->
 
@@ -17,6 +31,26 @@ The {gsm} ecosystem provides a standardized Risk Based Quality Monitoring (RBQM)
 The `{gsm.mapping}` package provides the necessary functions and workflows to perform the data transformation from raw/source datasets to appropriate domains.
 This README provides a high-level overview of {gsm.mapping}; see the [package website](https://gilead-biostats.github.io/gsm.mapping/) for additional details.
 
+## Installation
+
+You can install the latest release of gsm.mapping from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("Gilead-BioStats/gsm.mapping@*release")
+```
+
+<div class="pkgdown-devel">
+
+You can install the development version of gsm.mapping from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("Gilead-BioStats/gsm.mapping")
+```
+
+</div>
 
 # Background 
 Clinical trial data often presents challenges due to its complexity and variability. The gsm.mapping framework is designed to accommodate a wide range of clinical data sources. Typically, raw data from clinical trial databases is transformed into mapped datasets through straightforward transformations. These mapped datasets then serve as inputs for the analytical pipeline.

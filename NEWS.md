@@ -1,3 +1,33 @@
+# gsm.mapping (development version)
+
+# gsm.mapping 1.1.5
+
+This release migrates query execution and workflow discovery to the new `workr` package and includes mapping and documentation improvements.
+
+**Changes:**
+- Migrated `RunQuery()` and `MakeWorkflowList()` calls from `gsm.core` to the new `workr` package across `ApplySpec()`, the R functions, and all mapping workflow specs.
+- Fixed `ApplySpec()` to quote SQL column identifiers, so source/target columns with special characters or reserved words map correctly.
+- Added the `deathcls` field to the Death mapping (`Death.yaml`).
+- Converted the Example Mapping Workflow article from `.R` to `.Rmd` for a richer, rendered walkthrough on the package site.
+
+# gsm.mapping 1.1.4
+
+This patch release updates the GitHub action workflows to align with the new federated action framework in `gsm.utils`
+
+
+# gsm.mapping 1.1.3
+
+This minor update includes new/updated domain mapping specs, improved mapping documentation, and expanded qualification/unit testing and CI workflows.
+
+**Changes:**
+- Added `complete_death()` to `gsm.mapping` and updated the Death workflow spec to use it (including calculating `death_dy` with `Randomization` data).
+- Refreshed mapping-spec vignette to auto-discover YAML domains and render a richer, filterable mapping table.
+- Added qualification/unit tests (including snapshots) and modernized GitHub Actions workflows (qcthat + new pkgdown workflow), alongside version bump/remotes update.
+
+# gsm.mapping 1.1.2
+
+This patch release adds `db_lock_dt` to spec of `STUDY.yaml` and makes wording/phrasing changes for `EXCLUSION.yaml`.
+
 # gsm.mapping 1.1.1
 
 This patch release adds new contributor guidelines and standardized issue templates. 

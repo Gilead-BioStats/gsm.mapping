@@ -1,4 +1,4 @@
-test_that("MakeLongMeta fails for missing columns strGroupCols", {
+test_that("MakeLongMeta fails for missing columns strGroupCols (#noissue)", {
   given <- data.frame(
     GroupID = c(1, 2),
     Param1 = c(10, 20),
@@ -14,7 +14,7 @@ test_that("MakeLongMeta fails for missing columns strGroupCols", {
   )
 })
 
-test_that("MakeLongMeta makes dfGroups", {
+test_that("MakeLongMeta makes dfGroups (#noissue)", {
   given <- data.frame(
     GroupID = c(1, 2),
     Param1 = c(10, 20),

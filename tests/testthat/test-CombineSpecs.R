@@ -1,4 +1,4 @@
-test_that("Combining multiple specs with overlapping dfs, deduplicating cols", {
+test_that("Combining multiple specs with overlapping dfs, deduplicating cols (#2)", {
   spec1 <- list(
     df1 = list(
       col1 = list(type = "character"),
@@ -42,7 +42,7 @@ test_that("Combining multiple specs with overlapping dfs, deduplicating cols", {
   expect_equal(combined, expected)
 })
 
-test_that("Combining specs with non-overlapping dfs", {
+test_that("Combining specs with non-overlapping dfs (#2)", {
   spec1 <- list(
     df1 = list(
       col1 = list(type = "character"),
@@ -73,7 +73,7 @@ test_that("Combining specs with non-overlapping dfs", {
   expect_equal(combined, expected)
 })
 
-test_that("Combining specs with some empty dfs", {
+test_that("Combining specs with some empty dfs (#2)", {
   spec1 <- list(
     df1 = list(),
     df2 = list(
@@ -104,12 +104,12 @@ test_that("Combining specs with some empty dfs", {
   expect_equal(combined, expected)
 })
 
-test_that("Combining empty list of specs returns an empty list", {
+test_that("Combining empty list of specs returns an empty list (#2)", {
   combined <- CombineSpecs(list(), bIsWorkflow = FALSE)
   expect_equal(combined, list())
 })
 
-test_that("Combining a single spec returns the same spec", {
+test_that("Combining a single spec returns the same spec (#2)", {
   spec1 <- list(
     df1 = list(
       col1 = list(type = "character"),
@@ -126,7 +126,7 @@ test_that("Combining a single spec returns the same spec", {
   expect_equal(combined, spec1)
 })
 
-test_that("Combining specs with NULL entries is handled correctly", {
+test_that("Combining specs with NULL entries is handled correctly (#2)", {
   spec1 <- list(
     df1 = list(
       col1 = list(type = "character"),
@@ -154,7 +154,7 @@ test_that("Combining specs with NULL entries is handled correctly", {
   expect_equal(combined, expected)
 })
 
-test_that("warning if type doesn't match first instance", {
+test_that("warning if type doesn't match first instance (#2)", {
   spec1 <- list(
     df1 = list(
       col1 = list(type = "integer")

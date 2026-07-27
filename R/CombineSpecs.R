@@ -33,7 +33,7 @@
 #'
 #' combined <- CombineSpecs(list(spec1, spec2), bIsWorkflow = FALSE)
 #'
-#' mappings <- gsm.core::MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+#' mappings <- workr::MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 #' mapping_spec <- CombineSpecs(mappings)
 #'
 #' @export
@@ -48,7 +48,7 @@ CombineSpecs <- function(lSpecs, bIsWorkflow = TRUE) {
 
   # Combine specs for each domain using lapply/map
   combined_specs <- map(all_domains, function(domain) {
-    domain_specs <- map(lSpecs, ~ .x[[domain]] %||% list())
+    domain_specs <- map(lSpecs, ~ if (is.null(.x[[domain]])) list() else .x[[domain]])
     combine_domain(domain_specs)
   })
 
@@ -72,8 +72,8 @@ combine_domain <- function(domain_specs) {
     combined_cols <- union(names(combined), names(spec))
 
     # Fill missing columns with NULLs in both lists
-    combined <- map(combined_cols, ~ combined[[.x]] %||% NULL)
-    spec <- map(combined_cols, ~ spec[[.x]] %||% NULL)
+    combined <- map(combined_cols, ~ if (is.null(combined[[.x]])) NULL else combined[[.x]])
+    spec <- map(combined_cols, ~ if (is.null(spec[[.x]])) NULL else spec[[.x]])
     names(combined) <- combined_cols
     names(spec) <- combined_cols
 
