@@ -1,74 +1,5 @@
-# VS.yaml (#128)
-test_that("Qual: VS.yaml mapping loads with expected format, independent of other domains (#128)", {
-  vs_yaml <- read_yaml(
-    file.path(
-      system.file(package = "gsm.mapping"),
-      "workflow",
-      "1_mappings",
-      "VS.yaml"
-    )
-  )
-
-  # Meta block
-  expect_equal(vs_yaml$meta$Type, "Mapped")
-  expect_equal(vs_yaml$meta$ID, "VS")
-  expect_true(is.character(vs_yaml$meta$Description))
-  expect_true(is.numeric(vs_yaml$meta$Priority))
-
-  # Spec is keyed off a single raw input, Raw_VS
-  expect_equal(names(vs_yaml$spec), "Raw_VS")
-
-  expected_fields <- c(
-    "studyid",
-    "subjid",
-    "visit",
-    "vs_dt",
-    "vsperf_std",
-    "weight",
-    "height",
-    "bmi",
-    "sysbp",
-    "diabp",
-    "pulse",
-    "temp",
-    "resp",
-    "bsa"
-  )
-  expected_types <- list(
-    studyid = "character",
-    subjid = "character",
-    visit = "character",
-    vs_dt = "Date",
-    vsperf_std = "character",
-    weight = "numeric",
-    height = "numeric",
-    bmi = "numeric",
-    sysbp = "numeric",
-    diabp = "numeric",
-    pulse = "numeric",
-    temp = "numeric",
-    resp = "numeric",
-    bsa = "numeric"
-  )
-
-  vs_spec <- vs_yaml$spec$Raw_VS
-  expect_true(all(expected_fields %in% names(vs_spec)))
-
-  iwalk(
-    expected_types,
-    ~ expect_equal(vs_spec[[.y]]$type, .x)
-  )
-
-  # Steps: single, direct (identity) mapping step producing Mapped_VS
-  expect_length(vs_yaml$steps, 1)
-  expect_equal(vs_yaml$steps[[1]]$output, "Mapped_VS")
-  expect_equal(vs_yaml$steps[[1]]$name, "=")
-  expect_equal(vs_yaml$steps[[1]]$params$lhs, "Mapped_VS")
-  expect_equal(vs_yaml$steps[[1]]$params$rhs, "Raw_VS")
-})
-
 # Priority 1 mappings
-test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 1 mappings are completed as expected (#97, #114)", {
+test_that("Qual: mappings now done by individual domain, test that inputs and outputs of priority 1 mappings are completed as expected (#97, #114, #128)", {
   priority1 <- c(
     "AE.yaml",
     "ENROLL.yaml",
@@ -78,7 +9,8 @@ test_that("Qual: mappings now done by individual domain, test that inputs and ou
     "STUDCOMP.yaml",
     "SUBJ.yaml",
     "OverallResponse.yaml",
-    "Randomization.yaml"
+    "Randomization.yaml",
+    "VS.yaml"
   )
 
   mapped_p1_yaml <- map(
