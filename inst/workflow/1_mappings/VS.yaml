@@ -9,8 +9,9 @@ spec:
       type: character
     subjid:
       type: character
-    visnam:
+    visit:
       type: character
+      source_col: foldername
     vs_dt:
       type: Date
     vsperf_std:
@@ -30,6 +31,8 @@ spec:
     temp:
       type: numeric
     resp:
+      type: numeric
+    bsa:
       type: numeric
 steps:
   - output: Mapped_VS
