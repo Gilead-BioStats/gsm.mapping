@@ -15,8 +15,6 @@ spec:
       type: character
     compreas:
       type: character
-    colendat:
-      type: Date
     mincreated_dts:
       type: timestamp
 steps:

@@ -17,13 +17,14 @@ complete_non_starter(
 
 \item{dfStudyDrugCompletion}{\code{Mapped_SDRGCOMP}: \verb{studyid, subjid, sdrgreas}.}
 
-\item{dfStudyCompletion}{\code{Mapped_STUDCOMP}: \verb{studyid, subjid, colendat}.}
+\item{dfStudyCompletion}{\code{Mapped_STUDCOMP}: \verb{studyid, subjid, compreas}.}
 
 \item{nWindowDays}{\code{integer} window in days separating the two potential
 statuses; default \code{30}.}
 
 \item{chrNeverDosedReason}{\code{character} coded \code{sdrgreas} value marking a
-confirmed non-starter; default \code{"Subject Never Dosed with Study Drug"}.}
+confirmed non-starter, matched ignoring case; default
+\code{"Subject Never Dosed with Study Drug"}.}
 }
 \value{
 a \code{data.frame} with one row per enrolled subject and columns
@@ -36,9 +37,9 @@ already filtered to \code{enrollyn == 'Y'}, so every row is an enrolled subject.
 }
 \details{
 A subject is a \strong{confirmed} non-starter when they are enrolled, not dosed
-(\code{firstdosedate} is \code{NA}) and have either a present study-completion
-collection-end date (\code{colendat}) or the coded study-drug-completion reason
-(\code{sdrgreas == chrNeverDosedReason}).
+(\code{firstdosedate} is \code{NA}) and have either a non-blank study-completion reason
+(\code{compreas}) or the coded study-drug-completion reason (\code{sdrgreas} matching
+\code{chrNeverDosedReason}, compared case-insensitively).
 }
 \examples{
 \dontrun{

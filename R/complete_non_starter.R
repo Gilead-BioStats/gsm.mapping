@@ -5,18 +5,19 @@
 #' already filtered to `enrollyn == 'Y'`, so every row is an enrolled subject.
 #'
 #' A subject is a **confirmed** non-starter when they are enrolled, not dosed
-#' (`firstdosedate` is `NA`) and have either a present study-completion
-#' collection-end date (`colendat`) or the coded study-drug-completion reason
-#' (`sdrgreas == chrNeverDosedReason`).
+#' (`firstdosedate` is `NA`) and have either a non-blank study-completion reason
+#' (`compreas`) or the coded study-drug-completion reason (`sdrgreas` matching
+#' `chrNeverDosedReason`, compared case-insensitively).
 #'
 #' @param dfSubjects `Mapped_SUBJ`: `studyid, subjid, invid, country,
 #'   firstdosedate, timeonstudy`.
 #' @param dfStudyDrugCompletion `Mapped_SDRGCOMP`: `studyid, subjid, sdrgreas`.
-#' @param dfStudyCompletion `Mapped_STUDCOMP`: `studyid, subjid, colendat`.
+#' @param dfStudyCompletion `Mapped_STUDCOMP`: `studyid, subjid, compreas`.
 #' @param nWindowDays `integer` window in days separating the two potential
 #'   statuses; default `30`.
 #' @param chrNeverDosedReason `character` coded `sdrgreas` value marking a
-#'   confirmed non-starter; default `"Subject Never Dosed with Study Drug"`.
+#'   confirmed non-starter, matched ignoring case; default
+#'   `"Subject Never Dosed with Study Drug"`.
 #'
 #' @return a `data.frame` with one row per enrolled subject and columns
 #'   `studyid, subjid, invid, country, dosed, nonstarter_status,
@@ -56,14 +57,17 @@ complete_non_starter <- function(
     dplyr::group_by(.data$studyid, .data$subjid) %>%
     dplyr::summarise(
       never_dosed_reason = any(
-        !is.na(.data$sdrgreas) & .data$sdrgreas == chrNeverDosedReason
+        !is.na(.data$sdrgreas) &
+          toupper(.data$sdrgreas) == toupper(chrNeverDosedReason)
       ),
       .groups = "drop"
     )
   stud_by_subject <- dfStudyCompletion %>%
     dplyr::group_by(.data$studyid, .data$subjid) %>%
     dplyr::summarise(
-      has_colendat = any(!is.na(.data$colendat)),
+      has_compreas = any(
+        !is.na(.data$compreas) & trimws(.data$compreas) != ""
+      ),
       .groups = "drop"
     )
 
@@ -73,7 +77,7 @@ complete_non_starter <- function(
     dplyr::mutate(
       dosed = !is.na(.data$firstdosedate),
       confirmed = !.data$dosed &
-        (dplyr::coalesce(.data$has_colendat, FALSE) |
+        (dplyr::coalesce(.data$has_compreas, FALSE) |
           dplyr::coalesce(.data$never_dosed_reason, FALSE)),
       nonstarter_status = dplyr::case_when(
         .data$dosed ~ "Started",

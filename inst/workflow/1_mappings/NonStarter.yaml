@@ -29,8 +29,8 @@ spec:
       type: character
     subjid:
       type: character
-    colendat:
-      type: Date
+    compreas:
+      type: character
 steps:
   - name: gsm.mapping::complete_non_starter
     output: Mapped_NonStarter
