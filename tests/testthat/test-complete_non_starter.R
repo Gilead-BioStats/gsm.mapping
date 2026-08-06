@@ -68,6 +68,31 @@ test_that("complete_non_starter classifies all four statuses (#139)", {
   expect_false(any(dosed[c("W1", "O1", "C1", "C2")]))
 })
 
+test_that("complete_non_starter treats a blank firstdosedate as not dosed (#139)", {
+  # firstdosedate can arrive as "" (or whitespace) rather than NA; a blank must
+  # not read as dosed, otherwise the subject is wrongly classified "Started".
+  dfSubjects <- data.frame(
+    studyid = "S",
+    subjid = c("D1", "E1", "W1", "N1"),
+    invid = "I1",
+    country = "US",
+    firstdosedate = c("2020-01-01", "", "   ", NA),
+    timeonstudy = c(100L, 20L, 20L, 20L),
+    stringsAsFactors = FALSE
+  )
+  out <- complete_non_starter(dfSubjects, empty_sdrg(), empty_stud())
+
+  dosed <- setNames(out$dosed, out$subjid)
+  expect_true(dosed[["D1"]])
+  expect_false(any(dosed[c("E1", "W1", "N1")]))
+
+  status <- setNames(out$nonstarter_status, out$subjid)
+  expect_equal(status[["D1"]], "Started")
+  expect_equal(status[["E1"]], "Potential-within")
+  expect_equal(status[["W1"]], "Potential-within")
+  expect_equal(status[["N1"]], "Potential-within")
+})
+
 test_that("complete_non_starter keeps one row per enrolled subject with the expected columns (#139)", {
   dfSubjects <- data.frame(
     studyid = "S",

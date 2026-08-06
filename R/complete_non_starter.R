@@ -5,7 +5,7 @@
 #' already filtered to `enrollyn == 'Y'`, so every row is an enrolled subject.
 #'
 #' A subject is a **confirmed** non-starter when they are enrolled, not dosed
-#' (`firstdosedate` is `NA`) and have either a non-blank study-completion reason
+#' (`firstdosedate` is `NA` or blank) and have either a non-blank study-completion reason
 #' (`compreas`) or the coded study-drug-completion reason (`sdrgreas` matching
 #' `chrNeverDosedReason`, compared case-insensitively).
 #'
@@ -75,7 +75,7 @@ complete_non_starter <- function(
     dplyr::left_join(sdrg_by_subject, by = c("studyid", "subjid")) %>%
     dplyr::left_join(stud_by_subject, by = c("studyid", "subjid")) %>%
     dplyr::mutate(
-      dosed = !is.na(.data$firstdosedate),
+      dosed = !is.na(.data$firstdosedate) & trimws(.data$firstdosedate) != "",
       confirmed = !.data$dosed &
         (dplyr::coalesce(.data$has_compreas, FALSE) |
           dplyr::coalesce(.data$never_dosed_reason, FALSE)),
