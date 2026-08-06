@@ -51,10 +51,16 @@ a `data.frame` with one row per enrolled subject and columns
 ## Details
 
 A subject is a **confirmed** non-starter when they are enrolled, not
-dosed (`firstdosedate` is `NA`) and have either a non-blank
+dosed (`firstdosedate` is `NA` or blank) and have either a non-blank
 study-completion reason (`compreas`) or the coded study-drug-completion
 reason (`sdrgreas` matching `chrNeverDosedReason`, compared
 case-insensitively).
+
+`nonstarter_status` is assigned by explicit predicate: `"Started"` when
+dosed, `"Confirmed"` when a confirmed non-starter, `"Potential-within"`
+/ `"Potential-outside"` for the remaining subjects whose `timeonstudy`
+falls at or below vs. above `nWindowDays`, and `NA` when none apply
+(e.g. `timeonstudy` is missing so the window cannot be evaluated).
 
 ## Examples
 

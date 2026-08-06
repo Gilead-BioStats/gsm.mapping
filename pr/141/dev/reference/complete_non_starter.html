@@ -98,9 +98,14 @@ confirmed non-starter, matched ignoring case; default
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>A subject is a <strong>confirmed</strong> non-starter when they are enrolled, not dosed
-(<code>firstdosedate</code> is <code>NA</code>) and have either a non-blank study-completion reason
+(<code>firstdosedate</code> is <code>NA</code> or blank) and have either a non-blank study-completion reason
 (<code>compreas</code>) or the coded study-drug-completion reason (<code>sdrgreas</code> matching
 <code>chrNeverDosedReason</code>, compared case-insensitively).</p>
+<p><code>nonstarter_status</code> is assigned by explicit predicate: <code>"Started"</code> when
+dosed, <code>"Confirmed"</code> when a confirmed non-starter, <code>"Potential-within"</code> /
+<code>"Potential-outside"</code> for the remaining subjects whose <code>timeonstudy</code> falls at
+or below vs. above <code>nWindowDays</code>, and <code>NA</code> when none apply (e.g. <code>timeonstudy</code>
+is missing so the window cannot be evaluated).</p>
     </div>
 
     <div class="section level2">
