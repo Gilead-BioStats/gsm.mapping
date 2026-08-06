@@ -76,7 +76,7 @@ already filtered to <code>enrollyn == 'Y'</code>, so every row is an enrolled su
 
 
 <dt id="arg-dfstudycompletion">dfStudyCompletion<a class="anchor" aria-label="anchor" href="#arg-dfstudycompletion"></a></dt>
-<dd><p><code>Mapped_STUDCOMP</code>: <code>studyid, subjid, colendat</code>.</p></dd>
+<dd><p><code>Mapped_STUDCOMP</code>: <code>studyid, subjid, compreas</code>.</p></dd>
 
 
 <dt id="arg-nwindowdays">nWindowDays<a class="anchor" aria-label="anchor" href="#arg-nwindowdays"></a></dt>
@@ -86,7 +86,8 @@ statuses; default <code>30</code>.</p></dd>
 
 <dt id="arg-chrneverdosedreason">chrNeverDosedReason<a class="anchor" aria-label="anchor" href="#arg-chrneverdosedreason"></a></dt>
 <dd><p><code>character</code> coded <code>sdrgreas</code> value marking a
-confirmed non-starter; default <code>"Subject Never Dosed with Study Drug"</code>.</p></dd>
+confirmed non-starter, matched ignoring case; default
+<code>"Subject Never Dosed with Study Drug"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -97,21 +98,21 @@ confirmed non-starter; default <code>"Subject Never Dosed with Study Drug"</code
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>A subject is a <strong>confirmed</strong> non-starter when they are enrolled, not dosed
-(<code>firstdosedate</code> is <code>NA</code>) and have either a present study-completion
-collection-end date (<code>colendat</code>) or the coded study-drug-completion reason
-(<code>sdrgreas == chrNeverDosedReason</code>).</p>
+(<code>firstdosedate</code> is <code>NA</code>) and have either a non-blank study-completion reason
+(<code>compreas</code>) or the coded study-drug-completion reason (<code>sdrgreas</code> matching
+<code>chrNeverDosedReason</code>, compared case-insensitively).</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">lMapping</span> <span class="op">&lt;-</span> <span class="fu">workr</span><span class="fu">::</span><span class="fu"><a href="https://gilead-biostats.github.io/workr/reference/MakeWorkflowList.html" class="external-link">MakeWorkflowList</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">lMapping</span> <span class="op">&lt;-</span> <span class="fu">workr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/workr/man/MakeWorkflowList.html" class="external-link">MakeWorkflowList</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  strPath <span class="op">=</span> <span class="st">"workflow/1_mappings"</span>,</span></span>
 <span class="r-in"><span>  strNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SUBJ"</span>, <span class="st">"SDRGCOMP"</span>, <span class="st">"STUDCOMP"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  strPackage <span class="op">=</span> <span class="st">"gsm.mapping"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">lRaw</span> <span class="op">&lt;-</span> <span class="fu">gsm.mapping</span><span class="fu">::</span><span class="fu"><a href="Ingest.html">Ingest</a></span><span class="op">(</span><span class="va">lSource</span>, <span class="fu">gsm.mapping</span><span class="fu">::</span><span class="fu"><a href="CombineSpecs.html">CombineSpecs</a></span><span class="op">(</span><span class="va">lMapping</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">mapped</span> <span class="op">&lt;-</span> <span class="fu">workr</span><span class="fu">::</span><span class="fu"><a href="https://gilead-biostats.github.io/workr/reference/RunWorkflows.html" class="external-link">RunWorkflows</a></span><span class="op">(</span><span class="va">lMapping</span>, <span class="va">lRaw</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mapped</span> <span class="op">&lt;-</span> <span class="fu">workr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/workr/man/RunWorkflows.html" class="external-link">RunWorkflows</a></span><span class="op">(</span><span class="va">lMapping</span>, <span class="va">lRaw</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">complete_non_starter</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  dfSubjects <span class="op">=</span> <span class="va">mapped</span><span class="op">$</span><span class="va">Mapped_SUBJ</span>,</span></span>
 <span class="r-in"><span>  dfStudyDrugCompletion <span class="op">=</span> <span class="va">mapped</span><span class="op">$</span><span class="va">Mapped_SDRGCOMP</span>,</span></span>

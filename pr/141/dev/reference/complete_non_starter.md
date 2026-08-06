@@ -30,7 +30,7 @@ complete_non_starter(
 
 - dfStudyCompletion:
 
-  `Mapped_STUDCOMP`: `studyid, subjid, colendat`.
+  `Mapped_STUDCOMP`: `studyid, subjid, compreas`.
 
 - nWindowDays:
 
@@ -39,8 +39,9 @@ complete_non_starter(
 
 - chrNeverDosedReason:
 
-  `character` coded `sdrgreas` value marking a confirmed non-starter;
-  default `"Subject Never Dosed with Study Drug"`.
+  `character` coded `sdrgreas` value marking a confirmed non-starter,
+  matched ignoring case; default
+  `"Subject Never Dosed with Study Drug"`.
 
 ## Value
 
@@ -50,9 +51,10 @@ a `data.frame` with one row per enrolled subject and columns
 ## Details
 
 A subject is a **confirmed** non-starter when they are enrolled, not
-dosed (`firstdosedate` is `NA`) and have either a present
-study-completion collection-end date (`colendat`) or the coded
-study-drug-completion reason (`sdrgreas == chrNeverDosedReason`).
+dosed (`firstdosedate` is `NA`) and have either a non-blank
+study-completion reason (`compreas`) or the coded study-drug-completion
+reason (`sdrgreas` matching `chrNeverDosedReason`, compared
+case-insensitively).
 
 ## Examples
 
