@@ -15,3 +15,5 @@
 - [`complete_death()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/complete_death.md)
   : combines study completion data, overall response data, and death
   data to output a dataframe containing pd date and death status.
+- [`complete_non_starter()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/complete_non_starter.md)
+  : Classify IP non-starter status per enrolled subject
