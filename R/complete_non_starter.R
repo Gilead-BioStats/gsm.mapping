@@ -9,6 +9,12 @@
 #' (`compreas`) or the coded study-drug-completion reason (`sdrgreas` matching
 #' `chrNeverDosedReason`, compared case-insensitively).
 #'
+#' `nonstarter_status` is assigned by explicit predicate: `"Started"` when
+#' dosed, `"Confirmed"` when a confirmed non-starter, `"Potential-within"` /
+#' `"Potential-outside"` for the remaining subjects whose `timeonstudy` falls at
+#' or below vs. above `nWindowDays`, and `NA` when none apply (e.g. `timeonstudy`
+#' is missing so the window cannot be evaluated).
+#'
 #' @param dfSubjects `Mapped_SUBJ`: `studyid, subjid, invid, country,
 #'   firstdosedate, timeonstudy`.
 #' @param dfStudyDrugCompletion `Mapped_SDRGCOMP`: `studyid, subjid, sdrgreas`.
@@ -83,7 +89,8 @@ complete_non_starter <- function(
         .data$dosed ~ "Started",
         .data$confirmed ~ "Confirmed",
         .data$timeonstudy <= nWindowDays ~ "Potential-within",
-        TRUE ~ "Potential-outside"
+        .data$timeonstudy > nWindowDays ~ "Potential-outside",
+        TRUE ~ NA_character_
       ),
       confirmed_nonstarter = as.integer(.data$confirmed)
     ) %>%

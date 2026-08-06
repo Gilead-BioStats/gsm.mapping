@@ -37,9 +37,15 @@ already filtered to \code{enrollyn == 'Y'}, so every row is an enrolled subject.
 }
 \details{
 A subject is a \strong{confirmed} non-starter when they are enrolled, not dosed
-(\code{firstdosedate} is \code{NA}) and have either a non-blank study-completion reason
+(\code{firstdosedate} is \code{NA} or blank) and have either a non-blank study-completion reason
 (\code{compreas}) or the coded study-drug-completion reason (\code{sdrgreas} matching
 \code{chrNeverDosedReason}, compared case-insensitively).
+
+\code{nonstarter_status} is assigned by explicit predicate: \code{"Started"} when
+dosed, \code{"Confirmed"} when a confirmed non-starter, \code{"Potential-within"} /
+\code{"Potential-outside"} for the remaining subjects whose \code{timeonstudy} falls at
+or below vs. above \code{nWindowDays}, and \code{NA} when none apply (e.g. \code{timeonstudy}
+is missing so the window cannot be evaluated).
 }
 \examples{
 \dontrun{

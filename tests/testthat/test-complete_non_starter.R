@@ -93,6 +93,28 @@ test_that("complete_non_starter treats a blank firstdosedate as not dosed (#139)
   expect_equal(status[["N1"]], "Potential-within")
 })
 
+test_that("complete_non_starter returns NA status when the window cannot be evaluated (#139)", {
+  # timeonstudy is a plain mapped integer and can be missing; a not-dosed,
+  # not-confirmed subject with no window must not be forced into
+  # "Potential-outside" - it is genuinely unclassifiable, so status is NA.
+  dfSubjects <- data.frame(
+    studyid = "S",
+    subjid = c("W1", "O1", "U1"),
+    invid = "I1",
+    country = "US",
+    firstdosedate = as.Date(c(NA, NA, NA)),
+    timeonstudy = c(20L, 40L, NA),
+    stringsAsFactors = FALSE
+  )
+  out <- complete_non_starter(dfSubjects, empty_sdrg(), empty_stud())
+
+  status <- setNames(out$nonstarter_status, out$subjid)
+  expect_equal(status[["W1"]], "Potential-within")
+  expect_equal(status[["O1"]], "Potential-outside")
+  expect_true(is.na(status[["U1"]]))
+  expect_equal(sum(out$confirmed_nonstarter), 0L)
+})
+
 test_that("complete_non_starter keeps one row per enrolled subject with the expected columns (#139)", {
   dfSubjects <- data.frame(
     studyid = "S",
