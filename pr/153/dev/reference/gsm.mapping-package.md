@@ -9,19 +9,17 @@ appropriate domains.
 
 Useful links:
 
-- <https://github.com/Gilead-BioStats/gsm.mapping>
+- <https://github.com/Gilead-Public/gsm.mapping>
 
-- <https://gilead-biostats.github.io/gsm.mapping>
+- <https://gilead-public.github.io/gsm.mapping>
 
-- Report bugs at <https://github.com/Gilead-BioStats/gsm.mapping/issues>
+- Report bugs at <https://github.com/Gilead-Public/gsm.mapping/issues>
 
 ## Author
 
 **Maintainer**: Jeremy Wildfire <jwildfire@gmail.com>
 
 Authors:
-
-- Jeremy Wildfire <jwildfire@gmail.com>
 
 - Laura Maxwell <laura.maxwell@atorusresearch.com>
 

@@ -35,7 +35,7 @@ Reused parameter definitions are gathered here for easier usage.
 
   `data.frame` Group-level metadata dictionary. Created by passing CTMS
   site and study data to
-  [`MakeLongMeta()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/MakeLongMeta.md).
+  [`MakeLongMeta()`](https://gilead-public.github.io/gsm.mapping/dev/reference/MakeLongMeta.md).
   Expected columns: `GroupID`, `GroupLevel`, `Param`, `Value`.
 
 - dfInput:

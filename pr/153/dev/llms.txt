@@ -1,8 +1,8 @@
 # Good Statistical Monitoring Mapping {gsm.mapping} R package
 
-[![R-CMD-check](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/R-CMD-check.yaml)
-[![test-coverage](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/test-coverage.yaml)
-[![pkgdown-all](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml/badge.svg?branch=dev)](https://github.com/Gilead-BioStats/gsm.mapping/actions/workflows/pkgdown-all.yaml)
+[![R-CMD-check](https://github.com/Gilead-Public/gsm.mapping/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Gilead-Public/gsm.mapping/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/Gilead-Public/gsm.mapping/actions/workflows/test-coverage.yaml/badge.svg?branch=dev)](https://github.com/Gilead-Public/gsm.mapping/actions/workflows/test-coverage.yaml)
+[![pkgdown-all](https://github.com/Gilead-Public/gsm.mapping/actions/workflows/pkgdown-all.yaml/badge.svg?branch=dev)](https://github.com/Gilead-Public/gsm.mapping/actions/workflows/pkgdown-all.yaml)
 
 The {gsm} ecosystem provides a standardized Risk Based Quality
 Monitoring (RBQM) framework for clinical trials that pairs a flexible
@@ -10,12 +10,12 @@ data pipeline with robust reports like the one shown below.
 
 ![](reference/figures/gsm_report_screenshot_1.png)
 
-The [gsm.mapping](https://github.com/Gilead-BioStats/gsm.mapping)
-package provides the necessary functions and workflows to perform the
-data transformation from raw/source datasets to appropriate domains.
-This README provides a high-level overview of {gsm.mapping}; see the
-[package website](https://gilead-biostats.github.io/gsm.mapping/) for
-additional details.
+The [gsm.mapping](https://github.com/Gilead-Public/gsm.mapping) package
+provides the necessary functions and workflows to perform the data
+transformation from raw/source datasets to appropriate domains. This
+README provides a high-level overview of {gsm.mapping}; see the [package
+website](https://gilead-public.github.io/gsm.mapping/) for additional
+details.
 
 ## Installation
 
@@ -25,7 +25,7 @@ You can install the latest release of gsm.mapping from
 ``` r
 
 # install.packages("pak")
-pak::pak("Gilead-BioStats/gsm.mapping@*release")
+pak::pak("Gilead-Public/gsm.mapping@*release")
 ```
 
 You can install the development version of gsm.mapping from
@@ -34,7 +34,7 @@ You can install the development version of gsm.mapping from
 ``` r
 
 # install.packages("pak")
-pak::pak("Gilead-BioStats/gsm.mapping")
+pak::pak("Gilead-Public/gsm.mapping")
 ```
 
 # Background
@@ -51,19 +51,19 @@ it is often necessary to consolidate and transform data from various
 folders and sources into appropriate “domains.” During the reporting
 process, while SDTM standards are commonly applied to ensure compliance,
 they may not always align with the specific requirements of RBQM. The
-goal of [gsm.mapping](https://github.com/Gilead-BioStats/gsm.mapping) is
+goal of [gsm.mapping](https://github.com/Gilead-Public/gsm.mapping) is
 to provide a flexible framework for mapping data into domains tailored
 to support risk assessments during trial monitoring.
 
 There is no single standardized format for raw or mapped data within
-[gsm.mapping](https://github.com/Gilead-BioStats/gsm.mapping). The only
+[gsm.mapping](https://github.com/Gilead-Public/gsm.mapping). The only
 requirement is that mapped data must be compatible with the analytics
 pipeline. Data transformations can be implemented using various methods,
 including custom R scripts (e.g., with dplyr), SQL queries, or
 pre-defined gsm workflows. Pre-defined workflows can be found in this
 package in the `workflow` directory, or as examples in the [gsm
 Extensions
-vignette](https://gilead-biostats.github.io/gsm.core/articles/gsmExtensions.html#mappings).
+vignette](https://gilead-public.github.io/gsm.core/articles/gsmExtensions.html#mappings).
 
 # Process Overview
 
@@ -77,17 +77,17 @@ output.
 
 ## All functions
 
-- [`ApplySpec()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/ApplySpec.md)
+- [`ApplySpec()`](https://gilead-public.github.io/gsm.mapping/dev/reference/ApplySpec.md)
   **\[stable\]** : Apply Data Specification
-- [`CalculatePercentage()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/CalculatePercentage.md)
+- [`CalculatePercentage()`](https://gilead-public.github.io/gsm.mapping/dev/reference/CalculatePercentage.md)
   : Helper function to compile "long" group metadata
-- [`CombineSpecs()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/CombineSpecs.md)
+- [`CombineSpecs()`](https://gilead-public.github.io/gsm.mapping/dev/reference/CombineSpecs.md)
   : Combine Multiple Specifications
-- [`Ingest()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/Ingest.md)
+- [`Ingest()`](https://gilead-public.github.io/gsm.mapping/dev/reference/Ingest.md)
   : Ingests data from a source based on a given specification.
-- [`MakeLongMeta()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/MakeLongMeta.md)
+- [`MakeLongMeta()`](https://gilead-public.github.io/gsm.mapping/dev/reference/MakeLongMeta.md)
   **\[stable\]** : Helper function to compile "long" group metadata
-- [`complete_death()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/complete_death.md)
+- [`complete_death()`](https://gilead-public.github.io/gsm.mapping/dev/reference/complete_death.md)
   : combines study completion data, overall response data, and death
   data to output a dataframe containing pd date and death status.
 
@@ -96,13 +96,13 @@ output.
 ### All vignettes
 
 - [Requesting New Domains or
-  Variables](https://gilead-biostats.github.io/gsm.mapping/dev/articles/add_new_domain_var.md):
+  Variables](https://gilead-public.github.io/gsm.mapping/dev/articles/add_new_domain_var.md):
 
   Detailed instructions for adding mapping specifications for a new
   domain or a new variable in an existing domain.
 
 - [Mapping
-  Specifications](https://gilead-biostats.github.io/gsm.mapping/dev/articles/mapping_spec.md):
+  Specifications](https://gilead-public.github.io/gsm.mapping/dev/articles/mapping_spec.md):
 
   A Vignette that details all mapping specifications for all domains in
   {gsm.mapping}

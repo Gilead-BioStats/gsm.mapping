@@ -10,11 +10,11 @@ requests for adding new domains or variables to `gsm.mapping`.
 ### 1. **Navigate to the GitHub Issues Page**
 
 1.  Visit the repository’s GitHub
-    [page](https://github.com/Gilead-BioStats/gsm.mapping).
+    [page](https://github.com/Gilead-Public/gsm.mapping).
 2.  Click on the **Issues** tab located at the top of the repository
     page and click the green **New Issue** button.
 3.  Or click
-    [here](https://github.com/Gilead-BioStats/gsm.mapping/issues/new/choose)
+    [here](https://github.com/Gilead-Public/gsm.mapping/issues/new/choose)
 
 ### 2. **Open a New Issue**
 

@@ -4,8 +4,8 @@
 
 This patch release removes the log4r package dependency, because the
 log4r package was archived on CRAN
-([\#143](https://github.com/Gilead-BioStats/gsm.mapping/issues/143),
-[\#113](https://github.com/Gilead-BioStats/gsm.mapping/issues/113)).
+([\#143](https://github.com/Gilead-Public/gsm.mapping/issues/143),
+[\#113](https://github.com/Gilead-Public/gsm.mapping/issues/113)).
 
 ## gsm.mapping 1.1.5
 
@@ -14,9 +14,9 @@ This release migrates query execution and workflow discovery to the new
 
 **Changes:** - Migrated `RunQuery()` and `MakeWorkflowList()` calls from
 `gsm.core` to the new `workr` package across
-[`ApplySpec()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/ApplySpec.md),
+[`ApplySpec()`](https://gilead-public.github.io/gsm.mapping/dev/reference/ApplySpec.md),
 the R functions, and all mapping workflow specs. - Fixed
-[`ApplySpec()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/ApplySpec.md)
+[`ApplySpec()`](https://gilead-public.github.io/gsm.mapping/dev/reference/ApplySpec.md)
 to quote SQL column identifiers, so source/target columns with special
 characters or reserved words map correctly. - Added the `deathcls` field
 to the Death mapping (`Death.yaml`). - Converted the Example Mapping
@@ -35,7 +35,7 @@ mapping documentation, and expanded qualification/unit testing and CI
 workflows.
 
 **Changes:** - Added
-[`complete_death()`](https://gilead-biostats.github.io/gsm.mapping/dev/reference/complete_death.md)
+[`complete_death()`](https://gilead-public.github.io/gsm.mapping/dev/reference/complete_death.md)
 to `gsm.mapping` and updated the Death workflow spec to use it
 (including calculating `death_dy` with `Randomization` data). -
 Refreshed mapping-spec vignette to auto-discover YAML domains and render
@@ -126,4 +126,4 @@ pull requests linked above.
 
 This initial release migrates the mapping-specific functions, workflows
 and documentation from `{gsm}` to
-[gsm.mapping](https://github.com/Gilead-BioStats/gsm.mapping).
+[gsm.mapping](https://github.com/Gilead-Public/gsm.mapping).
