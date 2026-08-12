@@ -14,7 +14,11 @@ lData <- list(
     rename(dvdecod = crocategory) %>%
     rename(dvterm = description) %>%
     rename(dvdtm = deviationdate),
-  Raw_LB = lSource$Raw_LB,
+  Raw_LB = lSource$Raw_LB %>%
+    mutate(
+      lbtstnam = "ALT (SGPT)",
+      rptresn = 25
+    ),
   Raw_STUDCOMP = lSource$Raw_STUDCOMP,
   Raw_SDRGCOMP = lSource$Raw_SDRGCOMP %>%
     mutate(phase = as.character(phase)),
@@ -47,7 +51,23 @@ lData <- list(
     # gsm.core::lSource supplies rs_dt as a character string; coerce to Date to
     # match the mapping spec (rs_dt: type: Date) and the production Ingest() path.
     mutate(rs_dt = as.Date(rs_dt)),
-  Raw_Randomization = lSource$Raw_Randomization
+  Raw_Randomization = lSource$Raw_Randomization,
+  Raw_VS = data.frame(
+    studyid = "STUDY01",
+    subjid = "SUBJ01",
+    visit = "Visit 1",
+    vs_dt = as.Date("2024-01-01"),
+    vsperf_std = "Y",
+    weight = 70,
+    height = 170,
+    bmi = 24.2,
+    sysbp = 120,
+    diabp = 80,
+    pulse = 72,
+    temp = 37,
+    resp = 16,
+    bsa = 1.8
+  )
 )
 
 ## Data with missing values (15% NA's)

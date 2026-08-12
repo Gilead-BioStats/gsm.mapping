@@ -13,6 +13,8 @@ spec:
       type: character
     phase:
       type: character
+    sdrgreas:
+      type: character
     mincreated_dts:
       type: timestamp
 steps:
