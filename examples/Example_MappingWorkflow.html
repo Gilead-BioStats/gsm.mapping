@@ -1485,9 +1485,9 @@ font-size: 0.95em;
 
 
 <h1 class="title toc-ignore">Example Mapping Workflow</h1>
-<h4 class="author"><a href="https://gilead-biostats.github.io/gsm.mapping">gsm.mapping</a>
+<h4 class="author"><a href="https://gilead-public.github.io/gsm.mapping">gsm.mapping</a>
 Example</h4>
-<h4 class="date">July 17, 2026 17:19:51 UTC</h4>
+<h4 class="date">August 12, 2026 17:43:41 UTC</h4>
 
 </div>
 
@@ -1560,10 +1560,14 @@ standardize the required columns from the raw/source data.</p>
 <pre class="r"><code>lRaw &lt;- Ingest(lSource, mappings_spec)
 #&gt; ℹ Ingesting data for AE.
 #&gt; [INFO] Creating a new temporary DuckDB connection.
-#&gt; duckdb is keeping downloaded extensions in a temporary directory:
-#&gt; ℹ /tmp/Rtmpfs0M4r/duckdb/extensions
-#&gt; This is removed when the R session ends, so extensions are re-downloaded each session.
-#&gt; ℹ To keep them, point `options(duckdb.extension_directory =)` or the `DUCKDB_EXTENSION_DIRECTORY` environment variable at a permanent path.
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 3000 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1572,6 +1576,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1000 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1580,6 +1592,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 405720 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1588,6 +1608,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 3000 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1596,6 +1624,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 100 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1604,6 +1640,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 100 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1612,6 +1656,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1000 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1620,6 +1672,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 435968 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1628,6 +1688,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1000 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1636,6 +1704,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 108992 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1644,6 +1720,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 27248 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1652,6 +1736,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 150 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
@@ -1660,6 +1752,14 @@ standardize the required columns from the raw/source data.</p>
 #&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
 #&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1 rows returned.
 #&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.</code></pre>
@@ -1739,200 +1839,450 @@ final Mapped Data Layer.</p>
 #&gt; [INFO] strQuery = SELECT * FROM df WHERE enrollyn == &#39;Y&#39;: No matching data found. Passing &#39;SELECT * FROM df WHERE enrollyn == &#39;Y&#39;&#39; as a string.
 #&gt; [INFO] Calling `workr::RunQuery`
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 762 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 762x14 data.frame saved as `lData$Mapped_SUBJ`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 762x14 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_SUBJ` Workflow
+#&gt; 
 #&gt; [INFO] Initializing `Mapped_DATACHG` Workflow
+#&gt; 
 #&gt; [INFO] Checking data against spec
+#&gt; 
 #&gt; [INFO] Workflow Step 1 of 2: `dplyr::select`
+#&gt; 
 #&gt; [INFO] Evaluating 4 parameter(s) for `dplyr::select`
+#&gt; 
 #&gt; [INFO] .data = Mapped_SUBJ: Passing lData$Mapped_SUBJ.
+#&gt; 
 #&gt; [INFO] subjid = subjid: No matching data found. Passing &#39;subjid&#39; as a string.
+#&gt; 
 #&gt; [INFO] subject_nsv = subject_nsv: No matching data found. Passing &#39;subject_nsv&#39; as a string.
+#&gt; 
 #&gt; [INFO] studyid = studyid: No matching data found. Passing &#39;studyid&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::select`
+#&gt; 
 #&gt; [INFO] 762x3 data.frame saved as `lData$Temp_SubjectLookup`.
+#&gt; 
 #&gt; [INFO] Workflow Step 2 of 2: `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] x = Raw_DATACHG: Passing lData$Raw_DATACHG.
+#&gt; 
 #&gt; [INFO] y = Temp_SubjectLookup: Passing lData$Temp_SubjectLookup.
+#&gt; 
 #&gt; [INFO] by is of length 2: Parameter is a vector. Passing as is.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] 435968x5 data.frame saved as `lData$Mapped_DATACHG`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 435968x5 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_DATACHG` Workflow
+#&gt; 
 #&gt; [INFO] Initializing `Mapped_DATAENT` Workflow
+#&gt; 
 #&gt; [INFO] Checking data against spec
+#&gt; 
 #&gt; [INFO] Workflow Step 1 of 2: `dplyr::select`
+#&gt; 
 #&gt; [INFO] Evaluating 4 parameter(s) for `dplyr::select`
+#&gt; 
 #&gt; [INFO] .data = Mapped_SUBJ: Passing lData$Mapped_SUBJ.
+#&gt; 
 #&gt; [INFO] subjid = subjid: No matching data found. Passing &#39;subjid&#39; as a string.
+#&gt; 
 #&gt; [INFO] subject_nsv = subject_nsv: No matching data found. Passing &#39;subject_nsv&#39; as a string.
+#&gt; 
 #&gt; [INFO] studyid = studyid: No matching data found. Passing &#39;studyid&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::select`
+#&gt; 
 #&gt; [INFO] 762x3 data.frame saved as `lData$Temp_SubjectLookup`.
+#&gt; 
 #&gt; [INFO] Workflow Step 2 of 2: `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] x = Raw_DATAENT: Passing lData$Raw_DATAENT.
+#&gt; 
 #&gt; [INFO] y = Temp_SubjectLookup: Passing lData$Temp_SubjectLookup.
+#&gt; 
 #&gt; [INFO] by is of length 2: Parameter is a vector. Passing as is.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] 108992x5 data.frame saved as `lData$Mapped_DATAENT`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 108992x5 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_DATAENT` Workflow
+#&gt; 
 #&gt; [INFO] Initializing `Mapped_QUERY` Workflow
+#&gt; 
 #&gt; [INFO] Checking data against spec
+#&gt; 
 #&gt; [INFO] Workflow Step 1 of 2: `dplyr::select`
+#&gt; 
 #&gt; [INFO] Evaluating 4 parameter(s) for `dplyr::select`
+#&gt; 
 #&gt; [INFO] .data = Mapped_SUBJ: Passing lData$Mapped_SUBJ.
+#&gt; 
 #&gt; [INFO] studyid = studyid: No matching data found. Passing &#39;studyid&#39; as a string.
+#&gt; 
 #&gt; [INFO] subjid = subjid: No matching data found. Passing &#39;subjid&#39; as a string.
+#&gt; 
 #&gt; [INFO] subject_nsv = subject_nsv: No matching data found. Passing &#39;subject_nsv&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::select`
+#&gt; 
 #&gt; [INFO] 762x3 data.frame saved as `lData$Temp_SubjectLookup`.
+#&gt; 
 #&gt; [INFO] Workflow Step 2 of 2: `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] x = Raw_QUERY: Passing lData$Raw_QUERY.
+#&gt; 
 #&gt; [INFO] y = Temp_SubjectLookup: Passing lData$Temp_SubjectLookup.
+#&gt; 
 #&gt; [INFO] by is of length 2: Parameter is a vector. Passing as is.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] 27248x6 data.frame saved as `lData$Mapped_QUERY`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 27248x6 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_QUERY` Workflow
+#&gt; 
 #&gt; [INFO] Initializing `Mapped_COUNTRY` Workflow
+#&gt; 
 #&gt; [INFO] Checking data against spec
+#&gt; 
 #&gt; [INFO] Workflow Step 1 of 2: `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] df = Mapped_SUBJ: Passing lData$Mapped_SUBJ.
+#&gt; 
 #&gt; [INFO] strQuery = SELECT country as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY country: No matching data found. Passing &#39;SELECT country as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY country&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 3 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 3x3 data.frame saved as `lData$Temp_CountryCountsWide`.
+#&gt; 
 #&gt; [INFO] Workflow Step 2 of 2: `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] data = Temp_CountryCountsWide: Passing lData$Temp_CountryCountsWide.
+#&gt; 
 #&gt; [INFO] strGroupLevel = Country: No matching data found. Passing &#39;Country&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] 6x4 data.frame saved as `lData$Mapped_COUNTRY`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 6x4 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_COUNTRY` Workflow
+#&gt; 
 #&gt; [INFO] Initializing `Mapped_SITE` Workflow
+#&gt; 
 #&gt; [INFO] Checking data against spec
+#&gt; 
 #&gt; [INFO] Workflow Step 1 of 5: `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] df = Raw_SITE: Passing lData$Raw_SITE.
+#&gt; 
 #&gt; [INFO] strQuery = SELECT invid as GroupID, * FROM df: No matching data found. Passing &#39;SELECT invid as GroupID, * FROM df&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 150 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 150x10 data.frame saved as `lData$Temp_CTMSSiteWide`.
+#&gt; 
 #&gt; [INFO] Workflow Step 2 of 5: `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] data = Temp_CTMSSiteWide: Passing lData$Temp_CTMSSiteWide.
+#&gt; 
 #&gt; [INFO] strGroupLevel = Site: No matching data found. Passing &#39;Site&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] 1350x4 data.frame saved as `lData$Temp_CTMSSite`.
+#&gt; 
 #&gt; [INFO] Workflow Step 3 of 5: `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] df = Mapped_SUBJ: Passing lData$Mapped_SUBJ.
+#&gt; 
 #&gt; [INFO] strQuery = SELECT invid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY invid: No matching data found. Passing &#39;SELECT invid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df GROUP BY invid&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 143 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 143x3 data.frame saved as `lData$Temp_SiteCountsWide`.
+#&gt; 
 #&gt; [INFO] Workflow Step 4 of 5: `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] data = Temp_SiteCountsWide: Passing lData$Temp_SiteCountsWide.
+#&gt; 
 #&gt; [INFO] strGroupLevel = Site: No matching data found. Passing &#39;Site&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] 286x4 data.frame saved as `lData$Temp_SiteCounts`.
+#&gt; 
 #&gt; [INFO] Workflow Step 5 of 5: `dplyr::bind_rows`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `dplyr::bind_rows`
+#&gt; 
 #&gt; [INFO] Temp_CTMSSite = Temp_CTMSSite: Passing lData$Temp_CTMSSite.
+#&gt; 
 #&gt; [INFO] Temp_SiteCounts = Temp_SiteCounts: Passing lData$Temp_SiteCounts.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::bind_rows`
+#&gt; 
 #&gt; [INFO] 1636x4 data.frame saved as `lData$Mapped_SITE`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 1636x4 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_SITE` Workflow
+#&gt; 
 #&gt; [INFO] Initializing `Mapped_STUDY` Workflow
+#&gt; 
 #&gt; [INFO] Checking data against spec
+#&gt; 
 #&gt; [INFO] Workflow Step 1 of 9: `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] df = Raw_STUDY: Passing lData$Raw_STUDY.
+#&gt; 
 #&gt; [INFO] strQuery = SELECT studyid as GroupID, * FROM df: No matching data found. Passing &#39;SELECT studyid as GroupID, * FROM df&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 1x16 data.frame saved as `lData$Temp_CTMSStudyWide`.
+#&gt; 
 #&gt; [INFO] Workflow Step 2 of 9: `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] data = Temp_CTMSStudyWide: Passing lData$Temp_CTMSStudyWide.
+#&gt; 
 #&gt; [INFO] strGroupLevel = Study: No matching data found. Passing &#39;Study&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] 15x4 data.frame saved as `lData$Temp_CTMSStudy`.
+#&gt; 
 #&gt; [INFO] Workflow Step 3 of 9: `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] df = Raw_STUDY: Passing lData$Raw_STUDY.
+#&gt; 
 #&gt; [INFO] strQuery = SELECT studyid as GroupID, num_plan_site as SiteTarget, num_plan_subj as ParticipantTarget FROM df: No matching data found. Passing &#39;SELECT studyid as GroupID, num_plan_site as SiteTarget, num_plan_subj as ParticipantTarget FROM df&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 1x3 data.frame saved as `lData$Temp_CTMSplanned`.
+#&gt; 
 #&gt; [INFO] Workflow Step 4 of 9: `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] df = Raw_SUBJ: Passing lData$Raw_SUBJ.
+#&gt; 
 #&gt; [INFO] strQuery = SELECT studyid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df WHERE enrollyn == &#39;Y&#39; GROUP BY studyid: No matching data found. Passing &#39;SELECT studyid as GroupID, COUNT(DISTINCT subjid) as ParticipantCount, COUNT(DISTINCT invid) as SiteCount FROM df WHERE enrollyn == &#39;Y&#39; GROUP BY studyid&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `workr::RunQuery`
+#&gt; 
 #&gt; [INFO] Creating a new temporary DuckDB connection.
+#&gt; 
+#&gt; duckdb keeps downloaded extensions and secrets in a temporary directory:
+#&gt; ℹ /tmp/RtmpeviKzb/duckdb
+#&gt; This is removed when the R session ends.
+#&gt; • Extensions are re-downloaded each session.
+#&gt; • Secrets are lost.
+#&gt; ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+#&gt; ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+#&gt; ℹ See ?duckdb_storage for details and alternatives.
 #&gt; [INFO] SQL Query complete: 1 rows returned.
+#&gt; 
 #&gt; [INFO] Disconnected from temporary DuckDB connection.
+#&gt; 
 #&gt; [INFO] 1x3 data.frame saved as `lData$Temp_StudyCountsWide`.
+#&gt; 
 #&gt; [INFO] Workflow Step 5 of 9: `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] Evaluating 3 parameter(s) for `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] x = Temp_CTMSplanned: Passing lData$Temp_CTMSplanned.
+#&gt; 
 #&gt; [INFO] y = Temp_StudyCountsWide: Passing lData$Temp_StudyCountsWide.
+#&gt; 
 #&gt; [INFO] by = GroupID: No matching data found. Passing &#39;GroupID&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::left_join`
+#&gt; 
 #&gt; [INFO] 1x5 data.frame saved as `lData$Temp_CountTargetsWide`.
+#&gt; 
 #&gt; [INFO] Workflow Step 6 of 9: `gsm.mapping::CalculatePercentage`
+#&gt; 
 #&gt; [INFO] Evaluating 5 parameter(s) for `gsm.mapping::CalculatePercentage`
+#&gt; 
 #&gt; [INFO] data = Temp_CountTargetsWide: Passing lData$Temp_CountTargetsWide.
+#&gt; 
 #&gt; [INFO] strCurrentCol = SiteCount: No matching data found. Passing &#39;SiteCount&#39; as a string.
+#&gt; 
 #&gt; [INFO] strTargetCol = SiteTarget: No matching data found. Passing &#39;SiteTarget&#39; as a string.
+#&gt; 
 #&gt; [INFO] strPercVal = PercentSitesActivated: No matching data found. Passing &#39;PercentSitesActivated&#39; as a string.
+#&gt; 
 #&gt; [INFO] strPercStrVal = SiteActivation: No matching data found. Passing &#39;SiteActivation&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::CalculatePercentage`
+#&gt; 
 #&gt; [INFO] 1x7 data.frame saved as `lData$Temp_CountTargetsWide_addsite`.
+#&gt; 
 #&gt; [INFO] Workflow Step 7 of 9: `gsm.mapping::CalculatePercentage`
+#&gt; 
 #&gt; [INFO] Evaluating 5 parameter(s) for `gsm.mapping::CalculatePercentage`
+#&gt; 
 #&gt; [INFO] data = Temp_CountTargetsWide_addsite: Passing lData$Temp_CountTargetsWide_addsite.
+#&gt; 
 #&gt; [INFO] strCurrentCol = ParticipantCount: No matching data found. Passing &#39;ParticipantCount&#39; as a string.
+#&gt; 
 #&gt; [INFO] strTargetCol = ParticipantTarget: No matching data found. Passing &#39;ParticipantTarget&#39; as a string.
+#&gt; 
 #&gt; [INFO] strPercVal = PercentParticipantsEnrolled: No matching data found. Passing &#39;PercentParticipantsEnrolled&#39; as a string.
+#&gt; 
 #&gt; [INFO] strPercStrVal = ParticipantEnrollment: No matching data found. Passing &#39;ParticipantEnrollment&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::CalculatePercentage`
+#&gt; 
 #&gt; [INFO] 1x9 data.frame saved as `lData$Temp_CountTargetsWide_addsitepts`.
+#&gt; 
 #&gt; [INFO] Workflow Step 8 of 9: `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] data = Temp_CountTargetsWide_addsitepts: Passing lData$Temp_CountTargetsWide_addsitepts.
+#&gt; 
 #&gt; [INFO] strGroupLevel = Study: No matching data found. Passing &#39;Study&#39; as a string.
+#&gt; 
 #&gt; [INFO] Calling `gsm.mapping::MakeLongMeta`
+#&gt; 
 #&gt; [INFO] 8x4 data.frame saved as `lData$Temp_CountTargetsPercs`.
+#&gt; 
 #&gt; [INFO] Workflow Step 9 of 9: `dplyr::bind_rows`
+#&gt; 
 #&gt; [INFO] Evaluating 2 parameter(s) for `dplyr::bind_rows`
+#&gt; 
 #&gt; [INFO] Temp_CTMSStudy = Temp_CTMSStudy: Passing lData$Temp_CTMSStudy.
+#&gt; 
 #&gt; [INFO] Temp_CountTargetsPercs = Temp_CountTargetsPercs: Passing lData$Temp_CountTargetsPercs.
+#&gt; 
 #&gt; [INFO] Calling `dplyr::bind_rows`
+#&gt; 
 #&gt; [INFO] 23x4 data.frame saved as `lData$Mapped_STUDY`.
+#&gt; 
 #&gt; [INFO] Returning results from final step: 23x4 data.frame`.
+#&gt; 
 #&gt; [INFO] Completed `Mapped_STUDY` Workflow</code></pre>
 </div>
 </div>
