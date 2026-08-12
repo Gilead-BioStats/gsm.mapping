@@ -1,6 +1,6 @@
 Package: gsm.mapping
 Title: Good Statistical Monitoring Mapping
-Version: 1.1.5
+Version: 1.1.6
 Authors@R: c(
     person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = c("aut", "cre")),
     person("Laura", "Maxwell", , "laura.maxwell@atorusresearch.com", role = "aut"),
@@ -12,9 +12,9 @@ Description: The Good Statistical Monitoring or 'gsm' R package provides a
     workflows to apply the necessary data transformation from raw/source
     datasets to appropriate domains.
 License: Apache License (>= 2)
-URL: https://github.com/Gilead-BioStats/gsm.mapping,
-    https://gilead-biostats.github.io/gsm.mapping
-BugReports: https://github.com/Gilead-BioStats/gsm.mapping/issues
+URL: https://github.com/Gilead-Public/gsm.mapping,
+    https://gilead-public.github.io/gsm.mapping
+BugReports: https://github.com/Gilead-Public/gsm.mapping/issues
 Depends: 
     R (>= 4.0)
 Imports:
@@ -25,7 +25,6 @@ Imports:
     duckdb,
     glue,
     gsm.core (>= 1.3.0),
-    log4r,
     purrr,
     rlang,
     stringr,
@@ -34,6 +33,7 @@ Imports:
     yaml
 Suggests:
     DT,
+    htmltools,
     knitr,
     reactable,
     rmarkdown,
@@ -42,9 +42,8 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@main,
-    workr=Gilead-BioStats/workr@main,
-    log4r=r-lib/log4r
+    gsm.core=Gilead-Public/gsm.core@main,
+    workr=Gilead-Public/workr@main
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true

@@ -1,6 +1,6 @@
 ---
 title: "Example Mapping Workflow"
-author: "[gsm.mapping](https://gilead-biostats.github.io/gsm.mapping) Example"
+author: "[gsm.mapping](https://gilead-public.github.io/gsm.mapping) Example"
 description: "Example of creating the Mapped Data Layer step-by-step using the standard mappings in gsm.mapping"
 index: 1
 date: "`r format(Sys.time(), '%B %d, %Y %H:%M:%S %Z')`"
