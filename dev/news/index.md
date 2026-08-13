@@ -2,6 +2,13 @@
 
 ## gsm.mapping (development version)
 
+## gsm.mapping v1.1.6
+
+This patch release removes the log4r package dependency, because the
+log4r package was archived on CRAN
+([\#143](https://github.com/Gilead-Public/gsm.mapping/issues/143),
+[\#113](https://github.com/Gilead-Public/gsm.mapping/issues/113)).
+
 ## gsm.mapping 1.1.5
 
 This release migrates query execution and workflow discovery to the new
@@ -64,7 +71,7 @@ like `gsm.datasim`. PR
 ## gsm.mapping 1.0.2
 
 This patch release updates the description file to incorporate min
-version for [gsm.core](https://gilead-biostats.github.io/gsm.core).
+version for [gsm.core](https://gilead-public.github.io/gsm.core).
 
 ## gsm.mapping 1.0.1
 
