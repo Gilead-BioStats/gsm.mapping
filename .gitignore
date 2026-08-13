@@ -51,4 +51,4 @@ rsconnect/
 docs
 inst/doc
 .positai
-.posit/assistant/settings.json
+.posit

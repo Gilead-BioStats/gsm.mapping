@@ -1,5 +1,9 @@
 # gsm.mapping (development version)
 
+# gsm.mapping v1.1.6
+
+This patch release removes the log4r package dependency, because the log4r package was archived on CRAN (#143, #113).
+
 # gsm.mapping 1.1.5
 
 This release migrates query execution and workflow discovery to the new `workr` package and includes mapping and documentation improvements.
